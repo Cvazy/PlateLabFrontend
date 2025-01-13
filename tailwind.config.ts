@@ -11,6 +11,17 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        red: "var(--red)",
+        gray: "var(--gray)",
+        light_gray: "var(--light-gray)",
+        dark_gray: "var(--dark-gray)",
+      },
+      fontFamily: {
+        sans: ["Groteska", "sans-serif"],
+        fancy: ["Helvetica", "sans-serif"],
+      },
+      maxWidth: {
+        limitation: "1360px",
       },
     },
   },

@@ -1,21 +1,61 @@
+@import "@/../public/fonts/Groteska/stylesheet.css";
+@import "@/../public/fonts/Helvetica/stylesheet.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: white;
+  --red: #F63737;
+  --gray: #393939;
+  --light-gray: #A0A0A0;
+  --dark-gray: #1B1B1B;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --background: white;*/
+/*    --foreground: #050505;*/
+/*  }*/
+/*}*/
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*:not(.no-transition) {
+  transition: .3s all;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+input, textarea {
+  outline: none;
+}
+
+textarea {
+  transition-property: none;
 }
