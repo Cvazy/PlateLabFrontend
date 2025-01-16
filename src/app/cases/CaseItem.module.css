@@ -1,0 +1,82 @@
+.lineContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+@keyframes fillLine {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+.line {
+    position: relative;
+    width: 1px;
+    height: 79px;
+    background-color: var(--gray);
+}
+
+.line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0.1px;
+    height: 79px;
+    background-color: white;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: transform 0.2s ease;
+}
+
+.circle {
+    width: 7px;
+    height: 7px;
+    background-color: var(--gray);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: white;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: transform 0.2s ease 0.8s;
+}
+
+.lineContainer.Hovered .circle::after {
+    transform: scaleY(1);
+}
+
+.lineContainer.Hovered .line::after {
+    transform: scaleY(1);
+}
+
+.lineContainer.Hovered .line::after {
+    transition-delay: 0s;
+}
+
+.lineContainer.Hovered .circle::after {
+    transition-delay: 0.2s;
+}
+
+.lineContainer:not(.Hovered) .line::after {
+    transition-delay: 0.2s;
+}
+
+.lineContainer:not(.Hovered) .circle::after {
+    transition-delay: 0s;
+}

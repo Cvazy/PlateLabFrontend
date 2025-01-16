@@ -1,0 +1,14 @@
+.footer {
+    background-image: url("../../../../public/images/3.png");
+    background-size: cover;
+    background-position: center;
+
+    @media (max-width: 480px) {
+        background-size: auto;
+        background-position: left;
+    }
+}
+
+.footerBg {
+    background: linear-gradient(to bottom, #050505, #050505e0);
+}

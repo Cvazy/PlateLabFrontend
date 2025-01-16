@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import styles from "./Footer.module.css";
 import { NetworkItem, FooterLink, RunningLine } from "./components";
 import { usePathname } from "next/navigation";
 
@@ -10,10 +10,10 @@ export const Footer = () => {
 
   return (
     <footer
-      className={`overflow-hidden w-full ${isMainPage ? "bg-white" : "footer"}`}
+      className={`overflow-hidden w-full ${isMainPage ? "bg-white" : `${styles.footer}`}`}
     >
       <div
-        className={`flex flex-col items-center py-[35px] w-full ${isMainPage ? "bg-white" : "footer_bg"}`}
+        className={`flex flex-col items-center py-[35px] w-full ${isMainPage ? "bg-white" : `${styles.footerBg}`}`}
       >
         <RunningLine isMainPage={isMainPage} />
 

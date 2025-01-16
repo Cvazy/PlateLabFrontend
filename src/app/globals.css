@@ -60,34 +60,3 @@ textarea {
   transition-duration: 0s;
   resize: none;
 }
-
-@keyframes infinite-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.marquee-content {
-  animation: infinite-scroll 20s linear infinite;
-}
-
-.footer {
-  background-image: url("../../public/images/3.png");
-  background-size: cover;
-  background-position: center;
-
-  @media (max-width: 480px) {
-    background-size: auto;
-    background-position: left;
-  }
-}
-
-.footer_bg {
-  background: linear-gradient(to bottom, #050505, #050505e0);
-}

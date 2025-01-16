@@ -1,4 +1,5 @@
 import Image from "next/image";
+import styles from "./RunningLine.module.css";
 
 interface IRunningLine {
   isMainPage: boolean;
@@ -10,9 +11,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
       className={`flex gap-10 items-center relative w-full pb-5 border-b border-solid ${isMainPage ? "border-[#a0a0a033]" : "border-dark_gray"}`}
     >
       <div
-        className={
-          "flex items-center gap-10 marquee-content w-full h-[75px] sm:h-[95px] md:gap-12 lg:h-[120px] xl:gap-[60px] xl:h-[150px]"
-        }
+        className={`flex items-center gap-10 ${styles.marqueeContent} w-full h-[75px] sm:h-[95px] md:gap-12 lg:h-[120px] xl:gap-[60px] xl:h-[150px]`}
       >
         <p
           className={`text-6xl ${isMainPage ? "text-black" : "text-white"} !leading-none sm:text-7xl lg:text-8xl xl:text-[120px]`}
