@@ -1,16 +1,15 @@
 "use client";
 
-import { ContactButton, Logo, NavItem } from "./components";
+import { ContactButton, Logo, NavItem, MobileMenu } from "./components";
 import Image from "next/image";
 import { useState } from "react";
-import { MobileMenu } from "@/app/components/Header/components/MobileMenu";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header
-      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 fixed ${isMobileMenuOpen ? "bg-black" : ""}`}
+      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 fixed bg-black`}
     >
       <div
         className={

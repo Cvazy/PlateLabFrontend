@@ -26,7 +26,7 @@ export default function RootLayout({
         >
           <Header />
 
-          <main className={"flex justify-center flex-grow w-full"}>
+          <main className={"flex justify-center flex-grow py-20 w-full"}>
             <div className={"max-w-limitation w-full"}>{children}</div>
           </main>
 

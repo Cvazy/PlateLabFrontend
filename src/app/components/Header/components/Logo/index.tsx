@@ -10,6 +10,7 @@ export const Logo = () => {
   return (
     <Link
       href={"/"}
+      className={"flex"}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
