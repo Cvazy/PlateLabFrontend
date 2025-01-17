@@ -8,16 +8,25 @@ interface ICaseItemProps {
   name: string;
   imageSrc: string;
   isActive: boolean;
+  onClick: () => void;
 }
 
-export const CaseItem = ({ name, imageSrc, isActive }: ICaseItemProps) => {
+export const CaseItem = ({
+  name,
+  imageSrc,
+  isActive,
+  onClick,
+}: ICaseItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
+      onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={"flex flex-col items-start gap-4 min-w-40 md:min-w-[200px]"}
+      className={
+        "flex flex-col items-start gap-4 min-w-40 cursor-pointer md:min-w-[200px]"
+      }
     >
       <div className={"flex items-start gap-2.5 flex-nowrap w-full"}>
         <div className={"flex justify-center w-3.5"}>
