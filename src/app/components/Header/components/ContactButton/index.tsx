@@ -18,6 +18,7 @@ export const ContactButton = () => {
           height={18}
           src={"/images/red_logo.svg"}
           alt={"Red logo"}
+          loading={"lazy"}
         />
       </div>
     </div>

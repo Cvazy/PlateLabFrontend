@@ -24,6 +24,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
           height={42}
           src={`/images/${isMainPage ? "dark_logo.svg" : "logo.svg"}`}
           alt={"Logo"}
+          loading={"lazy"}
           className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
         />
 
@@ -38,6 +39,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
           height={42}
           src={`/images/${isMainPage ? "dark_logo.svg" : "logo.svg"}`}
           alt={"Logo"}
+          loading={"lazy"}
           className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
         />
 
@@ -52,6 +54,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
           height={42}
           src={`/images/${isMainPage ? "dark_logo.svg" : "logo.svg"}`}
           alt={"Logo"}
+          loading={"lazy"}
           className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
         />
 
@@ -66,6 +69,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
           height={42}
           src={`/images/${isMainPage ? "dark_logo.svg" : "logo.svg"}`}
           alt={"Logo"}
+          loading={"lazy"}
           className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
         />
 
@@ -80,6 +84,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
           height={42}
           src={`/images/${isMainPage ? "dark_logo.svg" : "logo.svg"}`}
           alt={"Logo"}
+          loading={"lazy"}
           className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
         />
 
@@ -94,6 +99,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
           height={42}
           src={`/images/${isMainPage ? "dark_logo.svg" : "logo.svg"}`}
           alt={"Logo"}
+          loading={"lazy"}
           className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
         />
 

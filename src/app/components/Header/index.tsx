@@ -51,6 +51,7 @@ export const Header = () => {
                       height={21}
                       src={"/images/close.svg"}
                       alt={"Close"}
+                      loading={"lazy"}
                     />
                   ) : (
                     <Image
@@ -58,6 +59,7 @@ export const Header = () => {
                       height={29}
                       src={"/images/menu.svg"}
                       alt={"Menu"}
+                      loading={"lazy"}
                     />
                   )}
                 </div>

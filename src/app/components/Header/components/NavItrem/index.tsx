@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases/model";
 
 interface INavItem {
   link: string;
@@ -11,6 +12,11 @@ interface INavItem {
 
 export const NavItem = ({ link, name, widget }: INavItem) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const { data } = useFetchAllCasesQuery();
+
+  //@ts-ignore
+  const cases: ICaseItem[] = data;
 
   return (
     <Link
@@ -34,7 +40,7 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
           <div className={`rounded ${isHovered ? "bg-red" : "bg-white"}`}>
             <div className={"py-1 px-1.5"}>
               <p className={"text-[13px] !leading-none text-black font-fancy"}>
-                24
+                {cases && cases.length}
               </p>
             </div>
           </div>

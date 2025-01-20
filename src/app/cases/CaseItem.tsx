@@ -1,19 +1,21 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./CaseItem.module.css";
 import { useState } from "react";
+import { ICaseImage } from "@/app/cases/model";
+import { imageLoader } from "@/app/utils";
+import CustomImage from "@/app/utils/customImage";
 
 interface ICaseItemProps {
   name: string;
-  imageSrc: string;
+  image: ICaseImage;
   isActive: boolean;
   onClick: () => void;
 }
 
 export const CaseItem = ({
   name,
-  imageSrc,
+  image,
   isActive,
   onClick,
 }: ICaseItemProps) => {
@@ -25,7 +27,7 @@ export const CaseItem = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={
-        "flex flex-col items-start gap-4 min-w-40 cursor-pointer md:min-w-[200px]"
+        "flex flex-col items-start gap-4 max-w-40 min-w-40 cursor-pointer sm:max-w-[200px] md:min-w-[200px]"
       }
     >
       <div className={"flex items-start gap-2.5 flex-nowrap w-full"}>
@@ -45,14 +47,20 @@ export const CaseItem = ({
         </p>
       </div>
 
-      <div className={"w-40 h-40 relative md:w-[200px] md:h-[200px]"}>
-        <Image
+      <div
+        className={
+          "min-w-40 min-h-40 relative md:min-w-[200px] md:min-h-[200px]"
+        }
+      >
+        <CustomImage
           width={200}
           height={200}
-          objectFit={"cover"}
-          src={imageSrc}
-          alt={"Image"}
-          className={`rounded-lg w-40 h-40 ${isActive ? "shadow-[0_-10px_16px_0_#ffffff1a]" : ""} md:w-[200px] md:h-[200px]`}
+          src={image.image}
+          alt={image.caption}
+          loader={imageLoader}
+          className={`w-40 h-40 md:w-[200px] md:h-[200px] ${
+            isActive ? "shadow-[0_-10px_16px_0_#ffffff1a]" : ""
+          }`}
         />
 
         <div
