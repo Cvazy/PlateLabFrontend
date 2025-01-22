@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { casesApi } from "@/app/cases/model";
+import { rootReducer } from "./reducers";
+import { contactApi } from "@/app/contact";
 
 export const store = configureStore({
-  reducer: {
-    [casesApi.reducerPath]: casesApi.reducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(casesApi.middleware),
+    getDefaultMiddleware().concat(casesApi.middleware, contactApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

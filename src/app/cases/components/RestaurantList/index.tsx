@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
+import styles from "./RestaurantList.module.css";
 import { CaseItem } from "@/app/cases/components";
 import { ReactNode } from "react";
 import { IGalleryProps } from "@/app/cases/model";
@@ -21,7 +22,7 @@ export const RestaurantList = ({
       }
     >
       <Swiper
-        className={"!m-0 smallSwiper"}
+        className={styles.smallSwiper}
         slidesPerView={1.25}
         breakpoints={{
           640: {

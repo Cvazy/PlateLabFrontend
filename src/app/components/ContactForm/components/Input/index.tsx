@@ -6,11 +6,12 @@ export const Input = ({
   onChange,
   placeholder,
   theme,
+  vertical,
   index,
 }: IInputProps & { type: string }) => {
   return (
     <label
-      className={`flex flex-col items-start gap-1 font-fancy !leading-none text-[14px] py-6 w-full border-t ${index % 2 === 0 && theme === 1 ? "lg:border-r" : "lg:pl-4"} border-solid ${theme === 1 ? "text-light_gray border-gray" : "text-gray border-light_gray"} lg:py-2.5`}
+      className={`flex flex-col items-start gap-1 font-fancy !leading-none text-[14px] py-6 w-full border-t ${index % 2 === 0 && theme === 1 && !vertical ? "lg:border-r" : vertical ? "" : "lg:pl-4"} border-solid ${theme === 1 ? "text-light_gray border-gray" : "text-gray border-light_gray"} lg:py-2.5`}
     >
       {label}
 

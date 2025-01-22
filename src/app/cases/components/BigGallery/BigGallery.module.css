@@ -1,0 +1,27 @@
+.bigSwiper {
+    min-width: 70vw;
+
+    @media (max-width: 1280px) {
+        min-width: 100vw;
+    }
+
+    @media (max-width: 840px) {
+        min-width: 120vw;
+    }
+
+    @media (max-width: 670px) {
+        min-width: 140vw;
+    }
+
+    @media (max-width: 520px) {
+        min-width: 170vw;
+    }
+
+    @media (max-width: 450px) {
+        min-width: 200vw;
+    }
+
+    @media (max-width: 390px) {
+        min-width: 230vw;
+    }
+}

@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
+import styles from "./BigGallery.module.css";
 import CustomImage from "@/app/utils/customImage";
 import { imageLoader } from "@/app/utils";
 import { ReactNode } from "react";
@@ -32,7 +33,7 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                     }
                   ></div>
 
-                  <Swiper slidesPerView={2.5} className={"bigSwiper"}>
+                  <Swiper slidesPerView={2.5} className={styles.bigSwiper}>
                     {images.map(
                       ({ id, image, caption }) =>
                         (

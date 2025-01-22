@@ -1,0 +1,12 @@
+.smallSwiper {
+    min-width: 70vw;
+    margin: 0 !important;
+
+    @media (min-width: 768px) {
+        min-width: 140vw;
+    }
+
+    @media (min-width: 1024px) {
+        min-width: auto;
+    }
+}

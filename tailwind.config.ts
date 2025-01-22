@@ -15,6 +15,7 @@ export default {
         gray: "var(--gray)",
         light_gray: "var(--light-gray)",
         dark_gray: "var(--dark-gray)",
+        black: "var(--black)",
       },
       fontFamily: {
         sans: ["Groteska", "sans-serif"],

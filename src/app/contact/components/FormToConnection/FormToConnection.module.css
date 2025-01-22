@@ -1,0 +1,18 @@
+.input {
+    @apply hidden;
+}
+
+.span {
+    @apply relative w-5 h-5 rounded mr-3.5 border border-solid border-black;
+}
+
+.input:checked + span:before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-image: url("../../../../../public/images/checkbox.svg");
+    background-size: cover;
+    top: 1px;
+    left: 2px;
+}

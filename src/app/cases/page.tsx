@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Contact } from "@/app/components";
 import { BigGallery, RestaurantList } from "./components";
 
-import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases/model";
+import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases";
 import { Loader } from "@/app/components";
 
 const CasesPage = () => {

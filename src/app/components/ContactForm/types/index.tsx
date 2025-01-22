@@ -23,4 +23,5 @@ export interface IInputProps {
   label: string;
   theme: Theme;
   index?: number;
+  vertical: boolean;
 }

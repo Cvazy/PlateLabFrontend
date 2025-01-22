@@ -12,6 +12,7 @@
   --gray: #484848;
   --light-gray: #A0A0A0;
   --dark-gray: #1B1B1B;
+  --black: #050505;
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -59,46 +60,6 @@ input, textarea {
 textarea {
   transition-duration: 0s;
   resize: none;
-}
-
-.bigSwiper {
-  min-width: 70vw;
-
-  @media (max-width: 1280px) {
-    min-width: 100vw;
-  }
-
-  @media (max-width: 840px) {
-    min-width: 120vw;
-  }
-
-  @media (max-width: 670px) {
-    min-width: 140vw;
-  }
-
-  @media (max-width: 520px) {
-    min-width: 170vw;
-  }
-
-  @media (max-width: 450px) {
-    min-width: 200vw;
-  }
-
-  @media (max-width: 390px) {
-    min-width: 230vw;
-  }
-}
-
-.smallSwiper {
-  min-width: 70vw;
-
-  @media (min-width: 768px) {
-    min-width: 140vw;
-  }
-
-  @media (min-width: 1024px) {
-    min-width: auto;
-  }
 }
 
 .swiper-wrapper {
