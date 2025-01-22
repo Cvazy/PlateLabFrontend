@@ -15,8 +15,7 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
 
   const { data } = useFetchAllCasesQuery();
 
-  //@ts-ignore
-  const cases: ICaseItem[] = data;
+  const cases: ICaseItem[] = data || [];
 
   return (
     <Link

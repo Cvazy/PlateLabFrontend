@@ -1,25 +1,26 @@
 "use client";
 
 import { JSX, useState } from "react";
+import { INetwork } from "@/app/components/Footer/model";
+import Image from "next/image";
+import { imageLoader } from "@/app/utils";
 
-interface INetworkItemProps {
-  name: string;
-  url: string;
-  icon: JSX.Element;
+interface INetworkItemProps extends Omit<INetwork, "id"> {
   isMainPage: boolean;
 }
 
 export const NetworkItem = ({
   name,
-  url,
-  icon,
+  link,
+  image_icon_light,
+  image_icon_dark,
   isMainPage,
 }: INetworkItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <a
-      href={url}
+      href={link}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`block rounded-lg w-full ${isMainPage ? "border border-solid border-[#a0a0a033] bg-white" : "bg-[#ffffff0d]"}`}
@@ -49,7 +50,14 @@ export const NetworkItem = ({
         </div>
 
         <div className={"flex items-center gap-6 flex-nowrap"}>
-          {icon}
+          <Image
+            width={24}
+            height={24}
+            src={isMainPage ? image_icon_dark : image_icon_light}
+            alt={name}
+            loading={"lazy"}
+            loader={imageLoader}
+          />
 
           <p className={"font-fancy text-base !leading-none text-light_gray"}>
             {name}

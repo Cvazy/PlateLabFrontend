@@ -12,11 +12,9 @@ interface IHowItsWorkProps {
 export const HowItsWork = ({ isFAQ }: IHowItsWorkProps) => {
   const [activeElement, setActiveElement] = useState<number | null>(null);
 
-  //@ts-ignore
   const { data, isLoading } = useFetchAllHowItsWorkElementsQuery();
 
-  //@ts-ignore
-  const howItsWorkElements: IHowItsWork[] = data;
+  const howItsWorkElements: IHowItsWork[] = data || [];
 
   useEffect(() => {
     const startAnimation = setTimeout(() => {

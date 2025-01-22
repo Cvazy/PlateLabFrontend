@@ -10,11 +10,9 @@ import { Loader } from "@/app/components";
 const CasesPage = () => {
   const [activeCase, setActiveCase] = useState<number>(1);
 
-  //@ts-ignore
   const { data, isError, isLoading } = useFetchAllCasesQuery();
 
-  //@ts-ignore
-  const cases: ICaseItem[] = data;
+  const cases: ICaseItem[] = data || [];
 
   if (isLoading) return <Loader />;
 
