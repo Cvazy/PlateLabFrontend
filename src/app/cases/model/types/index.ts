@@ -10,3 +10,8 @@ export interface ICaseItem {
   description: string;
   images: ICaseImage[];
 }
+
+export interface IGalleryProps {
+  cases: ICaseItem[];
+  activeCase: number;
+}
