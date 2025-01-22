@@ -10,7 +10,6 @@ const ContactPage = () => {
             "flex flex-col-reverse gap-20 w-full h-full lg:grid lg:grid-cols-2 lg:gap-0"
           }
         >
-          {/*How it`s works*/}
           <div className={"w-full"}>
             <div
               className={

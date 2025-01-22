@@ -20,6 +20,7 @@ export default {
       fontFamily: {
         sans: ["Groteska", "sans-serif"],
         fancy: ["Helvetica", "sans-serif"],
+        sf_pro: ["SF Pro  Display", "sans-serif"],
       },
       maxWidth: {
         limitation: "1360px",

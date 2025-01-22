@@ -1,5 +1,6 @@
 @import "@/../public/fonts/Groteska/stylesheet.css";
 @import "@/../public/fonts/Helvetica/stylesheet.css";
+@import "@/../public/fonts/SfProDisplay/stylesheet.css";
 
 @tailwind base;
 @tailwind components;

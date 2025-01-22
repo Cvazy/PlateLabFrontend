@@ -76,6 +76,8 @@ export const Footer = () => {
                           image_icon_dark={image_icon_dark}
                           image_icon_light={image_icon_light}
                           isMainPage={isMainPage}
+                          iconSize={24}
+                          isAboutPage={false}
                         />
                       ),
                     )}
