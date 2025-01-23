@@ -43,6 +43,7 @@ export const FormToConnection = () => {
                     starReverse={false}
                     starColor={"#A0A0A0"}
                     height={"h-12 md:h-14"}
+                    disabled={false}
                   />
                 ) as ReactNode
               }

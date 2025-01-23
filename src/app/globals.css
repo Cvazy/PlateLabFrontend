@@ -66,3 +66,26 @@ textarea {
 .swiper-wrapper {
   gap: 10px;
 }
+
+.nav_link_line {
+  position: absolute;
+  bottom: 2px;
+  left: 0.8em;
+  width: calc(100% - (0.8em * 2));
+  height: 1.5px;
+  background-color: var(--red);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(.75, 0, .25, 1), background-color 0.3s ease-in-out;
+}
+
+.nav_link_click:hover .nav_link_line {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav_link_click[data-link-status="active"] .nav_link_line {
+  transform: scaleX(1);
+  transform-origin: left;
+  background-color: var(--gray);
+}

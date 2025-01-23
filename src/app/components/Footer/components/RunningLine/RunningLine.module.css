@@ -1,15 +1,15 @@
-@keyframes infinite-scroll {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+.marqueeContent {
+    display: flex;
+    will-change: transform;
+    transform: translateX(var(--marquee-offset, 0));
+    /*animation: marquee 30s linear infinite;*/
 }
 
-.marqueeContent {
-    animation: infinite-scroll 20s linear infinite;
+@keyframes marquee {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }

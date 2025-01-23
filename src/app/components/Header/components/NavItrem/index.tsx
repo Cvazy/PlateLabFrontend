@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases/model";
+import { usePathname } from "next/navigation";
 
 interface INavItem {
   link: string;
@@ -11,7 +9,8 @@ interface INavItem {
 }
 
 export const NavItem = ({ link, name, widget }: INavItem) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const pathname = usePathname();
+  const isActive = pathname === link;
 
   const { data } = useFetchAllCasesQuery();
 
@@ -20,23 +19,20 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
   return (
     <Link
       href={link}
-      className={`${widget ? "flex items-center gap-0.5" : ""}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      data-link-status={isActive ? "active" : undefined}
+      className={`relative nav_link_click ${widget ? "flex items-center gap-0.5" : ""}`}
     >
       <div
         className={`${widget ? "flex items-center gap-2.5 sm:gap-0.5" : ""} py-1.5 px-2.5 lg:px-5`}
       >
         <div
-          className={`!duration-100 text-center font-fancy text-xl !leading-[12px] sm:text-base sm:!leading-[18px] sm:min-w-14 ${
-            isHovered ? "text-red" : "text-white"
-          }`}
+          className={`!duration-100 text-center font-fancy text-xl text-white !leading-[12px] sm:text-base sm:!leading-[18px] sm:min-w-14`}
         >
           {name}
         </div>
 
         {widget && (
-          <div className={`rounded ${isHovered ? "bg-red" : "bg-white"}`}>
+          <div className={`rounded bg-white`}>
             <div className={"py-1 px-1.5"}>
               <p className={"text-[13px] !leading-none text-black font-fancy"}>
                 {cases && cases.length}
@@ -45,6 +41,8 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
           </div>
         )}
       </div>
+
+      <div className={"nav_link_line"}></div>
     </Link>
   );
 };

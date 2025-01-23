@@ -18,13 +18,13 @@ export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
   return (
     <Link
       href={href}
-      className={"w-full"}
+      className={"relative nav_link_click"}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={"flex items-start gap-2 justify-start w-full"}>
+      <div className={"flex items-start gap-2 justify-start w-fit"}>
         <p
-          className={`text-2xl ${isHovered ? "text-red" : isMainPage ? "text-black" : "text-white"} font-fancy !leading-none md:text-[28px] xl:text-[32px]`}
+          className={`text-2xl ${isMainPage ? "text-black" : "text-white"} font-fancy !leading-none md:text-[28px] xl:text-[32px]`}
         >
           {name}
         </p>
@@ -57,6 +57,11 @@ export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
           />
         </svg>
       </div>
+
+      <div
+        className={"nav_link_line"}
+        style={{ bottom: "-6px", left: 0, width: "100%" }}
+      ></div>
     </Link>
   );
 };

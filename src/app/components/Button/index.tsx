@@ -9,6 +9,7 @@ interface IButton {
   fontSize: string;
   borderRadius: string;
   height: string;
+  disabled: boolean;
 }
 
 export const Button = ({
@@ -22,12 +23,13 @@ export const Button = ({
   fontSize,
   borderRadius,
   height,
+  disabled,
 }: IButton) => {
   return (
     <button
       type={"button"}
       onClick={onClick}
-      className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full hover:scale-[101%]`}
+      className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full disabled:brightness-50 ${disabled ? "" : "hover:scale-[101%]"}`}
     >
       <p className={`${fontSize} font-fancy !leading-none text-${textColor}`}>
         {text}

@@ -34,6 +34,7 @@ export const Contact = () => {
                 starReverse={false}
                 starColor={"black"}
                 height={"h-[52px] md:h-14"}
+                disabled={false}
               />
             ) as ReactNode
           }
