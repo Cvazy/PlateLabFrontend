@@ -4,6 +4,7 @@ import { rootReducer } from "./reducers";
 import { contactApi } from "@/app/contact";
 import { footerApi } from "@/app/components/Footer/model";
 import { aboutApi } from "@/app/about";
+import { pricingApi } from "@/app/pricing";
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -13,6 +14,7 @@ export const store = configureStore({
       casesApi.middleware,
       contactApi.middleware,
       footerApi.middleware,
+      pricingApi.middleware,
     ),
 });
 
