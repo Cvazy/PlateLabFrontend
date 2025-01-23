@@ -1,4 +1,4 @@
-import { IInputProps } from "../../types";
+import { IInputProps } from "../../model/types";
 import { forwardRef } from "react";
 
 export const Textarea = forwardRef<

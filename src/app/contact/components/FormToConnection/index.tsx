@@ -2,9 +2,9 @@
 
 import styles from "./FormToConnection.module.css";
 
-import { Button, ContactForm } from "@/app/components";
+import { ContactForm } from "@/app/components";
 import { Theme } from "@/app/types";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 
 export const FormToConnection = () => {
   const [checked] = useState<boolean>(true);

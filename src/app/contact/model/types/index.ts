@@ -11,3 +11,11 @@ export interface IHowItsWorkElementProps extends IHowItsWork {
   isTheLast: boolean;
   isFAQ: boolean;
 }
+
+export interface IContactData {
+  name: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  message: string;
+}

@@ -1,8 +1,7 @@
 "use client";
 
-import { Button, ContactForm } from "@/app/components";
+import { ContactForm } from "@/app/components";
 import { Theme } from "@/app/types";
-import { ReactNode } from "react";
 
 export const Contact = () => {
   return (
