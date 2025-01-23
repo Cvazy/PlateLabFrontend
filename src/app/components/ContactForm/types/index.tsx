@@ -24,4 +24,5 @@ export interface IInputProps {
   theme: Theme;
   index?: number;
   vertical: boolean;
+  isError?: boolean;
 }

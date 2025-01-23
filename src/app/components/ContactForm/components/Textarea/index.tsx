@@ -1,11 +1,10 @@
 import { IInputProps } from "../../types";
+import { forwardRef } from "react";
 
-export const Textarea = ({
-  label,
-  onChange,
-  placeholder,
-  theme,
-}: IInputProps) => {
+export const Textarea = forwardRef<
+  HTMLInputElement,
+  IInputProps & { type: string }
+>(({ type, label, placeholder, theme, vertical, index, ...props }, ref) => {
   return (
     <label
       className={`flex flex-col items-start gap-2 font-fancy !leading-none text-[14px] py-6 w-full border-y border-solid ${theme === 1 ? "text-light_gray border-gray" : "text-gray border-light_gray"} lg:py-2.5`}
@@ -13,10 +12,14 @@ export const Textarea = ({
       {label}
 
       <textarea
+        ref={ref}
+        type={type}
         placeholder={placeholder}
-        onChange={onChange}
+        {...props}
         className={`${theme === 1 ? "text-gray text-xl !leading-none h-7 placeholder:text-gray" : "text-light_gray placeholder:text-light_gray"} bg-transparent w-full`}
       />
     </label>
   );
-};
+});
+
+Textarea.displayName = "Textarea";

@@ -1,16 +1,4 @@
-interface IButton {
-  text: string;
-  onClick: () => void;
-  bgColor: string;
-  textColor: string;
-  starColor: string;
-  starReverse: boolean;
-  paddings: string;
-  fontSize: string;
-  borderRadius: string;
-  height: string;
-  disabled: boolean;
-}
+import { IButton } from "./model";
 
 export const Button = ({
   text,
@@ -24,11 +12,12 @@ export const Button = ({
   borderRadius,
   height,
   disabled,
+  type,
 }: IButton) => {
   return (
     <button
-      type={"button"}
-      onClick={onClick}
+      type={type ? type : "button"}
+      onClick={onClick ? onClick : null}
       className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full disabled:brightness-50 ${disabled ? "" : "hover:scale-[101%]"}`}
     >
       <p className={`${fontSize} font-fancy !leading-none text-${textColor}`}>

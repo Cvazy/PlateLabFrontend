@@ -7,8 +7,9 @@ import { Theme } from "@/app/types";
 import { ReactNode, useState } from "react";
 
 export const FormToConnection = () => {
-  const [checked, setChecked] = useState<boolean>(true);
-  const handleSubmit = () => {};
+  const [checked] = useState<boolean>(true);
+
+  const [attempt, attemptChange] = useState<boolean>(false);
 
   return (
     <div className={"bg-white rounded-lg w-full"}>
@@ -30,45 +31,47 @@ export const FormToConnection = () => {
             <ContactForm
               vertical={true}
               theme={Theme.light}
-              button={
-                (
-                  <Button
-                    text={"Submit"}
-                    onClick={handleSubmit}
-                    textColor={"white"}
-                    fontSize={"text-base md:text-xl"}
-                    bgColor={"bg-black"}
-                    paddings={"px-4 py-4 md:py-5"}
-                    borderRadius={"rounded-[10px]"}
-                    starReverse={false}
-                    starColor={"#A0A0A0"}
-                    height={"h-12 md:h-14"}
-                    disabled={false}
-                  />
-                ) as ReactNode
-              }
+              text={"Submit"}
+              textColor={"white"}
+              fontSize={"text-base md:text-xl"}
+              bgColor={"bg-black"}
+              paddings={"px-4 py-4 md:py-5"}
+              borderRadius={"rounded-[10px]"}
+              starReverse={false}
+              starColor={"#A0A0A0"}
+              height={"h-12 md:h-14"}
+              disabled={false}
+              type={"submit"}
             />
 
-            <label
-              className={
-                "flex justify-start items-center text-sm font-fancy !leading-none text-light_gray w-full"
-              }
-            >
-              <input
-                type={"checkbox"}
-                checked={checked}
-                name={"agree"}
-                className={`${styles.input}`}
-                onChange={() => setChecked(!checked)}
-              />
-              <span
-                className={`${styles.span} ${checked ? "bg-black" : "bg-white"}`}
-              ></span>
-              I agree with the{" "}
-              <a href={"#"} className={"text-gray ml-1 hover:text-red"}>
-                Terms of Conditions
-              </a>
-            </label>
+            <div className={"flex flex-col items-start gap-2.5 w-full"}>
+              {attempt && (
+                <p className={"text-left font-fancy text-red text-xs w-full"}>
+                  This is a prerequisite.
+                </p>
+              )}
+
+              <label
+                className={
+                  "flex justify-start items-center text-sm font-fancy !leading-none text-light_gray w-full"
+                }
+              >
+                <input
+                  type={"checkbox"}
+                  checked={checked}
+                  name={"agree"}
+                  className={`${styles.input}`}
+                  onChange={() => attemptChange(!attempt)}
+                />
+                <span
+                  className={`${styles.span} ${checked ? "bg-black" : "bg-white"}`}
+                ></span>
+                I agree with the{" "}
+                <a href={"#"} className={"text-gray ml-1 hover:text-red"}>
+                  Terms of Conditions
+                </a>
+              </label>
+            </div>
           </div>
         </div>
       </div>

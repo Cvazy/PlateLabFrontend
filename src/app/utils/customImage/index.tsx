@@ -26,7 +26,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
         className={`${className} transition-opacity duration-500 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={() => setLoading(false)}
       />
     </div>
   );
