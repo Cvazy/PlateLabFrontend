@@ -1,4 +1,4 @@
-import { Contact } from "@/app/components";
+import { Contact, InformationBlock } from "@/app/components";
 import { PricingList } from "@/app/pricing/components";
 
 const PricingPage = () => {
@@ -17,6 +17,8 @@ const PricingPage = () => {
           <PricingList />
         </div>
       </div>
+
+      <InformationBlock />
 
       <Contact />
     </div>

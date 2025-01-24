@@ -9,7 +9,7 @@ export interface IHowItsWorkElementProps extends IHowItsWork {
   isActive: boolean;
   isTheFirst: boolean;
   isTheLast: boolean;
-  isFAQ: boolean;
+  isHorizontal: boolean;
 }
 
 export interface IContactData {

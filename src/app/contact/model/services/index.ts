@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { serverUrl } from "@/app/constants";
 import { IContactData, IHowItsWorkElementProps } from "../types";
+import { IFaq } from "@/app/pricing";
 
 export const contactApi = createApi({
   reducerPath: "contactApi",
@@ -16,6 +17,10 @@ export const contactApi = createApi({
   endpoints: (builder) => ({
     fetchAllHowItsWorkElements: builder.query<IHowItsWorkElementProps[], void>({
       query: () => "/api/v1/how-it-works",
+    }),
+
+    fetchAllFaqsElements: builder.query<IFaq[], void>({
+      query: () => "/api/v1/faqs",
     }),
 
     sendContactData: builder.mutation<null, IContactData>({
@@ -35,6 +40,7 @@ export const contactApi = createApi({
 });
 
 export const {
-  useFetchAllHowItsWorkElementsQuery,
   useSendContactDataMutation,
+  useFetchAllFaqsElementsQuery,
+  useFetchAllHowItsWorkElementsQuery,
 } = contactApi;

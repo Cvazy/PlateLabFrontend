@@ -25,7 +25,7 @@ const ContactPage = () => {
               </h1>
 
               <div className={"w-full"}>
-                <HowItsWork isFAQ={false} />
+                <HowItsWork isHorizontal={false} />
               </div>
             </div>
           </div>

@@ -6,3 +6,5 @@ export * from "./HowItsWork";
 export * from "./Loader";
 export * from "./Footer";
 export * from "./NetworkItem";
+export * from "./InformationBlock";
+export * from "./FAQ";

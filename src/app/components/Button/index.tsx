@@ -20,7 +20,9 @@ export const Button = ({
       onClick={onClick ? onClick : null}
       className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full disabled:brightness-50 ${disabled ? "" : "hover:scale-[101%]"}`}
     >
-      <p className={`${fontSize} font-fancy !leading-none text-${textColor}`}>
+      <p
+        className={`${fontSize} font-fancy !leading-none whitespace-nowrap text-${textColor}`}
+      >
         {text}
       </p>
 

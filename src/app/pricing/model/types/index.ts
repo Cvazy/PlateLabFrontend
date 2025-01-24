@@ -5,3 +5,9 @@ export interface IPrice {
   price: number;
   is_the_best_price: boolean;
 }
+
+export interface IFaq {
+  id: number | string;
+  question: string;
+  answer: string;
+}
