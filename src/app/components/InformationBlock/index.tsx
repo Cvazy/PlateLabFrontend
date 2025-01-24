@@ -28,9 +28,7 @@ export const InformationBlock = () => {
         </div>
 
         <div
-          className={
-            "bg-gradient-to-b from-[#161515] to-[#05050591] rounded-lg border border-solid border-gray w-full"
-          }
+          className={`bg-gradient-to-b from-[#161515] to-[#05050591] ${isFAQVisible ? "rounded-tl-lg" : "rounded-tr-lg"} rounded-lg-b border border-solid border-gray w-full`}
         >
           <div className={"py-[60px] px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10"}>
             {isFAQVisible ? <FAQ /> : <HowItsWork isHorizontal={true} />}
