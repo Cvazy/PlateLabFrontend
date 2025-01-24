@@ -5,7 +5,7 @@ import { Theme } from "@/app/types";
 
 export const Contact = () => {
   return (
-    <div className={"py-20 w-full"}>
+    <div className={"py-20 w-full"} id={"contact"}>
       <div className={"flex flex-col items-start gap-10 w-full"}>
         <h2
           className={

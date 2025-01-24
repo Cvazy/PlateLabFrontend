@@ -1,7 +1,10 @@
 import { Button } from "@/app/components";
 
 export const CallToAction = () => {
-  const handleClickScroll = () => {};
+  const handleClickScroll = () => {
+    const contactBlock = document.getElementById("contact");
+    window.scrollTo({ top: contactBlock.offsetTop - 40, behavior: "smooth" });
+  };
 
   return (
     <div className={"border border-solid border-gray rounded w-full"}>
