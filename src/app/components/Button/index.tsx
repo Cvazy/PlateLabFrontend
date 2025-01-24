@@ -17,7 +17,7 @@ export const Button = ({
   return (
     <button
       type={type ? type : "button"}
-      onClick={onClick ? onClick : null}
+      onClick={onClick ? onClick : undefined}
       className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full disabled:brightness-50 ${disabled ? "" : "hover:scale-[101%]"}`}
     >
       <p

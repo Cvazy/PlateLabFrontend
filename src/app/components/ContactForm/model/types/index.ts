@@ -1,4 +1,5 @@
 import { Theme } from "@/app/types";
+import { ChangeEvent } from "react";
 
 export interface IInputProps {
   type?:
@@ -18,7 +19,8 @@ export interface IInputProps {
     | "color"
     | "range"
     | "file";
-  onChange: () => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   label: string;
   theme: Theme;

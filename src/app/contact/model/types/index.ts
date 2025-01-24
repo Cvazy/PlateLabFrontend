@@ -14,7 +14,7 @@ export interface IHowItsWorkElementProps extends IHowItsWork {
 
 export interface IContactData {
   name: string;
-  email: string;
+  eMail: string;
   phone: string;
   companyName: string;
   message: string;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./RunningLine.module.css";
 
@@ -26,18 +26,21 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
     };
 
     const animate = () => {
-      if (marqueeRef.current) {
-        setOffset((prevOffset) => {
-          const newOffset = prevOffset - (baseSpeed + speedRef.current);
-
-          const marqueeWidth = marqueeRef.current?.scrollWidth / 2;
-          if (newOffset <= -marqueeWidth) {
-            return 0;
-          }
-
-          return newOffset;
-        });
+      if (!marqueeRef.current) {
+        return;
       }
+
+      const marqueeWidth = marqueeRef.current?.scrollWidth / 2;
+
+      setOffset((prevOffset) => {
+        const newOffset = prevOffset - (baseSpeed + speedRef.current);
+
+        if (newOffset <= -marqueeWidth) {
+          return 0;
+        }
+
+        return newOffset;
+      });
 
       animationFrame = requestAnimationFrame(animate);
     };
@@ -69,7 +72,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
         }}
       >
         {Array.from({ length: 10 }).map((_, index) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             <p
               className={`text-6xl ${
                 isMainPage ? "text-black" : "text-white"
@@ -85,11 +88,11 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
               loading={"lazy"}
               className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
             />
-          </React.Fragment>
+          </Fragment>
         ))}
 
         {Array.from({ length: 10 }).map((_, index) => (
-          <React.Fragment key={index + 100}>
+          <Fragment key={index + 100}>
             <p
               className={`text-6xl ${
                 isMainPage ? "text-black" : "text-white"
@@ -105,7 +108,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
               loading={"lazy"}
               className={"w-[26px] h-[26px] sm:w-8 sm:h-8 lg:w-9 lg:h-9"}
             />
-          </React.Fragment>
+          </Fragment>
         ))}
       </div>
     </div>

@@ -3,7 +3,11 @@ import { Button } from "@/app/components";
 export const CallToAction = () => {
   const handleClickScroll = () => {
     const contactBlock = document.getElementById("contact");
-    window.scrollTo({ top: contactBlock.offsetTop - 40, behavior: "smooth" });
+    if (contactBlock) {
+      window.scrollTo({ top: contactBlock.offsetTop - 40, behavior: "smooth" });
+    } else {
+      console.warn("Element with ID 'contact' not found");
+    }
   };
 
   return (

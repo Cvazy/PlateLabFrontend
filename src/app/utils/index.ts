@@ -1,10 +1,13 @@
 import { serverUrl } from "@/app/constants";
 
-interface IImageLoaderProps {
+export const imageLoader = ({
+  src,
+  quality = 75,
+  width,
+}: {
   src: string;
-  quality: number;
-}
-
-export const imageLoader = ({ src, quality }: IImageLoaderProps) => {
-  return `${serverUrl}${src}?q=${quality || 75}`;
+  quality?: number;
+  width: number;
+}) => {
+  return `${serverUrl}${src}?q=${quality}&w=${width}`;
 };

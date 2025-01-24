@@ -33,7 +33,7 @@ export const ContactForm = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IContactData>();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 

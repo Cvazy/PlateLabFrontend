@@ -70,7 +70,6 @@ const AboutUsPage = () => {
                         image_icon_dark={image_icon_dark}
                         image_icon_light={image_icon_light}
                         isMainPage={false}
-                        bgColor={"#1B1B1B"}
                         iconSize={60}
                         isAboutPage={true}
                       />
