@@ -42,11 +42,14 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
       animationFrame = requestAnimationFrame(animate);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const startMarquee = setTimeout(() => {
+      window.addEventListener("scroll", handleScroll);
 
-    animate();
+      animate();
+    }, 0);
 
     return () => {
+      clearTimeout(startMarquee);
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(animationFrame);
     };

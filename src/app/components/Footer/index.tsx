@@ -15,7 +15,7 @@ export const Footer = () => {
 
   return (
     <footer
-      className={`overflow-hidden w-full ${isMainPage ? "bg-white" : `${styles.footer}`}`}
+      className={`overflow-hidden min-h-96 w-full ${isMainPage ? "bg-white" : `${styles.footer}`}`}
     >
       <div
         className={`flex flex-col items-center py-[35px] w-full ${isMainPage ? "bg-white" : `${styles.footerBg}`}`}
