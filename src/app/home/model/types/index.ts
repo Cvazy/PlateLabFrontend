@@ -19,3 +19,9 @@ export interface IComparisons {
   consistency: string;
   adaptability_for_seasonal_menus: string;
 }
+
+export interface IGallery {
+  id: number | string;
+  description: string;
+  image: string;
+}

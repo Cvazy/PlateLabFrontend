@@ -1,10 +1,12 @@
-import { Comparison, MainSwiper } from "@/app/home";
+import { Comparison, Gallery, MainSwiper } from "@/app/home";
 import { Contact, InformationBlock } from "@/app/components";
 
 export default function Home() {
   return (
     <div className={"flex flex-col w-full"}>
       <MainSwiper />
+
+      <Gallery />
 
       <Comparison />
 
