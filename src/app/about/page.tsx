@@ -9,9 +9,7 @@ import {
 import Image from "next/image";
 
 const AboutUsPage = () => {
-  const isError = false;
-
-  const { data, isLoading } = useFetchAllNetworksQuery();
+  const { data, isLoading, isError } = useFetchAllNetworksQuery();
 
   const networks: INetwork[] = data || [];
 
@@ -45,6 +43,15 @@ const AboutUsPage = () => {
               <AboutInfo />
 
               {!isLoading && (
+                // Элемент для статичной сборки приложения
+                // <img
+                //   width={675}
+                //   height={412}
+                //   src={"https://plate-lab.ru/images/map.jpg"}
+                //   alt={"About Map"}
+                //   className={"w-full h-full rounded-lg select-none"}
+                //   loading={"lazy"}
+                // />
                 <Image
                   width={675}
                   height={412}

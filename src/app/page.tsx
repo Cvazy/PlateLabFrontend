@@ -1,7 +1,10 @@
+import Image from "next/image";
+import { MainSwiper } from "@/app/home";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Main Page</h1>
+    <div className={"flex flex-col w-full"}>
+      <MainSwiper />
     </div>
   );
 }

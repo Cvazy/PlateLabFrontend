@@ -3,13 +3,17 @@
 import { ContactButton, Logo, NavItem, MobileMenu } from "./components";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
+  const pathname = usePathname();
+  const isMainPage = pathname === "/";
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header
-      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 fixed bg-black`}
+      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 absolute ${isMainPage ? "" : "bg-black"}`}
     >
       <div
         className={

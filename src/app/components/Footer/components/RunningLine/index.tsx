@@ -14,8 +14,8 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
 
   useEffect(() => {
     let animationFrame: number;
-    const baseSpeed = 1;
-    const updateSpeed = 0.5;
+    const baseSpeed = 0.01;
+    const updateSpeed = 0.3;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;

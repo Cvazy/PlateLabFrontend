@@ -22,7 +22,9 @@ export const ContactButton = () => {
           Contact
         </p>
 
-        <div className={`!duration-500 ${isHovered ? "rotate-90" : ""}`}>
+        <div
+          className={`hidden !duration-500 ${isHovered ? "rotate-90" : ""} sm:block`}
+        >
           <svg
             width="19"
             height="18"

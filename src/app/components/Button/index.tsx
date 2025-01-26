@@ -13,12 +13,13 @@ export const Button = ({
   height,
   disabled,
   type,
+  hoverEffect,
 }: IButton) => {
   return (
     <button
       type={type ? type : "button"}
       onClick={onClick ? onClick : undefined}
-      className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full disabled:brightness-50 ${disabled ? "" : "hover:scale-[101%]"}`}
+      className={`flex ${starReverse ? "flex-row-reverse" : ""} ${paddings} ${bgColor} ${borderRadius} ${height} items-center gap-4 justify-between w-full disabled:brightness-50 ${hoverEffect} ${disabled ? "" : "hover:scale-[101%]"}`}
     >
       <p
         className={`${fontSize} font-fancy !leading-none whitespace-nowrap text-${textColor}`}

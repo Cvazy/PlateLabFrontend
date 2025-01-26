@@ -11,4 +11,5 @@ export interface IButton {
   height: string;
   disabled: boolean;
   type?: "submit" | "reset" | "button" | undefined;
+  hoverEffect?: string;
 }

@@ -24,6 +24,7 @@ export const RestaurantList = ({
       <Swiper
         className={styles.smallSwiper}
         slidesPerView={1.25}
+        spaceBetween={10}
         breakpoints={{
           640: {
             slidesPerView: 3,

@@ -33,7 +33,11 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                     }
                   ></div>
 
-                  <Swiper slidesPerView={2.5} className={styles.bigSwiper}>
+                  <Swiper
+                    slidesPerView={2.5}
+                    spaceBetween={10}
+                    className={styles.bigSwiper}
+                  >
                     {images.map(
                       ({ id, image, caption }) =>
                         (

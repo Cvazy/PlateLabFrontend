@@ -17,6 +17,18 @@ export const AboutImage = () => {
           "flex items-center justify-center rounded-lg overflow-hidden relative w-full h-full"
         }
       >
+        {/*Элемент для статичной сборки приложения*/}
+        {/*<img*/}
+        {/*  width={350}*/}
+        {/*  height={350}*/}
+        {/*  src={"https://plate-lab.ru/images/1.png"}*/}
+        {/*  alt={"About Image"}*/}
+        {/*  className={*/}
+        {/*    "select-none opacity-20 min-w-[350px] min-h-[350px] w-full h-full sm:min-w-[400px] sm:min-h-[400px] md:min-w-[500px] md:min-h-[500px] lg:min-w-[600px] lg:min-h-[600px] xl:min-w-[730px] xl:min-h-[730px]"*/}
+        {/*  }*/}
+        {/*  loading={"lazy"}*/}
+        {/*/>*/}
+
         <Image
           width={350}
           height={350}

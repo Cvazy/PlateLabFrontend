@@ -57,7 +57,7 @@ export const Footer = () => {
               </div>
 
               <div
-                className={`${isMainPage ? "border border-solid border-[#a0a0a033]" : ""} min-w-64 w-full md:max-w-[301px] xl:min-w-[301px]`}
+                className={`min-w-64 w-full md:max-w-[301px] xl:min-w-[301px]`}
               >
                 <div className={"flex flex-col gap-2.5 w-full"}>
                   {networks &&

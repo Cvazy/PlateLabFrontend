@@ -63,10 +63,6 @@ textarea {
   resize: none;
 }
 
-.swiper-wrapper {
-  gap: 10px;
-}
-
 .nav_link_line {
   position: absolute;
   bottom: 2px;
@@ -88,4 +84,28 @@ textarea {
   transform: scaleX(1);
   transform-origin: left;
   background-color: var(--gray);
+}
+
+.swiper-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  bottom: 160px !important;
+
+  @media (max-width: 767px) {
+    bottom: 140px !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 5px !important;
+    height: 5px !important;
+    margin: 0 !important;
+    background: var(--gray) !important;
+    opacity: 100% !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: white !important;
+  }
 }
