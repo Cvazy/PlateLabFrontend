@@ -36,7 +36,7 @@ export const Comparison = () => {
               <DesktopVersion comparisons={comparisons} />
             </div>
 
-            <div className={"block md:hidden"}>
+            <div className={"block h-screen md:hidden"}>
               <MobileVersion comparisons={comparisons} />
             </div>
           </div>

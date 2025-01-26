@@ -35,6 +35,7 @@ export const MainSwiper = () => {
             clickable: true,
           }}
           modules={[Pagination]}
+          className={"main_swiper"}
         >
           {banners &&
             banners.map(
