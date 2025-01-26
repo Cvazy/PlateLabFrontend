@@ -9,3 +9,13 @@ export interface IPartner {
   name: string;
   image: string;
 }
+
+export interface IComparisons {
+  id: number | string;
+  title: string;
+  price_per_photo: string;
+  convenience_for_restaurants: string;
+  style_and_customization: string;
+  consistency: string;
+  adaptability_for_seasonal_menus: string;
+}

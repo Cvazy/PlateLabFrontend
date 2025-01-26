@@ -1,0 +1,7 @@
+.DescriptionBlock {
+    @apply text-base font-fancy
+}
+
+.DescriptionBlock p {
+    @apply text-center text-white
+}

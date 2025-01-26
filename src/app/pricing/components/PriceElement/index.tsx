@@ -1,4 +1,3 @@
-import styles from "./PriceElement.module.css";
 import { IPrice } from "@/app/pricing";
 
 export const PriceElement = ({
@@ -60,7 +59,7 @@ export const PriceElement = ({
                   </p>
                 </div>
 
-                <div className={styles.textEffect}></div>
+                <div className={"textEffect"}></div>
               </div>
 
               <p
