@@ -25,3 +25,11 @@ export interface IGallery {
   description: string;
   image: string;
 }
+
+export interface ISale {
+  id: number | string;
+  month: string;
+  month_display: string;
+  sales_qnt: number;
+  is_active_updating_the_photo_menu: boolean;
+}

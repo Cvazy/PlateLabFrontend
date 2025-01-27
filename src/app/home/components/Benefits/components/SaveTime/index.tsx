@@ -1,0 +1,40 @@
+export const SaveTime = () => {
+  return (
+    <div
+      className={
+        "rounded-[10px] relative border border-solid border-[#212121] bg-gradient-to-br from-[#272727] to-transparent min-h-[340px] w-full h-full xl:h-1/2 xl:from-0% xl:to-0% xl:bg-[#050505b3] xl:min-h-60"
+      }
+    >
+      <div
+        className={
+          "absolute top-0 left-0 w-full h-full bg-gradient-to-bl from-dark_gray opacity-[0.125] to-[#ffffff66] hidden xl:block"
+        }
+      ></div>
+
+      <div className={"relative z-10 px-4 py-5 w-full"}>
+        <div className={"flex flex-col items-start gap-[30px] w-full"}>
+          <div
+            className={"flex flex-col items-start gap-2.5 w-full xl:max-w-96"}
+          >
+            <h3
+              className={
+                "text-[28px] text-white text-left !leading-[normal] md:text-3xl lg:text-[32px] xl:text-4xl"
+              }
+            >
+              Save time and costs
+            </h3>
+
+            <p
+              className={
+                "text-base !leading-[normal] text-light_gray font-fancy text-left"
+              }
+            >
+              Cut out the hassle of traditional food photography while staying
+              on budget.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { serverUrl } from "@/app/constants";
-import { IBanner, IComparisons, IGallery, IPartner } from "@/app/home";
+import { IBanner, IComparisons, IGallery, IPartner, ISale } from "@/app/home";
 
 export const homeApi = createApi({
   reducerPath: "homeApi",
@@ -29,6 +29,10 @@ export const homeApi = createApi({
     fetchAllGallery: builder.query<IGallery[], void>({
       query: () => "/api/v1/gallery",
     }),
+
+    fetchAllSales: builder.query<ISale[], void>({
+      query: () => "/api/v1/boost-sales",
+    }),
   }),
 });
 
@@ -37,4 +41,5 @@ export const {
   useFetchAllBannersQuery,
   useFetchAllComparisonQuery,
   useFetchAllGalleryQuery,
+  useFetchAllSalesQuery,
 } = homeApi;

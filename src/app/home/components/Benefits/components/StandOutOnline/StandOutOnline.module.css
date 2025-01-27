@@ -1,0 +1,17 @@
+.BgContainer {
+    background-size: cover;
+    background: url("../../../../../../../public/images/bg.png") no-repeat center;
+}
+
+.Phone {
+    position: absolute;
+    right: -150px;
+    top: -64px;
+    z-index: 20;
+    rotate: 30deg;
+
+    @media (max-width: 1280px) {
+        top: 40px;
+        right: -135px;
+    }
+}
