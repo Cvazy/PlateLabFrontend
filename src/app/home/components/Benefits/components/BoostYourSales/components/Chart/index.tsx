@@ -15,6 +15,7 @@ import {
 } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import { ISale, useFetchAllSalesQuery } from "@/app/home";
+import { useEffect, useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -33,7 +34,21 @@ export const Chart = () => {
 
   const salesData: ISale[] = data || [];
 
-  const isMobile = window.innerWidth < 600;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   const months = salesData.map((sale) => sale.month_display);
   const salesQuantities = salesData.map((sale) => sale.sales_qnt);
@@ -45,6 +60,21 @@ export const Chart = () => {
 
   const annotationMonth = annotationElement[0]?.month_display;
   const annotationValue = annotationElement[0]?.sales_qnt;
+
+  const annotationElementIndex = salesData.findIndex(
+    ({ is_active_updating_the_photo_menu }) =>
+      is_active_updating_the_photo_menu,
+  );
+
+  const beforeIsActiveSales = salesData
+    .filter((_, index) => index <= annotationElementIndex)
+    .reduce((acc, curr) => acc + curr.sales_qnt, 0);
+
+  const afterIsActiveSales = salesData
+    .filter((_, index) => index > annotationElementIndex)
+    .reduce((acc, curr) => acc + curr.sales_qnt, 0);
+
+  const percent = ((afterIsActiveSales / beforeIsActiveSales) * 100).toFixed(1);
 
   const dataArr = {
     labels: months,
@@ -64,7 +94,7 @@ export const Chart = () => {
     responsive: true,
     maintainAspectRatio: false,
     animation: {
-      duration: 3000,
+      duration: 1500,
     },
     plugins: {
       tooltip: {
@@ -155,7 +185,7 @@ export const Chart = () => {
           "font-fancy text-right text-red !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
         }
       >
-        150.0%
+        +{percent}%
       </p>
 
       <div className={"w-full h-[340px]"}>

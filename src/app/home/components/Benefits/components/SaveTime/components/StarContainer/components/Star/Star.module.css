@@ -1,0 +1,4 @@
+
+.hourHand, .minuteHand {
+    transform-origin: center center;
+}

@@ -10,7 +10,7 @@ export const Gallery = () => {
     <div className={"relative h-screen w-screen"}>
       <div
         className={
-          "absolute top-0 left-0 bottom-0 right-0 z-30 bg-gradient-to-b from-[#05050569] via-[#050505a6] to-[#050505]"
+          "absolute top-0 left-0 -bottom-5 right-0 z-30 bg-gradient-to-b from-[#05050569] via-[#050505a6] to-[#050505]"
         }
       ></div>
 

@@ -1,3 +1,5 @@
+import { StarContainer } from "./components";
+
 export const SaveTime = () => {
   return (
     <div
@@ -11,8 +13,12 @@ export const SaveTime = () => {
         }
       ></div>
 
-      <div className={"relative z-10 px-4 py-5 w-full"}>
-        <div className={"flex flex-col items-start gap-[30px] w-full"}>
+      <div className={"relative z-10 px-4 py-5 w-full h-full"}>
+        <div
+          className={
+            "flex flex-col items-start justify-between gap-[30px] w-full h-full xl:flex-row xl:gap-6"
+          }
+        >
           <div
             className={"flex flex-col items-start gap-2.5 w-full xl:max-w-96"}
           >
@@ -33,6 +39,8 @@ export const SaveTime = () => {
               on budget.
             </p>
           </div>
+
+          <StarContainer />
         </div>
       </div>
     </div>

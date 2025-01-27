@@ -37,7 +37,7 @@ body {
   scroll-behavior: smooth;
 }
 
-*:not(.no-transition) {
+*:not(.no-transition):not(g, rect, line) {
   transition: .3s all;
 }
 
