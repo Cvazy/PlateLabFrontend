@@ -10,7 +10,7 @@ interface IComparisonBlock {
 }
 
 export const ComparisonBlock = ({ data, isAIBlock }: IComparisonBlock) => {
-  const { title, elements } = data;
+  const { title = "", elements = [] } = data;
 
   return (
     <div
@@ -22,7 +22,6 @@ export const ComparisonBlock = ({ data, isAIBlock }: IComparisonBlock) => {
         }
       >
         <div className={"flex flex-col items-center gap-10 w-full"}>
-          {/*Title*/}
           <div className={"max-w-[300px] h-[89px] w-full relative"}>
             <div className={"flex items-center justify-center w-full h-full"}>
               <p
