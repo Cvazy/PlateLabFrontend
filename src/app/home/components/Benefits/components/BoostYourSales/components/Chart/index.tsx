@@ -154,9 +154,9 @@ export const Chart = () => {
         ticks: {
           callback: function (value, index, values) {
             if (index === values.length - 1) {
-              return `    ${this.getLabelForValue(value)}`;
+              return `    ${this.getLabelForValue(+value)}`;
             }
-            return this.getLabelForValue(value);
+            return this.getLabelForValue(+value);
           },
           padding: 0,
         },
@@ -165,8 +165,6 @@ export const Chart = () => {
         position: "right",
         grid: {
           color: "#292929",
-          borderDash: [4, 4],
-          drawBorder: false,
         },
         beginAtZero: true,
         ticks: {

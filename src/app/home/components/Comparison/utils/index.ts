@@ -1,6 +1,6 @@
-import { ITransformComparisons } from "../model";
+import { IComparisons } from "@/app/home";
 
-export const transformData = (data: ITransformComparisons[]) => {
+export const transformData = (data: IComparisons[]) => {
   return data.map((item) => ({
     id: item.id,
     title: item.title,

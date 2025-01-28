@@ -1,5 +1,6 @@
 import React from "react";
 import { ImageContainer } from "./components";
+import { IGallery } from "@/app/home";
 
 export const ImageColumns = React.memo(({ columns }: { columns: any[] }) => {
   return (
@@ -12,7 +13,7 @@ export const ImageColumns = React.memo(({ columns }: { columns: any[] }) => {
             key={`column-${columnIndex}`}
             className="flex flex-col gap-4 w-fit h-fit"
           >
-            {column?.images?.map((image, imageIndex) => (
+            {column?.images?.map((image: IGallery, imageIndex: number) => (
               <ImageContainer
                 key={imageIndex}
                 imageIndex={imageIndex}
