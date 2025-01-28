@@ -18,12 +18,17 @@ export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
   return (
     <Link
       href={href}
+      data-cursor-text={name}
       className={"relative nav_link_click"}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={"flex items-start gap-2 justify-start w-fit"}>
+      <div
+        data-cursor-text={name}
+        className={"flex items-start gap-2 justify-start w-fit"}
+      >
         <p
+          data-cursor-text={name}
           className={`text-2xl ${isMainPage ? "text-black" : "text-white"} font-fancy !leading-none md:text-[28px] xl:text-[32px]`}
         >
           {name}

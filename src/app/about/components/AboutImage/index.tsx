@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { imageLoader } from "@/app/utils";
 
 export const AboutImage = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,27 +19,27 @@ export const AboutImage = () => {
         }
       >
         {/*Элемент для статичной сборки приложения*/}
-        <img
-          width={350}
-          height={350}
-          src={"https://plate-lab.ru/images/1.png"}
-          alt={"About Image"}
-          className={
-            "select-none opacity-20 min-w-[350px] min-h-[350px] w-full h-full sm:min-w-[400px] sm:min-h-[400px] md:min-w-[500px] md:min-h-[500px] lg:min-w-[600px] lg:min-h-[600px] xl:min-w-[730px] xl:min-h-[730px]"
-          }
-          loading={"lazy"}
-        />
-
-        {/*<Image*/}
+        {/*<img*/}
         {/*  width={350}*/}
         {/*  height={350}*/}
-        {/*  src={"/images/1.png"}*/}
+        {/*  src={"https://plate-lab.ru/images/1.png"}*/}
         {/*  alt={"About Image"}*/}
         {/*  className={*/}
         {/*    "select-none opacity-20 min-w-[350px] min-h-[350px] w-full h-full sm:min-w-[400px] sm:min-h-[400px] md:min-w-[500px] md:min-h-[500px] lg:min-w-[600px] lg:min-h-[600px] xl:min-w-[730px] xl:min-h-[730px]"*/}
         {/*  }*/}
         {/*  loading={"lazy"}*/}
         {/*/>*/}
+
+        <Image
+          width={350}
+          height={350}
+          src={"/images/1.png"}
+          alt={"About Image"}
+          className={
+            "select-none opacity-20 min-w-[350px] min-h-[350px] w-full h-full sm:min-w-[400px] sm:min-h-[400px] md:min-w-[500px] md:min-h-[500px] lg:min-w-[600px] lg:min-h-[600px] xl:min-w-[730px] xl:min-h-[730px]"
+          }
+          loading={"lazy"}
+        />
 
         <div
           className={`flex justify-center items-center !duration-700 absolute z-30 top-0 left-0 w-full h-full ${isHovered ? "rotate-180" : ""}`}

@@ -15,7 +15,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
   useEffect(() => {
     let animationFrame: number;
     const baseSpeed = 0.01;
-    const updateSpeed = 0.3;
+    const updateSpeed = 0.2;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -33,10 +33,16 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
       const marqueeWidth = marqueeRef.current?.scrollWidth / 2;
 
       setOffset((prevOffset) => {
-        const newOffset = prevOffset - (baseSpeed + speedRef.current);
+        let newOffset;
 
-        if (newOffset <= -marqueeWidth) {
-          return 0;
+        if (prevOffset > 8000) {
+          newOffset = 0;
+        } else {
+          newOffset = prevOffset - baseSpeed + speedRef.current;
+
+          if (newOffset <= -marqueeWidth) {
+            return 0;
+          }
         }
 
         return newOffset;

@@ -20,12 +20,15 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
     <Link
       href={link}
       data-link-status={isActive ? "active" : undefined}
+      data-cursor-text={name}
       className={`relative nav_link_click ${widget ? "flex items-center gap-0.5" : ""}`}
     >
       <div
+        data-cursor-text={name}
         className={`${widget ? "flex items-center gap-2.5 sm:gap-0.5" : ""} py-1.5 px-2.5 lg:px-5`}
       >
         <div
+          data-cursor-text={name}
           className={`!duration-100 text-center font-fancy text-xl text-white !leading-[12px] sm:text-base sm:!leading-[18px] sm:min-w-14`}
         >
           {name}

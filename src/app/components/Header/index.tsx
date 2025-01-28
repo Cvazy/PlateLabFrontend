@@ -4,6 +4,7 @@ import { ContactButton, Logo, NavItem, MobileMenu } from "./components";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import FollowCursor from "@/app/ReactBitsComponents/FollowCursor";
 
 export const Header = () => {
   const pathname = usePathname();
@@ -33,11 +34,13 @@ export const Header = () => {
                 <div className={"hidden p-1 sm:block"}>
                   <div className={"flex items-center gap-1 flex-nowrap"}>
                     <NavItem link={"/about"} name={"About"} widget={false} />
+
                     <NavItem
                       link={"/pricing"}
                       name={"Pricing"}
                       widget={false}
                     />
+
                     <NavItem link={"/cases"} name={"Cases"} widget={true} />
                   </div>
                 </div>

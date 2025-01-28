@@ -2,7 +2,7 @@
 
 import { Provider } from "react-redux";
 import { store } from "@/app/store";
-import { Footer, Header } from "@/app/components";
+import { CustomCursor, Footer, Header } from "@/app/components";
 import { usePathname } from "next/navigation";
 
 export default function ClientLayout({
@@ -19,6 +19,8 @@ export default function ClientLayout({
         className={"flex flex-col items-center min-h-dvh w-full h-max relative"}
       >
         <Header />
+
+        <CustomCursor />
 
         <main
           className={`flex justify-center flex-grow ${isMainPage ? "" : "pt-20"} w-full`}
