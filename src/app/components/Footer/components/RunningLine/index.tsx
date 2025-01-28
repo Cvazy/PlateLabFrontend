@@ -66,7 +66,7 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
     >
       <div
         ref={marqueeRef}
-        className={`flex items-center gap-10 ${styles.marqueeContent} w-auto h-[75px] sm:h-[95px] md:gap-12 lg:h-[120px] xl:gap-[60px] xl:h-[150px]`}
+        className={`flex items-center gap-10 ${styles.marqueeContent} w-auto no-transition h-[75px] sm:h-[95px] md:gap-12 lg:h-[120px] xl:gap-[60px] xl:h-[150px]`}
         style={{
           transform: `translateX(${offset}px)`,
         }}

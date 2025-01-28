@@ -26,7 +26,7 @@ export default function ClientLayout({
           {isMainPage ? (
             children
           ) : (
-            <div className={"w-full overflow-x-hidden"}>
+            <div className={"flex justify-center w-full overflow-x-hidden"}>
               <div className={"max-w-limitation w-full"}>{children}</div>
             </div>
           )}
