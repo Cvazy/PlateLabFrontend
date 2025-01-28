@@ -2,9 +2,15 @@ import { NavItem } from "@/app/components/Header/components";
 
 interface IMobileMenu {
   isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (
+    value: ((prevState: boolean) => boolean) | boolean,
+  ) => void;
 }
 
-export const MobileMenu = ({ isMobileMenuOpen }: IMobileMenu) => {
+export const MobileMenu = ({
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
+}: IMobileMenu) => {
   return (
     <div
       className={`fixed z-40 top-20 bottom-0 left-0 right-0 w-full bg-black overflow-hidden ${isMobileMenuOpen ? "max-h-dvh" : "max-h-0"}`}
@@ -12,6 +18,7 @@ export const MobileMenu = ({ isMobileMenuOpen }: IMobileMenu) => {
       <div className={"w-full h-full"}>
         <div className={"py-20 px-5 w-full h-full"}>
           <div
+            onClick={() => setIsMobileMenuOpen(false)}
             className={
               "flex flex-col items-center justify-start gap-[60px] w-full"
             }

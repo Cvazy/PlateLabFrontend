@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 absolute ${isMainPage ? "" : "bg-black"}`}
+      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 absolute ${isMobileMenuOpen ? "bg-black" : ""} ${isMainPage ? "" : "bg-black"}`}
     >
       <div
         className={
@@ -24,7 +24,12 @@ export const Header = () => {
         <div className={"max-w-limitation w-full"}>
           <div className={"py-[19.5px] w-full"}>
             <div className={"flex justify-between gap-5 w-full"}>
-              <Logo />
+              <div
+                className={"w-fit h-full"}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Logo />
+              </div>
 
               <div
                 className={
@@ -45,7 +50,12 @@ export const Header = () => {
                   </div>
                 </div>
 
-                <ContactButton />
+                <div
+                  className={"w-fit h-full"}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <ContactButton />
+                </div>
 
                 <div
                   role={"button"}
@@ -75,7 +85,10 @@ export const Header = () => {
           </div>
         </div>
 
-        <MobileMenu isMobileMenuOpen={isMobileMenuOpen} />
+        <MobileMenu
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
       </div>
     </header>
   );

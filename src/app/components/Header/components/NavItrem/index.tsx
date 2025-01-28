@@ -29,7 +29,7 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
       >
         <div
           data-cursor-text={name}
-          className={`!duration-100 text-center font-fancy text-xl text-white !leading-[12px] sm:text-base sm:!leading-[18px] sm:min-w-14`}
+          className={`!duration-100 text-center font-fancy text-xl text-white sm:text-base sm:!leading-[18px] sm:min-w-14`}
         >
           {name}
         </div>
