@@ -21,12 +21,14 @@ export default function ClientLayout({
         <Header />
 
         <main
-          className={`flex justify-center flex-grow ${isMainPage ? "" : "pt-20"} w-full overflow-x-hidden`}
+          className={`flex justify-center flex-grow ${isMainPage ? "" : "pt-20"} w-full`}
         >
           {isMainPage ? (
             children
           ) : (
-            <div className={"max-w-limitation w-full"}>{children}</div>
+            <div className={"w-full overflow-x-hidden"}>
+              <div className={"max-w-limitation w-full"}>{children}</div>
+            </div>
           )}
         </main>
 

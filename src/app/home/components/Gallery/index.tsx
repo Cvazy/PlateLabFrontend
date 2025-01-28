@@ -8,19 +8,17 @@ export const Gallery = () => {
 
   return (
     <div className={"relative h-screen w-screen"}>
-      <div
-        className={
-          "absolute top-0 left-0 -bottom-5 right-0 z-30 bg-gradient-to-b from-[#05050569] via-[#050505a6] to-[#050505]"
-        }
-      ></div>
-
       <Billet />
 
       <GalleryContainer />
 
-      <div className={"relative z-30 h-screen w-screen"}>
+      <div className={"relative z-30 pointer-events-none h-screen w-screen"}>
         <div className={"flex items-center justify-center h-screen w-screen"}>
-          <div className={"flex flex-col items-center gap-10 px-10 w-full"}>
+          <div
+            className={
+              "flex flex-col items-center gap-10 py-20 sticky top-0 bottom-0 px-10 w-full"
+            }
+          >
             <h2
               className={
                 "text-4xl text-white text-center !leading-none sm:text-[40px] md:text-5xl lg:text-6xl xl:text-[64px]"
