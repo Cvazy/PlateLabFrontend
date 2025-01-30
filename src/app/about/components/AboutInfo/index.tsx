@@ -1,16 +1,13 @@
 "use client";
 
 import { IAboutInfo, useFetchAboutInfoQuery } from "@/app/about";
-import { Loader } from "@/app/components";
 
 export const AboutInfo = () => {
-  const { data, isLoading } = useFetchAboutInfoQuery();
+  const { data } = useFetchAboutInfoQuery();
 
   const aboutInfo: IAboutInfo[] = data || [];
 
   const { title = "", description = "" } = aboutInfo[0] || {};
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className={"border border-solid border-gray rounded-lg w-full"}>

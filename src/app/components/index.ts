@@ -2,6 +2,7 @@ export * from "./Button";
 export * from "./Contact";
 export * from "./ContactForm";
 export * from "./CustomCursor";
+export * from "./DelayedLink";
 export * from "./Header";
 export * from "./HowItsWork";
 export * from "./Loader";

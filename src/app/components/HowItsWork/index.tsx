@@ -15,7 +15,7 @@ interface IHowItsWorkProps {
 export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
   const [activeElement, setActiveElement] = useState<number | null>(null);
 
-  const { data, isError, isLoading } = useFetchAllHowItsWorkElementsQuery();
+  const { data, isError } = useFetchAllHowItsWorkElementsQuery();
 
   const howItsWorkElements: IHowItsWork[] = data || [];
 
@@ -33,8 +33,6 @@ export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
       clearInterval(interval);
     };
   }, []);
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className={`flex flex-col ${isHorizontal ? "gap-[60px]" : ""} w-full`}>

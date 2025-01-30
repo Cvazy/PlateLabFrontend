@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { DelayedLink } from "@/app/components";
 
 interface IActiveLinkProps {
   name: string;
@@ -16,7 +16,7 @@ export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link
+    <DelayedLink
       href={href}
       data-cursor-text={name}
       className={"relative nav_link_click"}
@@ -67,6 +67,6 @@ export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
         className={"nav_link_line"}
         style={{ bottom: "-6px", left: 0, width: "100%" }}
       ></div>
-    </Link>
+    </DelayedLink>
   );
 };

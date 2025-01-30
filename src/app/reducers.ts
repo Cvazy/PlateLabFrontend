@@ -5,6 +5,7 @@ import { footerApi } from "@/app/components/Footer/model";
 import { aboutApi } from "@/app/about";
 import { pricingApi } from "@/app/pricing";
 import { homeApi } from "@/app/home";
+import { navigationSlice } from "@/app/utils/NavigationState";
 
 export const rootReducer = combineReducers({
   [aboutApi.reducerPath]: aboutApi.reducer,
@@ -13,4 +14,5 @@ export const rootReducer = combineReducers({
   [footerApi.reducerPath]: footerApi.reducer,
   [homeApi.reducerPath]: homeApi.reducer,
   [pricingApi.reducerPath]: pricingApi.reducer,
+  navigation: navigationSlice.reducer,
 });

@@ -17,11 +17,9 @@ import { ReactNode } from "react";
 import { serverUrl } from "@/app/constants";
 
 export const MainSwiper = () => {
-  const { data, isLoading } = useFetchAllBannersQuery();
+  const { data } = useFetchAllBannersQuery();
 
   const banners: IBanner[] = data || [];
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className={"relative h-screen w-screen"}>

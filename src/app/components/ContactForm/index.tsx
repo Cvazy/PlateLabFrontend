@@ -37,14 +37,11 @@ export const ContactForm = ({
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const [triggerSearch, { isError, isLoading, isSuccess }] =
-    useSendContactDataMutation();
+  const [triggerSearch, { isError, isSuccess }] = useSendContactDataMutation();
 
   const onSubmit = (data: IContactData) => {
     triggerSearch(data).then(() => setIsModalOpen(true));
   };
-
-  if (isLoading) return <Loader />;
 
   return (
     <>

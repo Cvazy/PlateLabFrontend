@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases/model";
 import { usePathname } from "next/navigation";
+import { DelayedLink } from "@/app/components";
 
 interface INavItem {
   link: string;
@@ -17,7 +17,7 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
   const cases: ICaseItem[] = data || [];
 
   return (
-    <Link
+    <DelayedLink
       href={link}
       data-link-status={isActive ? "active" : undefined}
       data-cursor-text={name}
@@ -46,6 +46,6 @@ export const NavItem = ({ link, name, widget }: INavItem) => {
       </div>
 
       <div className={"nav_link_line"}></div>
-    </Link>
+    </DelayedLink>
   );
 };

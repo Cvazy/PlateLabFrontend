@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { DelayedLink } from "@/app/components";
 
 export const Logo = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link
+    <DelayedLink
       href={"/"}
       className={"flex"}
       onMouseEnter={() => setIsHovered(true)}
@@ -48,6 +48,6 @@ export const Logo = () => {
           <p className={"text-[13px] !leading-4 font-medium mt-[-5px]"}>lab</p>
         </div>
       </div>
-    </Link>
+    </DelayedLink>
   );
 };

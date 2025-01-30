@@ -9,11 +9,9 @@ import { FAQElement } from "@/app/components/FAQ/FAQElement";
 export const FAQ = () => {
   const [activeElement, setActiveElement] = useState<number | null>(1);
 
-  const { data, isError, isLoading } = useFetchAllFaqsElementsQuery();
+  const { data, isError } = useFetchAllFaqsElementsQuery();
 
   const faqsElements: IFaq[] = data || [];
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className={"flex flex-col gap-4 w-full"}>

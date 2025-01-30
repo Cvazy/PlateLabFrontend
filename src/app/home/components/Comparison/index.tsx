@@ -7,11 +7,9 @@ import { transformData } from "./utils";
 import { ITransformComparisons } from "./model";
 
 export const Comparison = () => {
-  const { data, isLoading } = useFetchAllComparisonQuery();
+  const { data } = useFetchAllComparisonQuery();
 
   const comparisons: ITransformComparisons[] = transformData(data || []);
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className={"py-20 w-full lg:pb-24 xl:pb-[120px]"}>

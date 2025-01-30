@@ -3,18 +3,13 @@
 import { ContactButton, Logo, NavItem, MobileMenu } from "./components";
 import Image from "next/image";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
-import FollowCursor from "@/app/ReactBitsComponents/FollowCursor";
 
 export const Header = () => {
-  const pathname = usePathname();
-  const isMainPage = pathname === "/";
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header
-      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 absolute ${isMobileMenuOpen ? "bg-black" : ""} ${isMainPage ? "" : "bg-black"}`}
+      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 absolute ${isMobileMenuOpen ? "bg-black" : ""}`}
     >
       <div
         className={

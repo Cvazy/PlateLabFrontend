@@ -4,10 +4,19 @@ import styles from "./Footer.module.css";
 import { NetworkItem, FooterLink, RunningLine, FooterInfo } from "./components";
 import { usePathname } from "next/navigation";
 import { ROUTING, INetwork, useFetchAllNetworksQuery } from "./model";
+import { useEffect, useState } from "react";
 
 export const Footer = () => {
   const pathname = usePathname();
-  const isMainPage = pathname === "/";
+  const [isMainPage, setIsMainPage] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMainPage(pathname === "/");
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [pathname]);
 
   const { data } = useFetchAllNetworksQuery();
 

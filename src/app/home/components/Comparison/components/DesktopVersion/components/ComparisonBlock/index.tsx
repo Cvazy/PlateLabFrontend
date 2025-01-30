@@ -10,7 +10,13 @@ interface IComparisonBlock {
 }
 
 export const ComparisonBlock = ({ data, isAIBlock }: IComparisonBlock) => {
-  const { title = "", elements = [] } = data;
+  let title = "";
+  let elements = [];
+
+  if (data) {
+    title = data.title;
+    elements = data.elements;
+  }
 
   return (
     <div

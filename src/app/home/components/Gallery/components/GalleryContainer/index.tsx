@@ -9,7 +9,7 @@ import {
 import { ImageColumns } from "./components";
 
 export const GalleryContainer = () => {
-  const { data, isLoading } = useFetchAllGalleryQuery();
+  const { data } = useFetchAllGalleryQuery();
   const containerRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
   const [scale, setScale] = useState(1.5);
@@ -51,7 +51,7 @@ export const GalleryContainer = () => {
   }, []);
 
   const arrangedColumns = useMemo(() => {
-    if (!gallery.length) return []; // Защита от пустых данных
+    if (!gallery.length) return [];
 
     try {
       const shuffledImages = [...gallery];
@@ -64,8 +64,6 @@ export const GalleryContainer = () => {
       return [];
     }
   }, [gallery]);
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className="absolute top-0 left-0 bottom-0 right-0 z-20 w-full h-full">

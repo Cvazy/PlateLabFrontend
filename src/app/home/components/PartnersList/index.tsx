@@ -5,11 +5,9 @@ import CustomImage from "@/app/utils/customImage";
 import styles from "./PartnersList.module.css";
 
 export const PartnersList = () => {
-  const { data, isLoading } = useFetchAllPartnersQuery();
+  const { data } = useFetchAllPartnersQuery();
 
   const partners: IPartner[] = data || [];
-
-  if (isLoading) return <Loader />;
 
   const repeatedPartners = Array.from({ length: 10 }, () => partners).flat();
 

@@ -5,11 +5,9 @@ import { Loader } from "@/app/components";
 import { IPrice, useFetchAllPricingQuery } from "@/app/pricing";
 
 export const PricingList = () => {
-  const { data, isError, isLoading } = useFetchAllPricingQuery();
+  const { data, isError } = useFetchAllPricingQuery();
 
   const pricing: IPrice[] = data || [];
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className={"w-full"}>

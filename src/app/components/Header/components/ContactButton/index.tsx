@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { DelayedLink } from "@/app/components";
 
 export const ContactButton = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link
+    <DelayedLink
       href={"/contact"}
       data-cursor-text={"Contact"}
       onMouseEnter={() => setIsHovered(true)}
@@ -62,6 +62,6 @@ export const ContactButton = () => {
           </svg>
         </div>
       </div>
-    </Link>
+    </DelayedLink>
   );
 };
