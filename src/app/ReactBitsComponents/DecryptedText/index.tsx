@@ -37,10 +37,10 @@ export function DecryptedText({
   const containerRef = useRef(null);
 
   useEffect(() => {
-    let interval;
+    let interval: any;
     let currentIteration = 0;
 
-    const getNextIndex = (revealedSet) => {
+    const getNextIndex = (revealedSet: Set<any>) => {
       const textLength = text.length;
       switch (revealDirection) {
         case "start":
@@ -74,7 +74,7 @@ export function DecryptedText({
       ? Array.from(new Set(text.split(""))).filter((char) => char !== " ")
       : characters.split("");
 
-    const shuffleText = (originalText, currentRevealed) => {
+    const shuffleText = (originalText: string, currentRevealed: Set<any>) => {
       if (useOriginalCharsOnly) {
         const positions = originalText.split("").map((char, i) => ({
           char,
@@ -168,7 +168,7 @@ export function DecryptedText({
   useEffect(() => {
     if (animateOn !== "view") return;
 
-    const observerCallback = (entries) => {
+    const observerCallback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !hasAnimated) {
           setIsHovering(true);

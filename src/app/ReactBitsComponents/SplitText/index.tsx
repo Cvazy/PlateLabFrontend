@@ -1,4 +1,4 @@
-import { useSprings, animated, useSpring } from "@react-spring/web";
+import { useSprings, animated, useSpring, easings } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -22,7 +22,6 @@ export const SplitText = ({
   const [inView, setInView] = useState(false);
   const ref = useRef(null);
 
-  // Следим за появлением в области видимости
   useEffect(() => {
     if (!ref.current) return;
 
@@ -35,7 +34,6 @@ export const SplitText = ({
     return () => observer.disconnect();
   }, [threshold, rootMargin]);
 
-  // Если элемент появился на экране ИЛИ на него навели — анимация запускается
   const shouldAnimate = inView || isHovered;
 
   const springs = useSprings(
@@ -44,7 +42,7 @@ export const SplitText = ({
       from: animationFrom,
       to: shouldAnimate ? animationTo : animationFrom,
       delay: i * delay,
-      config: { easing },
+      config: { easing: easings.easeOutCubic }, // Исправлено
       reset: true,
     })),
   );
@@ -52,7 +50,7 @@ export const SplitText = ({
   const iconSpring = useSpring({
     from: animationFrom,
     to: shouldAnimate ? animationTo : animationFrom,
-    config: { easing, delay: letters.length * delay },
+    config: { easing: easings.easeOutCubic, delay: letters.length * delay }, // Исправлено
     reset: true,
   });
 
@@ -65,7 +63,11 @@ export const SplitText = ({
       <p
         data-cursor-text={dataCursorText}
         className="split-parent overflow-hidden inline"
-        style={{ textAlign, whiteSpace: "normal", wordWrap: "break-word" }}
+        style={{
+          textAlign: textAlign as React.CSSProperties["textAlign"],
+          whiteSpace: "normal",
+          wordWrap: "break-word",
+        }}
       >
         {words.map((word, wordIndex) => (
           <span
@@ -79,6 +81,7 @@ export const SplitText = ({
                   .reduce((acc, w) => acc + w.length, 0) + letterIndex;
 
               return (
+                //@ts-ignore
                 <animated.span
                   key={index}
                   style={springs[index]}
@@ -97,6 +100,7 @@ export const SplitText = ({
       </p>
 
       {iconSrc && (
+        //@ts-ignore
         <animated.div
           style={iconSpring}
           data-cursor-text={dataCursorText}

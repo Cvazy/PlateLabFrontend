@@ -23,19 +23,39 @@ export const MobileMenu = ({
               "flex flex-col items-center justify-start gap-[60px] w-full"
             }
           >
-            <NavItem link={"/about"} name={"About"} widget={false} />
+            <NavItem
+              link={"/about"}
+              name={"About"}
+              widget={false}
+              hoverText={"About - Learn more"}
+            />
 
             <div className={"w-5 h-px bg-gray"}></div>
 
-            <NavItem link={"/pricing"} name={"Pricing"} widget={false} />
+            <NavItem
+              link={"/pricing"}
+              name={"Pricing"}
+              widget={false}
+              hoverText={"Price - Simple & affordable"}
+            />
 
             <div className={"w-5 h-px bg-gray"}></div>
 
-            <NavItem link={"/cases"} name={"Cases"} widget={true} />
+            <NavItem
+              link={"/cases"}
+              name={"Cases"}
+              widget={true}
+              hoverText={"Case - What we’ve done"}
+            />
 
             <div className={"w-5 h-px bg-gray"}></div>
 
-            <NavItem link={"/contact"} name={"Contact"} widget={false} />
+            <NavItem
+              link={"/contact"}
+              name={"Contact"}
+              widget={false}
+              hoverText={"Contact - How to contact us"}
+            />
           </div>
         </div>
       </div>

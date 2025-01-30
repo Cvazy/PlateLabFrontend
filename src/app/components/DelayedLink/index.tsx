@@ -6,8 +6,7 @@ import Link, { LinkProps } from "next/link";
 import { useAppSelector } from "@/app/utils/hooks";
 
 interface DelayedLinkProps
-  extends LinkProps,
-    React.AnchorHTMLAttributes<HTMLAnchorElement> {}
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 export const DelayedLink = ({ href, children, ...props }: DelayedLinkProps) => {
   const router = useRouter();
@@ -24,7 +23,7 @@ export const DelayedLink = ({ href, children, ...props }: DelayedLinkProps) => {
     e.preventDefault();
     if (pathname === href) return;
 
-    const hrefString = typeof href === "string" ? href : href.toString();
+    const hrefString = typeof href === "string" ? href : "";
 
     history.replaceState(null, "", hrefString);
 
@@ -32,7 +31,7 @@ export const DelayedLink = ({ href, children, ...props }: DelayedLinkProps) => {
   };
 
   useEffect(() => {
-    let timeout;
+    let timeout: any;
 
     if (pendingPath && isNavigationAllowed) {
       timeout = setTimeout(() => {
@@ -47,7 +46,7 @@ export const DelayedLink = ({ href, children, ...props }: DelayedLinkProps) => {
   }, [isNavigationAllowed, pendingPath, router]);
 
   return (
-    <Link href={href} onClick={handleClick} {...props}>
+    <Link href={href ? href : ""} onClick={handleClick} {...props}>
       {children}
     </Link>
   );

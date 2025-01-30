@@ -1,3 +1,14 @@
+import { ReactNode, ElementType } from "react";
+
+interface StarBorderProps {
+  as?: ElementType;
+  className?: string;
+  color?: string;
+  speed?: string;
+  children: ReactNode;
+  [key: string]: any;
+}
+
 export const StarBorder = ({
   as: Component = "button",
   className = "",
@@ -5,7 +16,7 @@ export const StarBorder = ({
   speed = "6s",
   children,
   ...rest
-}) => {
+}: StarBorderProps) => {
   return (
     <Component
       className={`relative inline-block py-[1px] overflow-hidden`}

@@ -13,15 +13,17 @@ export const CustomCursor = () => {
   const [isRightPosition, setIsRightPosition] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       const px = event.clientX;
       const py = event.clientY;
 
       setIsRightPosition(window.innerWidth - px < 300);
 
-      if (event.target.hasAttribute("data-cursor-text")) {
+      const target = event.target as HTMLElement;
+
+      if (target && target.hasAttribute("data-cursor-text")) {
         setIsVisible(true);
-        setText(event.target.getAttribute("data-cursor-text"));
+        setText(target.getAttribute("data-cursor-text") || "");
       } else {
         setIsVisible(false);
         setText("Navigate");

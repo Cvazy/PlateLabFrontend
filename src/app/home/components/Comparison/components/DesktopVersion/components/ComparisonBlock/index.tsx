@@ -1,7 +1,10 @@
 import Image from "next/image";
 
 import styles from "./ComparisonBlock.module.css";
-import { ITransformComparisons } from "@/app/home/components/Comparison/model";
+import {
+  ITransformComparisons,
+  ITransformComparisonsElement,
+} from "@/app/home/components/Comparison/model";
 import { Fragment } from "react";
 
 interface IComparisonBlock {
@@ -10,8 +13,8 @@ interface IComparisonBlock {
 }
 
 export const ComparisonBlock = ({ data, isAIBlock }: IComparisonBlock) => {
-  let title = "";
-  let elements = [];
+  let title: string = "";
+  let elements: ITransformComparisonsElement[] = [];
 
   if (data) {
     title = data.title;

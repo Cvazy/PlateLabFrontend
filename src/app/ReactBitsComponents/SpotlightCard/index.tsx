@@ -1,16 +1,22 @@
 import { useRef, useState } from "react";
 
+interface ISpotlightCardProps {
+  children: React.ReactNode;
+  className?: string;
+  spotlightColor?: string;
+}
+
 export const SpotlightCard = ({
   children,
   className = "",
   spotlightColor = "rgba(255, 255, 255, 0.25)",
-}) => {
-  const divRef = useRef(null);
+}: ISpotlightCardProps) => {
+  const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current || isFocused) return;
 
     const rect = divRef.current.getBoundingClientRect();
