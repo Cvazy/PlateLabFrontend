@@ -33,15 +33,26 @@ export const Header = () => {
               >
                 <div className={"hidden p-1 sm:block"}>
                   <div className={"flex items-center gap-1 flex-nowrap"}>
-                    <NavItem link={"/about"} name={"About"} widget={false} />
+                    <NavItem
+                      link={"/about"}
+                      name={"About"}
+                      hoverText={"About - Learn more"}
+                      widget={false}
+                    />
 
                     <NavItem
                       link={"/pricing"}
                       name={"Pricing"}
+                      hoverText={"Price - Simple & affordable"}
                       widget={false}
                     />
 
-                    <NavItem link={"/cases"} name={"Cases"} widget={true} />
+                    <NavItem
+                      link={"/cases"}
+                      name={"Cases"}
+                      hoverText={"Case - What we’ve done"}
+                      widget={true}
+                    />
                   </div>
                 </div>
 

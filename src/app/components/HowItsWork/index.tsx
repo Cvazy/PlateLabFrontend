@@ -5,7 +5,6 @@ import {
   CallToAction,
   HowItsWorkElement,
 } from "@/app/components/HowItsWork/components";
-import { Loader } from "@/app/components";
 import { IHowItsWork, useFetchAllHowItsWorkElementsQuery } from "@/app/contact";
 
 interface IHowItsWorkProps {
@@ -26,7 +25,7 @@ export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
 
     const interval = setInterval(() => {
       setActiveElement((prev) => (prev === 4 ? 1 : (prev ?? 1) + 1));
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(startAnimation);

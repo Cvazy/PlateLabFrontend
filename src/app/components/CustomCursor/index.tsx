@@ -17,7 +17,7 @@ export const CustomCursor = () => {
       const px = event.clientX;
       const py = event.clientY;
 
-      setIsRightPosition(window.innerWidth - px < 150);
+      setIsRightPosition(window.innerWidth - px < 300);
 
       if (event.target.hasAttribute("data-cursor-text")) {
         setIsVisible(true);
@@ -40,7 +40,7 @@ export const CustomCursor = () => {
 
   return (
     <div
-      className={`fixed ${isVisible ? "opacity-100" : "opacity-0"} no-transition !duration-500 transition-opacity top-8 ${isRightPosition ? "-left-28" : "left-8"} w-fit h-fit hidden z-50 sm:block`}
+      className={`fixed ${isVisible ? "opacity-100" : "opacity-0"} no-transition !duration-500 transition-opacity top-8 ${isRightPosition ? "-left-40" : "left-8"} w-fit h-fit hidden z-50 sm:block`}
       style={{
         transform: `translateX(${pxCoord}px) translateY(${pyCoord}px)`,
       }}
@@ -54,21 +54,10 @@ export const CustomCursor = () => {
           <div
             className={"flex items-center justify-center gap-2 w-full h-full"}
           >
-            {/*<p*/}
-            {/*  className={*/}
-            {/*    "text-white font-fancy text-base !leading-none whitespace-nowrap"*/}
-            {/*  }*/}
-            {/*>*/}
-            {/*  <DecryptedText*/}
-            {/*    text={text}*/}
-            {/*    revealDirection="end"*/}
-            {/*    className={"text-white font-fancy text-base !leading-none"}*/}
-            {/*  />*/}
-            {/*</p>*/}
             <DecryptedText
               text={text}
               animateOn="view"
-              speed={100}
+              speed={50}
               revealDirection="end"
               className={"text-white font-fancy text-base !leading-none"}
             />

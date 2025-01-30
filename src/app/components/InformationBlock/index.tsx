@@ -13,7 +13,7 @@ export const InformationBlock = () => {
           <button
             type={"button"}
             onClick={() => setIsFAQVisible(false)}
-            className={`${isFAQVisible ? "" : "bg-[#161515] border-t border-x border-solid border-gray"} text-lg text-white !leading-none px-10 py-3.5 rounded-t-lg w-full md:text-xl lg:text-2xl xl:text-[28px]`}
+            className={`${isFAQVisible ? "border-black" : "bg-[#161515] border-t border-x border-solid border-gray"} text-lg text-white !leading-none px-10 py-3.5 rounded-t-lg w-full md:text-xl lg:text-2xl xl:text-[28px]`}
           >
             How it works?
           </button>
@@ -21,7 +21,7 @@ export const InformationBlock = () => {
           <button
             type={"button"}
             onClick={() => setIsFAQVisible(true)}
-            className={`${!isFAQVisible ? "" : "bg-[#161515] border-t border-x border-solid border-gray"} text-lg text-white !leading-none px-10 py-3.5 rounded-t-lg w-full md:text-xl lg:text-2xl xl:text-[28px]`}
+            className={`${!isFAQVisible ? "border-black" : "bg-[#161515] border-t border-x border-solid border-gray"} text-lg text-white !leading-none px-10 py-3.5 rounded-t-lg w-full md:text-xl lg:text-2xl xl:text-[28px]`}
           >
             FAQ
           </button>

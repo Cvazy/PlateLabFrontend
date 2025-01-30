@@ -3,8 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link, { LinkProps } from "next/link";
-import { useAppDispatch, useAppSelector } from "@/app/utils/hooks";
-import { blockNavigation } from "@/app/utils/NavigationState";
+import { useAppSelector } from "@/app/utils/hooks";
 
 interface DelayedLinkProps
   extends LinkProps,

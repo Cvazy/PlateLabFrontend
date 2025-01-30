@@ -6,6 +6,7 @@ import CustomImage from "@/app/utils/customImage";
 import { imageLoader } from "@/app/utils";
 import { ReactNode } from "react";
 import { IGalleryProps } from "@/app/cases/model";
+import { Autoplay } from "swiper/modules";
 
 export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
   return (
@@ -37,6 +38,11 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                     slidesPerView={2.5}
                     spaceBetween={10}
                     className={styles.bigSwiper}
+                    autoplay={{
+                      delay: 1500,
+                      disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay]}
                   >
                     {images.map(
                       ({ id, image, caption }) =>

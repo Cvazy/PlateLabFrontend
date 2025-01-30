@@ -35,11 +35,11 @@ export const GalleryContainer = () => {
         );
 
         if (scrollDelta > 0 && rect.top < 1000) {
-          const newScale = 1.5 - scrollRatio * 0.5;
+          const newScale = 1.45 - scrollRatio * 0.375;
 
-          setScale(Math.max(newScale, 1));
+          setScale(Math.max(newScale, 0.75));
         } else if (scrollDelta < 0 && rect.bottom > 100) {
-          const newScale = 1.45 - scrollRatio * 0.25;
+          const newScale = 1.5 - scrollRatio * 0.375;
 
           setScale(Math.min(newScale, 1.5));
         }
@@ -70,10 +70,11 @@ export const GalleryContainer = () => {
       <div className="flex justify-center overflow-hidden w-full h-full">
         <div
           ref={containerRef}
-          className="flex justify-center items-center min-w-max w-full h-full gap-4"
+          className="flex justify-center items-start min-w-max w-full h-full gap-4"
           style={{
             transform: `scale(${scale})`,
-            transition: "transform 1s ease-out",
+            transformOrigin: "top center",
+            transition: "transform 0.6s ease-out",
           }}
         >
           <ImageColumns columns={arrangedColumns} />

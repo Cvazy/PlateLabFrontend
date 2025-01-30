@@ -5,7 +5,7 @@ import { SpotlightCard } from "@/app/ReactBitsComponents";
 
 export const BoostYourSales = () => {
   return (
-    <SpotlightCard className={"h-full"}>
+    <SpotlightCard className={"h-full xl:max-h-[483px]"}>
       <div
         className={
           "overflow-hidden rounded-[10px] border border-solid border-[#212121] bg-gradient-to-bl from-[#1b1b1b33] to-[#1B1B1B] w-full h-full"
@@ -37,7 +37,7 @@ export const BoostYourSales = () => {
                 "rounded bg-[#05050599] shadow-[0_20px_30px_0_#05050580] w-full h-full"
               }
             >
-              <div className={"p-5 w-full"}>
+              <div className={"p-5 w-full h-full"}>
                 <Chart />
               </div>
             </div>

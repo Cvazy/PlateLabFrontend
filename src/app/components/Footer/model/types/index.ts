@@ -15,5 +15,6 @@ export interface INetwork {
 export interface IRouting {
   id: number | string;
   name: string;
+  hoverText: string;
   link: string;
 }

@@ -1,8 +1,11 @@
-import { useSprings, animated } from "@react-spring/web";
+import { useSprings, animated, useSpring } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export const SplitText = ({
   text = "",
+  iconSrc = "",
+  iconAlt = "",
   className = "",
   delay = 100,
   animationFrom = { opacity: 0, transform: "translate3d(0,40px,0)" },
@@ -11,82 +14,103 @@ export const SplitText = ({
   threshold = 0.1,
   rootMargin = "-100px",
   textAlign = "center",
-  onLetterAnimationComplete,
+  isHovered = false, // По умолчанию выключен ховер
+  dataCursorText = "",
 }) => {
   const words = text.split(" ").map((word) => word.split(""));
   const letters = words.flat();
   const [inView, setInView] = useState(false);
-  const ref = useRef();
-  const animatedCount = useRef(0);
+  const ref = useRef(null);
 
+  // Следим за появлением в области видимости
   useEffect(() => {
+    if (!ref.current) return;
+
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(ref.current);
-        }
-      },
+      ([entry]) => setInView(entry.isIntersecting),
       { threshold, rootMargin },
     );
 
     observer.observe(ref.current);
-
     return () => observer.disconnect();
   }, [threshold, rootMargin]);
+
+  // Если элемент появился на экране ИЛИ на него навели — анимация запускается
+  const shouldAnimate = inView || isHovered;
 
   const springs = useSprings(
     letters.length,
     letters.map((_, i) => ({
       from: animationFrom,
-      to: inView
-        ? async (next) => {
-            await next(animationTo);
-            animatedCount.current += 1;
-            if (
-              animatedCount.current === letters.length &&
-              onLetterAnimationComplete
-            ) {
-              onLetterAnimationComplete();
-            }
-          }
-        : animationFrom,
+      to: shouldAnimate ? animationTo : animationFrom,
       delay: i * delay,
       config: { easing },
+      reset: true,
     })),
   );
 
-  return (
-    <p
-      ref={ref}
-      className={`split-parent overflow-hidden inline ${className}`}
-      style={{ textAlign, whiteSpace: "normal", wordWrap: "break-word" }}
-    >
-      {words.map((word, wordIndex) => (
-        <span
-          key={wordIndex}
-          style={{ display: "inline-block", whiteSpace: "nowrap" }}
-        >
-          {word.map((letter, letterIndex) => {
-            const index =
-              words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) +
-              letterIndex;
+  const iconSpring = useSpring({
+    from: animationFrom,
+    to: shouldAnimate ? animationTo : animationFrom,
+    config: { easing, delay: letters.length * delay },
+    reset: true,
+  });
 
-            return (
-              <animated.span
-                key={index}
-                style={springs[index]}
-                className="inline-block transform transition-opacity will-change-transform"
-              >
-                {letter}
-              </animated.span>
-            );
-          })}
-          <span style={{ display: "inline-block", width: "0.3em" }}>
-            &nbsp;
+  return (
+    <div
+      ref={ref}
+      data-cursor-text={dataCursorText}
+      className={`flex items-center gap-2 ${className}`}
+    >
+      <p
+        data-cursor-text={dataCursorText}
+        className="split-parent overflow-hidden inline"
+        style={{ textAlign, whiteSpace: "normal", wordWrap: "break-word" }}
+      >
+        {words.map((word, wordIndex) => (
+          <span
+            key={wordIndex}
+            style={{ display: "inline-block", whiteSpace: "nowrap" }}
+          >
+            {word.map((letter, letterIndex) => {
+              const index =
+                words
+                  .slice(0, wordIndex)
+                  .reduce((acc, w) => acc + w.length, 0) + letterIndex;
+
+              return (
+                <animated.span
+                  key={index}
+                  style={springs[index]}
+                  data-cursor-text={dataCursorText}
+                  className="inline-block transform transition-opacity will-change-transform"
+                >
+                  {letter}
+                </animated.span>
+              );
+            })}
+            <span style={{ display: "inline-block", width: "0.3em" }}>
+              &nbsp;
+            </span>
           </span>
-        </span>
-      ))}
-    </p>
+        ))}
+      </p>
+
+      {iconSrc && (
+        <animated.div
+          style={iconSpring}
+          data-cursor-text={dataCursorText}
+          className="inline-block"
+        >
+          <Image
+            width={24}
+            height={24}
+            src={iconSrc}
+            alt={iconAlt || "Icon"}
+            loading="lazy"
+          />
+        </animated.div>
+      )}
+    </div>
   );
 };

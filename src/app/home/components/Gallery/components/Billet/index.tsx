@@ -32,8 +32,7 @@ export const Billet = () => {
                     "font-fancy text-[15px] !leading-none text-light_gray text-left max-w-[274px] w-full"
                   }
                 >
-                  Get inspired by these beautiful, modern websites launched with
-                  PlateLab.
+                  Discover stunning AI-generated food photos by PlateLab
                 </p>
               </div>
 

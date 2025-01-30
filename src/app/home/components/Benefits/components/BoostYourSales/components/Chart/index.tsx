@@ -177,7 +177,7 @@ export const Chart = () => {
   };
 
   return (
-    <div className={"flex flex-col gap-6 w-full"}>
+    <div className={"flex flex-col gap-6 w-full h-full"}>
       <p
         className={
           "font-fancy text-right text-red !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
@@ -186,7 +186,7 @@ export const Chart = () => {
         +{percent}%
       </p>
 
-      <div className={"w-full h-[340px]"}>
+      <div className={"w-full h-full"}>
         <Line data={dataArr} options={options} />
       </div>
     </div>

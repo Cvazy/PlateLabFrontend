@@ -53,11 +53,12 @@ export const Footer = () => {
                       "grid grid-cols-2 gap-x-6 gap-y-10 gap- w-full md:flex md:flex-col md:items-start md:gap-[42.75px]"
                     }
                   >
-                    {ROUTING.map(({ id, name, link }) => (
+                    {ROUTING.map(({ id, name, hoverText, link }) => (
                       <FooterLink
                         key={id}
                         href={link}
                         name={name}
+                        hoverText={hoverText}
                         isMainPage={isMainPage}
                       />
                     ))}

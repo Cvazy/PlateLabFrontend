@@ -7,10 +7,16 @@ import { DelayedLink } from "@/app/components";
 interface IActiveLinkProps {
   name: string;
   href: string;
+  hoverText: string;
   isMainPage: boolean;
 }
 
-export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
+export const FooterLink = ({
+  name,
+  href,
+  hoverText,
+  isMainPage,
+}: IActiveLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname === href;
   const [isHovered, setIsHovered] = useState(false);
@@ -18,17 +24,17 @@ export const FooterLink = ({ name, href, isMainPage }: IActiveLinkProps) => {
   return (
     <DelayedLink
       href={href}
-      data-cursor-text={name}
+      data-cursor-text={hoverText}
       className={"relative nav_link_click"}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        data-cursor-text={name}
+        data-cursor-text={hoverText}
         className={"flex items-start gap-2 justify-start w-fit"}
       >
         <p
-          data-cursor-text={name}
+          data-cursor-text={hoverText}
           className={`text-2xl ${isMainPage ? "text-black" : "text-white"} font-fancy !leading-none md:text-[28px] xl:text-[32px]`}
         >
           {name}

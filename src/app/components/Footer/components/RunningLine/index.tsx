@@ -22,7 +22,12 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
       const scrollDelta = currentScrollY - lastScrollY.current;
       lastScrollY.current = currentScrollY;
 
-      speedRef.current = -scrollDelta * updateSpeed;
+      const maxSpeed = 5;
+      const minSpeed = -5;
+      speedRef.current = Math.max(
+        minSpeed,
+        Math.min(maxSpeed, -scrollDelta * updateSpeed),
+      );
     };
 
     const animate = () => {

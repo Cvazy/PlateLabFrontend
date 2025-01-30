@@ -71,7 +71,7 @@ textarea {
   height: 1.5px;
   background-color: var(--red);
   transform: scaleX(0);
-  transform-origin: right;
+  transform-origin: left;
   transition: transform 0.4s cubic-bezier(.75, 0, .25, 1), background-color 0.3s ease-in-out;
 }
 
@@ -90,17 +90,29 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 
   .swiper-pagination-bullet {
-    width: 5px !important;
-    height: 5px !important;
+    width: 25px !important;
+    height: 25px !important;
     margin: 0 !important;
-    background: var(--gray) !important;
     opacity: 100% !important;
+    position: relative;
+    background: transparent !important;
   }
 
-  .swiper-pagination-bullet-active {
+  .swiper-pagination-bullet::before {
+    content: '';
+    width: 5px !important;
+    height: 5px !important;
+    background: var(--gray) !important;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    border-radius: 50%;
+  }
+
+  .swiper-pagination-bullet-active::before {
     background: white !important;
   }
 }

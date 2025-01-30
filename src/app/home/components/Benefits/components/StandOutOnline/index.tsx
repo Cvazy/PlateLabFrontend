@@ -4,12 +4,33 @@ import styles from "./StandOutOnline.module.css";
 
 import Image from "next/image";
 import { SpotlightCard } from "@/app/ReactBitsComponents";
+import { useEffect, useRef, useState } from "react";
 
 export const StandOutOnline = () => {
+  const [isAnimateVisible, setIsAnimateVisible] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+
+      const container = containerRef.current;
+      const rect = container.getBoundingClientRect();
+
+      setIsAnimateVisible(rect.top < window.innerHeight && rect.bottom > 0);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <SpotlightCard className={"h-full"}>
+    <SpotlightCard className={"h-full xl:max-h-[233.5px]"}>
       <div
-        className={`relative rounded-[10px] border border-solid ${styles.BgContainer} border-[#212121] overflow-hidden min-h-[340px] w-full h-full xl:min-h-60`}
+        ref={containerRef}
+        className={`relative rounded-[10px] border border-solid ${styles.BgContainer} border-[#212121] overflow-hidden min-h-[340px] w-full h-full xl:min-h-fit`}
       >
         <div
           className={
@@ -17,7 +38,9 @@ export const StandOutOnline = () => {
           }
         ></div>
 
-        <div className={styles.Phone}>
+        <div
+          className={`${styles.Phone} ${isAnimateVisible ? styles.animate : styles.default}`}
+        >
           <Image
             width={527}
             height={527}
