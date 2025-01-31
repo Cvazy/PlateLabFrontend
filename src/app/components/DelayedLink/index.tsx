@@ -37,7 +37,7 @@ export const DelayedLink = ({ href, children, ...props }: DelayedLinkProps) => {
       timeout = setTimeout(() => {
         router.push(pendingPath);
         setPendingPath(null);
-      }, 1000);
+      }, 700);
     }
 
     return () => {

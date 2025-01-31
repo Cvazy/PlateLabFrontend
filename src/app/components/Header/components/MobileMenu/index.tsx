@@ -27,7 +27,7 @@ export const MobileMenu = ({
               link={"/about"}
               name={"About"}
               widget={false}
-              hoverText={"About - Learn more"}
+              hoverText={"Learn more"}
             />
 
             <div className={"w-5 h-px bg-gray"}></div>
@@ -36,7 +36,7 @@ export const MobileMenu = ({
               link={"/pricing"}
               name={"Pricing"}
               widget={false}
-              hoverText={"Price - Simple & affordable"}
+              hoverText={"Simple & affordable"}
             />
 
             <div className={"w-5 h-px bg-gray"}></div>
@@ -45,7 +45,7 @@ export const MobileMenu = ({
               link={"/cases"}
               name={"Cases"}
               widget={true}
-              hoverText={"Case - What we’ve done"}
+              hoverText={"What we’ve done"}
             />
 
             <div className={"w-5 h-px bg-gray"}></div>
@@ -54,7 +54,7 @@ export const MobileMenu = ({
               link={"/contact"}
               name={"Contact"}
               widget={false}
-              hoverText={"Contact - How to contact us"}
+              hoverText={"How to contact us"}
             />
           </div>
         </div>

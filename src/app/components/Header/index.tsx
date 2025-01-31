@@ -36,21 +36,21 @@ export const Header = () => {
                     <NavItem
                       link={"/about"}
                       name={"About"}
-                      hoverText={"About - Learn more"}
+                      hoverText={"Learn more"}
                       widget={false}
                     />
 
                     <NavItem
                       link={"/pricing"}
                       name={"Pricing"}
-                      hoverText={"Price - Simple & affordable"}
+                      hoverText={"Simple & affordable"}
                       widget={false}
                     />
 
                     <NavItem
                       link={"/cases"}
                       name={"Cases"}
-                      hoverText={"Case - What we’ve done"}
+                      hoverText={"What we’ve done"}
                       widget={true}
                     />
                   </div>

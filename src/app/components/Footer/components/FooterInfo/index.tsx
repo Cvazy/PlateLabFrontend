@@ -23,7 +23,7 @@ export const FooterInfo = ({ isMainPage }: IFooterInfoProps) => {
 
       <p
         dangerouslySetInnerHTML={{ __html: description }}
-        className={`text-[15px] ${isMainPage ? "text-light_gray" : "text-gray"} uppercase !leading-none md:text-base`}
+        className={`text-[15px] ${isMainPage ? "text-light_gray" : "text-gray"} font-fancy uppercase !leading-none md:text-base`}
       />
     </div>
   );

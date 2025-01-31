@@ -4,11 +4,15 @@ import "swiper/css";
 import styles from "./BigGallery.module.css";
 import CustomImage from "@/app/utils/customImage";
 import { imageLoader } from "@/app/utils";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { IGalleryProps } from "@/app/cases/model";
 import { Autoplay } from "swiper/modules";
+import { ModalView } from "./components";
 
 export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
+  const [selected, setSelected] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
   return (
     <>
       {cases &&
@@ -30,7 +34,7 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                 <div className={"relative w-full"}>
                   <div
                     className={
-                      "hidden absolute top-0 left-0 z-20 w-full h-full bg-gradient-to-r from-[#050505] to-transparent pointer-events-none md:block"
+                      "hidden absolute top-0 -left-2.5 z-20 w-full h-full bg-gradient-to-r from-[#050505] to-transparent pointer-events-none md:block"
                     }
                   ></div>
 
@@ -42,12 +46,20 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                       delay: 1500,
                       disableOnInteraction: false,
                     }}
+                    speed={1500}
                     modules={[Autoplay]}
                   >
                     {images.map(
-                      ({ id, image, caption }) =>
+                      ({ id, image, caption }, index) =>
                         (
-                          <SwiperSlide key={id} className={"!w-fit"}>
+                          <SwiperSlide
+                            key={id}
+                            className={"cursor-pointer !w-fit"}
+                            onClick={() => {
+                              setSelected(index);
+                              setSelectedIndex(index);
+                            }}
+                          >
                             <CustomImage
                               width={400}
                               height={400}
@@ -61,6 +73,14 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                         ) as ReactNode,
                     )}
                   </Swiper>
+
+                  <ModalView
+                    images={images}
+                    selected={selected}
+                    selectedIndex={selectedIndex}
+                    setSelected={setSelected}
+                    setSelectedIndex={setSelectedIndex}
+                  />
                 </div>
               </>
             )}

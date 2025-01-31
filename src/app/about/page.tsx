@@ -15,8 +15,10 @@ const AboutUsPage = () => {
 
   return (
     <div className={"flex justify-center pt-20 w-full overflow-x-hidden"}>
-      <div className={"max-w-limitation w-full"}>
-        <div className={"px-5 w-full sm:px-6 md:px-8 lg:px-10"}>
+      <div
+        className={"flex justify-center px-5 w-full sm:px-6 md:px-8 lg:px-10"}
+      >
+        <div className={"max-w-limitation w-full"}>
           <div className={"pt-20 w-full lg:pt-[60px]"}>
             <div className={"flex flex-col items-center gap-10 w-full"}>
               <h1

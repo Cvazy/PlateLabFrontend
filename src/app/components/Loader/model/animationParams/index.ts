@@ -21,7 +21,7 @@ export const blockVariantsLeft = {
   hidden: { x: "-100%" },
   visible: () => ({
     x: 0,
-    transition: { duration: 1, ease: "easeInOut" },
+    transition: { duration: 0.5, ease: "easeInOut" },
   }),
 };
 
@@ -29,8 +29,16 @@ export const blockVariantsRight = {
   hidden: { x: "100%" },
   visible: () => ({
     x: 0,
-    transition: { duration: 1, ease: "easeInOut" },
+    transition: { duration: 0.5, ease: "easeInOut" },
   }),
+};
+
+export const logoRotate = {
+  hidden: { rotate: 0 },
+  visible: {
+    rotate: 180,
+    transition: { duration: 0.5, ease: "easeInOut", delay: 0.5 },
+  },
 };
 
 export const logoVariants = {

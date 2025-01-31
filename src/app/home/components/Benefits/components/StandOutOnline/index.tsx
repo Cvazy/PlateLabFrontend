@@ -27,7 +27,7 @@ export const StandOutOnline = () => {
   }, []);
 
   return (
-    <SpotlightCard className={"h-full xl:max-h-[233.5px]"}>
+    <SpotlightCard className={"h-full xl:min-h-[233.5px] xl:max-h-[233.5px]"}>
       <div
         ref={containerRef}
         className={`relative rounded-[10px] border border-solid ${styles.BgContainer} border-[#212121] overflow-hidden min-h-[340px] w-full h-full xl:min-h-fit`}
@@ -39,7 +39,7 @@ export const StandOutOnline = () => {
         ></div>
 
         <div
-          className={`${styles.Phone} ${isAnimateVisible ? styles.animate : styles.default}`}
+          className={`${styles.Phone} !duration-1000 ${isAnimateVisible ? styles.animate : styles.default}`}
         >
           <Image
             width={527}
@@ -47,6 +47,7 @@ export const StandOutOnline = () => {
             src={"/images/phone.svg"}
             alt={"Phone"}
             loading={"lazy"}
+            className={"!duration-1000"}
           />
         </div>
 

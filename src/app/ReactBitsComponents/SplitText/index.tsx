@@ -14,7 +14,7 @@ export const SplitText = ({
   threshold = 0.1,
   rootMargin = "-100px",
   textAlign = "center",
-  isHovered = false, // По умолчанию выключен ховер
+  isHovered = false,
   dataCursorText = "",
 }) => {
   const words = text.split(" ").map((word) => word.split(""));
@@ -42,7 +42,7 @@ export const SplitText = ({
       from: animationFrom,
       to: shouldAnimate ? animationTo : animationFrom,
       delay: i * delay,
-      config: { easing: easings.easeOutCubic }, // Исправлено
+      config: { easing: easings.easeOutCubic },
       reset: true,
     })),
   );
@@ -50,19 +50,19 @@ export const SplitText = ({
   const iconSpring = useSpring({
     from: animationFrom,
     to: shouldAnimate ? animationTo : animationFrom,
-    config: { easing: easings.easeOutCubic, delay: letters.length * delay }, // Исправлено
+    config: { easing: easings.easeOutCubic, delay: letters.length * delay },
     reset: true,
   });
 
   return (
     <div
       ref={ref}
-      data-cursor-text={dataCursorText}
-      className={`flex items-center gap-2 ${className}`}
+      data-cursor-text={dataCursorText ? dataCursorText : null}
+      className={`flex items-center no-transition gap-2 ${className}`}
     >
       <p
-        data-cursor-text={dataCursorText}
-        className="split-parent overflow-hidden inline"
+        data-cursor-text={dataCursorText ? dataCursorText : null}
+        className={`split-parent no-transition overflow-hidden inline ${className}`}
         style={{
           textAlign: textAlign as React.CSSProperties["textAlign"],
           whiteSpace: "normal",
@@ -73,6 +73,7 @@ export const SplitText = ({
           <span
             key={wordIndex}
             style={{ display: "inline-block", whiteSpace: "nowrap" }}
+            className={"no-transition"}
           >
             {word.map((letter, letterIndex) => {
               const index =
@@ -85,14 +86,17 @@ export const SplitText = ({
                 <animated.span
                   key={index}
                   style={springs[index]}
-                  data-cursor-text={dataCursorText}
-                  className="inline-block transform transition-opacity will-change-transform"
+                  data-cursor-text={dataCursorText ? dataCursorText : null}
+                  className="inline-block no-transition transform transition-opacity will-change-transform"
                 >
                   {letter}
                 </animated.span>
               );
             })}
-            <span style={{ display: "inline-block", width: "0.3em" }}>
+            <span
+              style={{ display: "inline-block", width: "0.3em" }}
+              className={"no-transition"}
+            >
               &nbsp;
             </span>
           </span>
@@ -103,12 +107,12 @@ export const SplitText = ({
         //@ts-ignore
         <animated.div
           style={iconSpring}
-          data-cursor-text={dataCursorText}
-          className="inline-block"
+          data-cursor-text={dataCursorText ? dataCursorText : null}
+          className="inline-block no-transition"
         >
           <Image
-            width={24}
-            height={24}
+            width={32}
+            height={32}
             src={iconSrc}
             alt={iconAlt || "Icon"}
             loading="lazy"

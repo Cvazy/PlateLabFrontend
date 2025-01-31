@@ -58,9 +58,7 @@ export const CaseItem = ({
           src={image.image}
           alt={image.caption}
           loader={imageLoader}
-          className={`w-40 h-40 md:w-[200px] md:h-[200px] ${
-            isActive ? "shadow-[0_-10px_16px_0_#ffffff1a]" : ""
-          }`}
+          className={`w-40 h-40 md:w-[200px] md:h-[200px]`}
         />
 
         <div

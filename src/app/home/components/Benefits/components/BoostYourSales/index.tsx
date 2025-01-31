@@ -5,10 +5,13 @@ import { SpotlightCard } from "@/app/ReactBitsComponents";
 
 export const BoostYourSales = () => {
   return (
-    <SpotlightCard className={"h-full xl:max-h-[483px]"}>
+    <SpotlightCard
+      className={"h-full xl:max-h-[483px]"}
+      spotlightColor={"rgba(61,61,61,0.25)"}
+    >
       <div
         className={
-          "overflow-hidden rounded-[10px] border border-solid border-[#212121] bg-gradient-to-bl from-[#1b1b1b33] to-[#1B1B1B] w-full h-full"
+          "overflow-hidden rounded-[10px] border border-solid border-[#212121] bg-gradient-to-b from-[#050505bd] to-[#343232] w-full h-full"
         }
       >
         <div className={"px-4 py-5 w-full h-full"}>
@@ -34,7 +37,7 @@ export const BoostYourSales = () => {
 
             <div
               className={
-                "rounded bg-[#05050599] shadow-[0_20px_30px_0_#05050580] w-full h-full"
+                "rounded bg-[#05050599] shadow-[0_16px_20px_0_#050505e0] w-full h-full"
               }
             >
               <div className={"p-5 w-full h-full"}>
