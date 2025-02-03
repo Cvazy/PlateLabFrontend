@@ -23,6 +23,10 @@
 /*  }*/
 /*}*/
 
+html {
+  overflow: hidden;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -34,7 +38,6 @@ body {
 
 * {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 *:not(.no-transition):not(g, rect, line) {

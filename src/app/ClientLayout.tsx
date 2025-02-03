@@ -3,7 +3,7 @@
 import { Provider } from "react-redux";
 import { store } from "@/app/store";
 import { CustomCursor, Footer, Header, Loader } from "@/app/components";
-import React, { useEffect } from "react";
+import React from "react";
 import { usePathname } from "next/navigation";
 
 export default function ClientLayout({

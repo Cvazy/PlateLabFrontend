@@ -70,3 +70,17 @@ export interface IParameters {
   start_value: number;
   end_value: number;
 }
+
+export interface IParallaxGallery {
+  id: number | string;
+  image: string;
+  caption: string;
+}
+
+export interface IParallax {
+  id: number | string;
+  up_title: string;
+  down_title: string;
+  image: string;
+  gallery: IParallaxGallery[];
+}

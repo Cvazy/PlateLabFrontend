@@ -4,59 +4,75 @@ import { GridElement, Phone } from "@/app/home/components/Before/components";
 import { useEffect, useRef, useState } from "react";
 import { DecryptedText } from "@/app/ReactBitsComponents";
 import { IParameters, useFetchBeforeParametersQuery } from "@/app/home";
+import useLenis from "@/app/hooks/useLenis";
 
 export const Before = () => {
   const { data } = useFetchBeforeParametersQuery();
-
   const parameters: IParameters[] = data || [];
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const isBlocked = useRef(false);
-  const canScrollAfterBlock = useRef(false);
+  const [isScrollBlocked, setIsScrollBlocked] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [valuesSwitched, setValuesSwitched] = useState(false);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [isFirstlyAnimation, setIsFirstlyAnimation] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = (event: Event) => {
-      if (!isBlocked.current || !isIntersecting || !canScrollAfterBlock.current)
-        return;
-      event.preventDefault();
+  const [scrollingTimeout, setScrollingTimeout] =
+    useState<NodeJS.Timeout | null>(null);
 
-      if (event instanceof WheelEvent && event.deltaY > 0 && !isScrolled) {
-        setIsScrolled(true);
-        setValuesSwitched(true);
-        setIsFirstlyAnimation(false);
+  useLenis(isScrollBlocked);
+
+  useEffect(() => {
+    const animateScroll = (event: Event) => {
+      if (!isBlocked.current || !isIntersecting) return;
+
+      if (scrollingTimeout) {
+        clearTimeout(scrollingTimeout);
       }
+
+      setIsScrollBlocked(true);
+
+      const newTimeout = setTimeout(() => {
+        setIsScrollBlocked(false);
+        if (event instanceof WheelEvent && event.deltaY > 0 && !isScrolled) {
+          setIsScrolled(true);
+          setValuesSwitched(true);
+          setIsFirstlyAnimation(false);
+        }
+      }, 1000);
+
+      setScrollingTimeout(newTimeout);
+
+      event.preventDefault();
     };
 
-    document.addEventListener("wheel", handleScroll, { passive: false });
-    document.addEventListener("touchmove", handleScroll, { passive: false });
+    document.addEventListener("wheel", animateScroll, { passive: false });
+    document.addEventListener("touchmove", animateScroll, { passive: false });
 
     return () => {
-      document.removeEventListener("wheel", handleScroll);
-      document.removeEventListener("touchmove", handleScroll);
+      document.removeEventListener("wheel", animateScroll);
+      document.removeEventListener("touchmove", animateScroll);
+      if (scrollingTimeout) {
+        clearTimeout(scrollingTimeout);
+      }
     };
-  }, [isScrolled, isIntersecting]);
+  }, [isScrolled, isIntersecting, scrollingTimeout]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
+
         if (entry.isIntersecting && !isBlocked.current) {
           isBlocked.current = true;
-          document.body.style.overflow = "hidden";
+
+          setIsScrollBlocked(true);
 
           setTimeout(() => {
-            canScrollAfterBlock.current = true;
-          }, 1500);
-
-          setTimeout(() => {
-            observer.disconnect();
             isBlocked.current = false;
-            canScrollAfterBlock.current = false;
-            document.body.style.overflow = "auto";
+            setIsScrollBlocked(false);
+            observer.disconnect();
           }, 3000);
         }
       },
@@ -67,7 +83,7 @@ export const Before = () => {
 
     return () => {
       observer.disconnect();
-      document.body.style.overflow = "auto";
+      setIsScrollBlocked(false);
     };
   }, []);
 
@@ -123,9 +139,7 @@ export const Before = () => {
                   </div>
                 </div>
 
-                <p
-                  className={`hidden font-fancy text-light_gray !duration-700 text-sm text-left ${isBlocked.current ? "opacity-100" : "opacity-0"} lg:block`}
-                >
+                <p className="hidden font-fancy text-light_gray !duration-700 text-sm text-left opacity-100 lg:block">
                   Scroll down
                 </p>
               </div>

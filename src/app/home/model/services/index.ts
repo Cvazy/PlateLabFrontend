@@ -4,6 +4,7 @@ import {
   IBanner,
   IComparisons,
   IGallery,
+  IParallax,
   IParameters,
   IPartner,
   IRestaurant,
@@ -49,6 +50,10 @@ export const homeApi = createApi({
     fetchBeforeParameters: builder.query<IParameters[], void>({
       query: () => "/api/v1/before/parameters",
     }),
+
+    fetchParallax: builder.query<IParallax[], void>({
+      query: () => "/api/v1/parallax",
+    }),
   }),
 });
 
@@ -60,4 +65,5 @@ export const {
   useFetchAllSalesQuery,
   useFetchBeforeParametersQuery,
   useFetchBeforeRestaurantQuery,
+  useFetchParallaxQuery,
 } = homeApi;

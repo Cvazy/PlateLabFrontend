@@ -1,7 +1,13 @@
+"use client";
+
 import { Contact, InformationBlock } from "@/app/components";
+
 import { PricingList } from "@/app/pricing/components";
+import useLenis from "@/app/hooks/useLenis";
 
 const PricingPage = () => {
+  useLenis(false);
+
   return (
     <div className={"flex justify-center pt-20 w-full overflow-x-hidden"}>
       <div

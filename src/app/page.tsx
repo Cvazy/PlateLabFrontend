@@ -8,7 +8,6 @@ import {
   MainSwiper,
   ParallaxBeforeFooter,
 } from "@/app/home";
-import { Contact, InformationBlock } from "@/app/components";
 import { ParallaxProvider } from "react-scroll-parallax";
 
 export default function Home() {

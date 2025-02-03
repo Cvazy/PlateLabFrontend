@@ -134,86 +134,100 @@ export const Content = ({
               </p>
 
               <div className={"flex flex-col w-full"}>
-                {!!product_list_items?.length &&
-                  product_list_items.map(
-                    ({
-                      id,
-                      item_name,
-                      price,
-                      image,
-                      caption,
-                      max_cal_value,
-                      min_cal_value,
-                      description,
-                    }) => (
-                      <div
-                        key={id}
-                        className={
-                          "border-b border-solid border-[#2C2C2C] py-1.5 w-full"
-                        }
-                      >
-                        <div className={"flex items-start gap-3.5 w-full"}>
-                          <div className={"flex flex-col items-start gap-0.5"}>
-                            <p
-                              className={
-                                "text-[8px] !leading-snug text-white text-start font-fancy font-bold"
-                              }
-                            >
-                              {item_name}
-                            </p>
-
-                            <div
-                              className={
-                                "flex flex-col items-start gap-1 w-full"
-                              }
-                            >
-                              <div className={"flex items-center gap-1 w-full"}>
+                <Swiper
+                  direction={"vertical"}
+                  spaceBetween={0}
+                  slidesPerView={3}
+                  grabCursor={true}
+                  className={"!h-[400px] w-full"}
+                >
+                  {!!product_list_items?.length &&
+                    product_list_items.map(
+                      (
+                        {
+                          id,
+                          item_name,
+                          price,
+                          image,
+                          caption,
+                          max_cal_value,
+                          min_cal_value,
+                          description,
+                        },
+                        index,
+                      ) =>
+                        (
+                          <SwiperSlide
+                            key={id}
+                            className={`${index !== product_list_items.length - 1 ? "border-b border-solid border-[#2C2C2C]" : ""} py-1.5 w-full !h-fit`}
+                          >
+                            <div className={"flex items-start gap-3.5 w-full"}>
+                              <div
+                                className={"flex flex-col items-start gap-0.5"}
+                              >
                                 <p
                                   className={
-                                    "text-[6px] !leading-snug text-white text-start font-fancy"
+                                    "text-[8px] !leading-snug text-white text-start font-fancy font-bold"
                                   }
                                 >
-                                  ${price.toFixed(2)}
+                                  {item_name}
                                 </p>
 
                                 <div
                                   className={
-                                    "w-0.5 h-0.5 bg-white rounded-full"
+                                    "flex flex-col items-start gap-1 w-full"
                                   }
-                                ></div>
+                                >
+                                  <div
+                                    className={"flex items-center gap-1 w-full"}
+                                  >
+                                    <p
+                                      className={
+                                        "text-[6px] !leading-snug text-white text-start font-fancy"
+                                      }
+                                    >
+                                      ${price.toFixed(2)}
+                                    </p>
+
+                                    <div
+                                      className={
+                                        "w-0.5 h-0.5 bg-white rounded-full"
+                                      }
+                                    ></div>
+
+                                    <p
+                                      className={
+                                        "text-[6px] !leading-snug text-[#888888] text-start font-fancy"
+                                      }
+                                    >
+                                      {min_cal_value +
+                                        `${!!max_cal_value ? ` - ${max_cal_value}` : ""}`}{" "}
+                                      Cal.
+                                    </p>
+                                  </div>
+                                </div>
 
                                 <p
                                   className={
-                                    "text-[6px] !leading-snug text-[#888888] text-start font-fancy"
+                                    "text-[6px] !leading-tight text-[#888888] text-start font-fancy"
                                   }
                                 >
-                                  {min_cal_value +
-                                    `${!!max_cal_value ? ` - ${max_cal_value}` : ""}`}{" "}
-                                  Cal.
+                                  {description}
                                 </p>
                               </div>
+
+                              <ImageWrapper
+                                valuesSwitched={valuesSwitched}
+                                itemImageSrc={image}
+                                itemImageAlt={caption}
+                                itemWidth={75}
+                                itemHeight={75}
+                              />
                             </div>
-
-                            <p
-                              className={
-                                "text-[6px] !leading-tight text-[#888888] text-start font-fancy"
-                              }
-                            >
-                              {description}
-                            </p>
-                          </div>
-
-                          <ImageWrapper
-                            valuesSwitched={valuesSwitched}
-                            itemImageSrc={image}
-                            itemImageAlt={caption}
-                            itemWidth={75}
-                            itemHeight={75}
-                          />
-                        </div>
-                      </div>
-                    ),
-                  )}
+                          </SwiperSlide>
+                        ) as ReactNode,
+                    )}
+                </Swiper>
               </div>
             </div>
           </div>

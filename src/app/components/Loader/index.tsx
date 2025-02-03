@@ -57,7 +57,7 @@ export const Loader = React.memo(() => {
 
   return (
     <div
-      className={`fixed ${isFirstVisit ? (divsV3Completed ? "z-[-1]" : "z-[999]") : divsV3Completed && divsV4Completed ? "z-[-1]" : "z-[999]"} top-0 bottom-0 left-0 right-0`}
+      className={`fixed ${isFirstVisit ? (divsV3Completed ? "z-[-1]" : "z-[999]") : divsV3Completed && divsV4Completed ? "z-[-1]" : "z-[999]"} top-0 bottom-0 left-0 right-0 max-h-screen`}
     >
       <div className="flex flex-col relative w-full h-full">
         {isFirstVisit && (

@@ -1,7 +1,12 @@
+"use client";
+
 import { FormToConnection } from "./components";
 import { HowItsWork } from "@/app/components";
+import useLenis from "@/app/hooks/useLenis";
 
 const ContactPage = () => {
+  useLenis(false);
+
   return (
     <div className={"flex justify-center pt-20 w-full overflow-x-hidden"}>
       <div

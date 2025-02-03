@@ -5,6 +5,7 @@ import { Contact } from "@/app/components";
 import { BigGallery, RestaurantList } from "./components";
 
 import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases";
+import useLenis from "@/app/hooks/useLenis";
 
 const CasesPage = () => {
   const [activeCase, setActiveCase] = useState<number>(1);
@@ -12,6 +13,8 @@ const CasesPage = () => {
   const { data, isError } = useFetchAllCasesQuery();
 
   const cases: ICaseItem[] = data || [];
+
+  useLenis(false);
 
   return (
     <div className={"flex justify-center pt-20 w-full overflow-x-hidden"}>

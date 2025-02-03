@@ -1,17 +1,33 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Parallax } from "react-scroll-parallax";
 
 import { imageLoader } from "@/app/utils";
 import CustomImage from "@/app/utils/customImage";
 import { TextBlock } from "./components";
+import { IParallax, IParallaxGallery, useFetchParallaxQuery } from "@/app/home";
+import { parallaxConfigs } from "./utils";
+import Image from "next/image";
 
-export const ParallaxBeforeFooter = () => {
+export const ParallaxBeforeFooter = React.memo(() => {
+  const { data } = useFetchParallaxQuery();
+
+  const parallaxData: IParallax[] = data || [];
+
+  const {
+    up_title = "",
+    down_title = "",
+    image = "",
+    gallery = [] as IParallaxGallery[],
+  } = parallaxData[0] || {};
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [bgProgress, setBgProgress] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [scaleProgress, setScaleProgress] = useState(0);
+  const [bottomProgress, setBottomProgress] = useState(0);
 
   const lerp = (start: number, end: number, t: number) =>
     start * (1 - t) + end * t;
@@ -28,6 +44,9 @@ export const ParallaxBeforeFooter = () => {
   };
 
   useEffect(() => {
+    let timeout: any;
+    let isScrollBlocked = false;
+
     const handleScroll = () => {
       if (!containerRef.current) {
         return;
@@ -45,12 +64,35 @@ export const ParallaxBeforeFooter = () => {
           1,
         );
 
+        const newScaleProgress = Math.min(
+          Math.max((viewportHeight / 2 - rect.top) / (viewportHeight * 2), 0),
+          1,
+        );
+
+        setScaleProgress(newScaleProgress);
         setBgProgress(progress);
+
+        if (newScaleProgress >= 1) {
+          const scrollDirection =
+            window.scrollY > Number(containerRef.current?.dataset.lastScroll)
+              ? 1
+              : -1;
+
+          setBottomProgress((prev) =>
+            Math.min(Math.max(prev + 0.05 * scrollDirection * 0.5, 0), 1),
+          );
+
+          containerRef.current.dataset.lastScroll = window.scrollY.toString();
+        }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [isIntersecting]);
 
   useEffect(() => {
@@ -66,101 +108,78 @@ export const ParallaxBeforeFooter = () => {
   }, [bgProgress]);
 
   return (
-    <div className="h-[250vh] w-full">
+    <div
+      className={`relative h-[350vh] no-transition w-full`}
+      style={{
+        bottom: `${bottomProgress * 100}vh`,
+      }}
+    >
       <div ref={containerRef} className={"relative w-full h-full"}>
-        <TextBlock />
+        <TextBlock upTitle={up_title} downTitle={down_title} />
 
-        {/*Картинка для увеличения*/}
-        <Parallax
-          speed={20}
-          className={
-            "no-transition absolute flex justify-center items-center left-0 right-0 top-[120vh] w-full"
-          }
+        <div
+          className={`no-transition sticky flex justify-center items-center z-[100] left-0 right-0 w-full`}
+          style={{
+            top: `${50 - 50 * scaleProgress}%`,
+            height: `${100 * scaleProgress}vh`,
+            paddingTop: `${50 - 50 * scaleProgress}%`,
+          }}
         >
-          <CustomImage
-            width={240}
-            height={240}
-            src={"/media/images/3.png"}
-            alt={"Image 1"}
-            loader={imageLoader}
-            className={
-              "no-transition rounded-md w-36 h-36 sm:w-52 sm:h-52 lg:w-72 lg:h-72"
-            }
-          />
-        </Parallax>
+          {image.length > 0 ? (
+            <CustomImage
+              width={470}
+              height={340}
+              src={image}
+              alt={`${up_title} ${down_title}`}
+              loader={imageLoader}
+              loading={"lazy"}
+              className={"no-transition rounded-md"}
+              style={{
+                width: `${100 * scaleProgress}vw`,
+                height: `${100 * scaleProgress}vh`,
+                borderRadius: `${1 / scaleProgress}px}`,
+              }}
+            />
+          ) : (
+            <div
+              className={
+                "flex items-center justify-center bg-[#303030] rounded-md"
+              }
+              style={{ width: 470, height: 340 }}
+            >
+              <Image
+                width={18}
+                height={18}
+                src={"/images/image.svg"}
+                alt={"Image"}
+                loading={"lazy"}
+              />
+            </div>
+          )}
+        </div>
 
-        <Parallax
-          speed={75}
-          className={
-            "no-transition absolute right-0 top-[130vh] w-28 h-28 sm:w-44 sm:h-44 lg:w-60 lg:h-60"
-          }
-        >
-          <CustomImage
-            width={240}
-            height={240}
-            src={"/media/images/4.png"}
-            alt={"Image 1"}
-            loader={imageLoader}
-            className={
-              "no-transition rounded-md w-28 h-28 sm:w-44 sm:h-44 lg:w-60 lg:h-60"
-            }
-          />
-        </Parallax>
+        {!!gallery.length &&
+          gallery.map(({ id, image, caption }, index) => {
+            const config = parallaxConfigs[index % parallaxConfigs.length];
 
-        <Parallax
-          speed={150}
-          className={
-            "no-transition absolute left-5 top-[135vh] w-44 h-44 sm:w-60 sm:h-60 md:left-7 lg:left-10 lg:w-80 lg:h-80"
-          }
-        >
-          <CustomImage
-            width={320}
-            height={320}
-            src={"/media/images/2.png"}
-            alt={"Image 2"}
-            loader={imageLoader}
-            className={
-              "no-transition rounded-lg w-44 h-44 sm:w-60 sm:h-60 lg:w-80 lg:h-80"
-            }
-          />
-        </Parallax>
-
-        <Parallax
-          speed={75}
-          className={
-            "no-transition absolute left-0 top-[165vh] w-44 h-44 sm:w-60 sm:h-60 lg:w-80 lg:h-80"
-          }
-        >
-          <CustomImage
-            width={320}
-            height={320}
-            src={"/media/images/5.png"}
-            alt={"Image 3"}
-            loader={imageLoader}
-            className={
-              "no-transition rounded-lg w-44 h-44 sm:w-60 sm:h-60 lg:w-80 lg:h-80"
-            }
-          />
-        </Parallax>
-
-        <Parallax
-          speed={150}
-          className={
-            "no-transition absolute right-10 top-[170vh] w-28 h-28 sm:w-44 sm:h-44 md:right-14 lg:right-20 lg:w-60 lg:h-60"
-          }
-        >
-          <CustomImage
-            width={240}
-            height={240}
-            src={"/media/images/1.png"}
-            alt={"Image 4"}
-            loader={imageLoader}
-            className={
-              "no-transition rounded-md w-28 h-28 sm:w-44 sm:h-44 lg:w-60 lg:h-60"
-            }
-          />
-        </Parallax>
+            return (
+              <Parallax
+                key={id}
+                speed={config.speed}
+                className={config.className}
+              >
+                <CustomImage
+                  width={config.width}
+                  height={config.height}
+                  src={image}
+                  alt={caption}
+                  loader={imageLoader}
+                  className={config.imageClass}
+                />
+              </Parallax>
+            );
+          })}
       </div>
     </div>
   );
-};
+});

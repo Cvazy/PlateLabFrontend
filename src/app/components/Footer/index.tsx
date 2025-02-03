@@ -24,14 +24,16 @@ export const Footer = () => {
 
   return (
     <footer
-      className={`overflow-hidden min-h-96 w-full ${isMainPage ? "bg-white" : `${styles.footer}`}`}
+      className={`overflow-hidden min-h-96 w-full ${isMainPage ? "absolute bottom-0 bg-white h-screen" : `${styles.footer}`}`}
     >
       <div
-        className={`flex flex-col items-center py-[35px] w-full ${isMainPage ? "bg-white" : `${styles.footerBg}`}`}
+        className={`flex flex-col items-center py-[35px] w-full ${isMainPage ? "bg-white h-full justify-between" : `${styles.footerBg}`}`}
       >
         <RunningLine isMainPage={isMainPage} />
 
-        <div className={`max-w-limitation w-full`}>
+        <div
+          className={`max-w-limitation w-full ${isMainPage ? "flex items-center h-full" : ""}`}
+        >
           <div
             className={
               "flex flex-col-reverse justify-between items-start gap-6 w-full pt-10 px-5 sm:px-6 md:px-8 lg:px-10 lg:flex-row"
