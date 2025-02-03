@@ -48,7 +48,11 @@ export const ModalView = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-            if (!imageRef.current.contains(e.target)) {
+            if (
+              imageRef &&
+              imageRef.current &&
+              !imageRef.current.contains(e.target as Node)
+            ) {
               setSelected(null);
             }
           }}

@@ -43,10 +43,10 @@ export const BigGallery = ({ cases, activeCase }: IGalleryProps) => {
                     spaceBetween={10}
                     className={styles.bigSwiper}
                     autoplay={{
-                      delay: 1500,
+                      delay: 3000,
                       disableOnInteraction: false,
                     }}
-                    speed={1500}
+                    speed={5000}
                     modules={[Autoplay]}
                   >
                     {images.map(

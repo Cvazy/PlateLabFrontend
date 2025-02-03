@@ -33,6 +33,30 @@ export const blockVariantsRight = {
   }),
 };
 
+export const blockVariantsLeftV2 = {
+  hidden: { x: 0 },
+  visible: () => ({
+    x: "-100%",
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+      delay: 0.5,
+    },
+  }),
+};
+
+export const blockVariantsRightV2 = {
+  hidden: { x: 0 },
+  visible: () => ({
+    x: "100%",
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+      delay: 0.5,
+    },
+  }),
+};
+
 export const logoRotate = {
   hidden: { rotate: 0 },
   visible: {

@@ -5,34 +5,34 @@ export const ROUTING: IRouting[] = [
     id: 1,
     name: "Main",
     link: "/",
-    hoverText: "Home - Home page",
+    hoverText: "Home page",
   },
 
   {
     id: 2,
     name: "About",
     link: "/about",
-    hoverText: "About - Learn more",
+    hoverText: "Learn more",
   },
 
   {
     id: 3,
     name: "Pricing",
     link: "/pricing",
-    hoverText: "Price - Simple & affordable",
+    hoverText: "Simple & affordable",
   },
 
   {
     id: 4,
     name: "Cases",
     link: "/cases",
-    hoverText: "Case - What we’ve done",
+    hoverText: "What we’ve done",
   },
 
   {
     id: 5,
     name: "Contact",
     link: "/contact",
-    hoverText: "Contact - How to contact us",
+    hoverText: "How to contact us",
   },
 ];

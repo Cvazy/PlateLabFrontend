@@ -16,6 +16,7 @@ import {
 import annotationPlugin from "chartjs-plugin-annotation";
 import { ISale, useFetchAllSalesQuery } from "@/app/home";
 import { useEffect, useState } from "react";
+import { CountUp } from "@/app/ReactBitsComponents";
 
 ChartJS.register(
   CategoryScale,
@@ -94,7 +95,8 @@ export const Chart = () => {
     responsive: true,
     maintainAspectRatio: false,
     animation: {
-      duration: 1500,
+      duration: 2500,
+      delay: 2000,
     },
     plugins: {
       tooltip: {
@@ -183,7 +185,19 @@ export const Chart = () => {
           "font-fancy text-right text-red !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
         }
       >
-        +{percent}%
+        +
+        <CountUp
+          from={0.1}
+          to={Number.isNaN(+percent) ? 0.1 : +percent}
+          separator={","}
+          direction={"up"}
+          duration={1}
+          isFormatted={false}
+          className={
+            "font-fancy text-right text-red !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
+          }
+        />
+        %
       </p>
 
       <div className={"w-full h-full"}>

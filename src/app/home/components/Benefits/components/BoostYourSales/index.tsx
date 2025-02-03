@@ -19,7 +19,7 @@ export const BoostYourSales = () => {
             <div className={"flex flex-col items-start gap-2.5 w-full"}>
               <h3
                 className={
-                  "text-[28px] text-white text-left !leading-[normal] md:text-3xl lg:text-[32px] xl:text-4xl"
+                  "text-[28px] font-fancy text-white text-left !leading-[normal] md:text-3xl lg:text-[32px] xl:text-4xl"
                 }
               >
                 Boost your sales

@@ -9,6 +9,8 @@ import {
   logoVariants,
   blockVariantsLeft,
   blockVariantsRight,
+  blockVariantsLeftV2,
+  blockVariantsRightV2,
 } from "./model";
 import { useAppDispatch } from "@/app/utils/hooks";
 import { allowNavigation } from "@/app/utils/NavigationState";
@@ -39,30 +41,6 @@ export const Loader = React.memo(() => {
     setIsFirstVisit(false);
   }, [pathname]);
 
-  const blockVariantsLeftV2 = {
-    hidden: { x: 0 },
-    visible: () => ({
-      x: "-100%",
-      transition: {
-        duration: 1,
-        ease: "easeInOut",
-        delay: 0.5,
-      },
-    }),
-  };
-
-  const blockVariantsRightV2 = {
-    hidden: { x: 0 },
-    visible: () => ({
-      x: "100%",
-      transition: {
-        duration: 1,
-        ease: "easeInOut",
-        delay: 0.5,
-      },
-    }),
-  };
-
   const handleCompleteFirstlyAnimate = () => {
     setDivsV3Completed(true);
     dispatch(allowNavigation());
@@ -79,7 +57,7 @@ export const Loader = React.memo(() => {
 
   return (
     <div
-      className={`fixed ${isFirstVisit ? (divsV3Completed ? "" : "z-[999]") : divsV3Completed && divsV4Completed ? "" : "z-[999]"} top-0 bottom-0 left-0 right-0`}
+      className={`fixed ${isFirstVisit ? (divsV3Completed ? "z-[-1]" : "z-[999]") : divsV3Completed && divsV4Completed ? "z-[-1]" : "z-[999]"} top-0 bottom-0 left-0 right-0`}
     >
       <div className="flex flex-col relative w-full h-full">
         {isFirstVisit && (
@@ -150,7 +128,7 @@ export const Loader = React.memo(() => {
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className={`bg-black no-transition ${i !== 4 ? "border-b" : "border-none"} border-gray border-solid w-full h-1/5`}
+                className={`bg-black no-transition ${i !== 4 ? "border-b" : "border-none"} border-[#48484880] border-solid w-full h-1/5`}
                 custom={4 - i}
                 initial="hidden"
                 exit="hidden"
@@ -221,7 +199,7 @@ export const Loader = React.memo(() => {
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className={`bg-black no-transition ${i !== 4 ? "border-b" : "border-none"} border-gray border-solid w-full h-1/5`}
+                className={`bg-black no-transition ${i !== 4 ? "border-b" : "border-none"} border-[#48484880] border-solid w-full h-1/5`}
                 custom={4 - i}
                 initial="hidden"
                 animate={"visible"}
@@ -240,7 +218,7 @@ export const Loader = React.memo(() => {
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className={`bg-black no-transition ${i !== 4 ? "border-b" : "border-none"} border-gray border-solid w-full h-1/5`}
+                className={`bg-black no-transition ${i !== 4 ? "border-b" : "border-none"} border-[#48484880] border-solid w-full h-1/5`}
                 custom={4 - i}
                 initial="hidden"
                 animate={"visible"}

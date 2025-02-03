@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { IGallery, useFetchAllGalleryQuery } from "@/app/home";
-import { Loader } from "@/app/components";
 import {
   distributeColumnsRandomly,
   distributeImagesAcrossColumns,

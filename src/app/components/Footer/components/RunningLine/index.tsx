@@ -22,8 +22,8 @@ export const RunningLine = ({ isMainPage }: IRunningLine) => {
       const scrollDelta = currentScrollY - lastScrollY.current;
       lastScrollY.current = currentScrollY;
 
-      const maxSpeed = 5;
-      const minSpeed = -5;
+      const maxSpeed = 3;
+      const minSpeed = -3;
       speedRef.current = Math.max(
         minSpeed,
         Math.min(maxSpeed, -scrollDelta * updateSpeed),

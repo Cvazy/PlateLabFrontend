@@ -16,25 +16,34 @@ export const SplitText = ({
   textAlign = "center",
   isHovered = false,
   dataCursorText = "",
+  playOnce = false,
 }) => {
   const words = text.split(" ").map((word) => word.split(""));
   const letters = words.flat();
   const [inView, setInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
     if (!ref.current) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (playOnce) setHasAnimated(true);
+        } else {
+          if (!playOnce) setInView(false);
+        }
+      },
       { threshold, rootMargin },
     );
 
     observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [threshold, rootMargin]);
+  }, [threshold, rootMargin, playOnce]);
 
-  const shouldAnimate = inView || isHovered;
+  const shouldAnimate = (playOnce && hasAnimated) || inView || isHovered;
 
   const springs = useSprings(
     letters.length,
@@ -43,7 +52,7 @@ export const SplitText = ({
       to: shouldAnimate ? animationTo : animationFrom,
       delay: i * delay,
       config: { easing: easings.easeOutCubic },
-      reset: true,
+      reset: !playOnce,
     })),
   );
 
@@ -51,7 +60,7 @@ export const SplitText = ({
     from: animationFrom,
     to: shouldAnimate ? animationTo : animationFrom,
     config: { easing: easings.easeOutCubic, delay: letters.length * delay },
-    reset: true,
+    reset: !playOnce,
   });
 
   return (

@@ -55,6 +55,7 @@ export const FAQElement = ({
 
         <div
           className={`overflow-hidden ${isActive ? "max-h-screen" : "max-h-0"} h-full w-full`}
+          style={{ transition: "max-height 0.7s ease-in-out" }}
         >
           <div className={"mt-5 w-full"}>
             <p
