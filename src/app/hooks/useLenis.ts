@@ -5,6 +5,10 @@ export default function useLenis(isScrollBlocked: boolean) {
   const lenis = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) return;
+
     lenis.current = new Lenis({
       duration: 2,
       //@ts-ignore
