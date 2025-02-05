@@ -18,31 +18,39 @@ export const Before = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [isFirstlyAnimation, setIsFirstlyAnimation] = useState(true);
 
-  const [scrollingTimeout, setScrollingTimeout] =
-    useState<NodeJS.Timeout | null>(null);
-
   useLenis(isScrollBlocked);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`,
+      );
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   useEffect(() => {
     const animateScroll = (event: Event) => {
       if (!isBlocked.current || !isIntersecting) return;
 
-      if (scrollingTimeout) {
-        clearTimeout(scrollingTimeout);
-      }
-
       setIsScrollBlocked(true);
 
-      const newTimeout = setTimeout(() => {
-        setIsScrollBlocked(false);
-        if (event instanceof WheelEvent && event.deltaY > 0 && !isScrolled) {
-          setIsScrolled(true);
-          setValuesSwitched(true);
-          setIsFirstlyAnimation(false);
-        }
-      }, 1000);
+      if (event instanceof WheelEvent && event.deltaY > 0 && !isScrolled) {
+        setIsScrolled(true);
+        setValuesSwitched(true);
+        setIsFirstlyAnimation(false);
+      }
 
-      setScrollingTimeout(newTimeout);
+      if (event instanceof TouchEvent) {
+        setIsScrolled(true);
+        setValuesSwitched(true);
+        setIsFirstlyAnimation(false);
+      }
 
       event.preventDefault();
     };
@@ -53,11 +61,8 @@ export const Before = () => {
     return () => {
       document.removeEventListener("wheel", animateScroll);
       document.removeEventListener("touchmove", animateScroll);
-      if (scrollingTimeout) {
-        clearTimeout(scrollingTimeout);
-      }
     };
-  }, [isScrolled, isIntersecting, scrollingTimeout]);
+  }, [isScrolled, isIntersecting]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,7 +78,7 @@ export const Before = () => {
             isBlocked.current = false;
             setIsScrollBlocked(false);
             observer.disconnect();
-          }, 3000);
+          }, 1500);
         }
       },
       { threshold: 0.99 },
@@ -91,13 +96,16 @@ export const Before = () => {
     <div
       ref={sectionRef}
       className="flex justify-center overflow-hidden w-full min-h-screen h-fit mb-4"
+      style={{
+        height: "calc(var(--vh) * 100)",
+      }}
     >
-      <div className="flex justify-center px-5 py-20 w-full h-full sm:px-6 md:px-8 lg:px-10">
+      <div className="flex justify-center px-5 py-14 w-full h-full sm:py-20 sm:px-6 md:px-8 lg:px-10">
         <div className="max-w-limitation w-full h-full">
           <div className="flex flex-col items-center gap-5 w-full h-full md:gap-10 lg:flex-row lg:justify-between lg:gap-8 xl:gap-[60px]">
             <div className="w-full h-auto lg:h-full lg:max-w-[370px] xl:max-w-[450px]">
               <div className="flex flex-col items-start justify-between gap-2 w-full h-auto lg:h-full">
-                <div className="flex flex-col items-start gap-5 w-full md:gap-10 xl:gap-[60px]">
+                <div className="flex flex-col items-start gap-2 w-full sm:gap-5 md:gap-10 xl:gap-[60px]">
                   <div className="flex flex-col items-start gap-2 w-full">
                     {isBlocked.current && !isFirstlyAnimation ? (
                       <h2 className="text-[32px] !leading-none sm:text-4xl md:text-[40px] lg:text-5xl xl:text-[54px] whitespace-nowrap w-full">
@@ -118,13 +126,13 @@ export const Before = () => {
                       </h2>
                     )}
 
-                    <p className="text-left text-light_gray text-[15px] !leading-5 font-fancy">
+                    <p className="text-left text-light_gray text-[13px] !leading-5 font-fancy sm:text-[15px]">
                       Get inspired by these beautiful, modern websites launched
                       with PlateLab.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-10 w-full xl:gap-[60px]">
+                  <div className="grid grid-cols-2 gap-x-10 gap-y-2 w-full sm:gap-y-10 sm:gap-x-10 xl:gap-y-[60px] xl:gap-x-[60px]">
                     {!!parameters.length &&
                       parameters.map(({ id, name, start_value, end_value }) => (
                         <GridElement

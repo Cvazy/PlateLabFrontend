@@ -36,7 +36,9 @@ export const GridElement = ({
         direction={"up"}
         duration={1}
         isFormatted={true}
-        className={"text-white text-4xl !leading-[45px] text-left w-full"}
+        className={
+          "text-white text-[28px] !leading-[36px] text-left w-full sm:!leading-[45px] sm:text-4xl"
+        }
       />
 
       <div className={`${styles.line} no-transition`}>
@@ -48,7 +50,7 @@ export const GridElement = ({
 
       <p
         className={
-          "text-[15px] font-fancy text-light_gray leading-5 md:text-base"
+          "text-[13px] font-fancy text-light_gray leading-5 sm:text-[15px] md:text-base"
         }
       >
         {name}

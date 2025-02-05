@@ -24,7 +24,11 @@
 /*}*/
 
 html {
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+html, body {
+  touch-action: none;
 }
 
 body {

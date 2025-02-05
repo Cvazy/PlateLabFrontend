@@ -11,6 +11,9 @@ export default function useLenis(isScrollBlocked: boolean) {
       smooth: true,
       ease: (t: number) => 1 - Math.pow(1 - t, 3),
       lerp: 0.1,
+      gestureOrientation: "vertical",
+      smoothTouch: true,
+      syncTouch: true,
     });
 
     function raf(time: number) {

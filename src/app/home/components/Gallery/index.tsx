@@ -31,7 +31,7 @@ export const Gallery = () => {
             <SplitText
               text="Created by PlateLab"
               className={
-                "h-11 text-4xl text-white text-center no-transition !leading-none sm:h-12 sm:text-[40px] md:h-14 md:text-5xl lg:h-16 lg:text-6xl xl:h-20 xl:text-[64px]"
+                "h-20 text-4xl text-white text-center no-transition !leading-none sm:h-12 sm:text-[40px] md:h-14 md:text-5xl lg:h-16 lg:text-6xl xl:h-20 xl:text-[64px]"
               }
               delay={25}
               animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
