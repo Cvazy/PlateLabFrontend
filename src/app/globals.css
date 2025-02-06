@@ -147,3 +147,8 @@ textarea {
   mix-blend-mode: hard-light;
   pointer-events: none;
 }
+
+.swiper-disable-scroll {
+  overflow: hidden;
+  touch-action: none;
+}

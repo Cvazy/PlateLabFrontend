@@ -21,20 +21,6 @@ export const Before = () => {
   useLenis(isScrollBlocked);
 
   useEffect(() => {
-    const updateHeight = () => {
-      document.documentElement.style.setProperty(
-        "--vh",
-        `${window.innerHeight * 0.01}px`,
-      );
-    };
-
-    updateHeight();
-    window.addEventListener("resize", updateHeight);
-
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
-
-  useEffect(() => {
     const animateScroll = (event: Event) => {
       if (!isBlocked.current || !isIntersecting) return;
 
@@ -96,9 +82,6 @@ export const Before = () => {
     <div
       ref={sectionRef}
       className="flex justify-center overflow-hidden w-full min-h-screen h-fit mb-4"
-      style={{
-        height: "calc(var(--vh) * 100)",
-      }}
     >
       <div className="flex justify-center px-5 py-14 w-full h-full sm:py-20 sm:px-6 md:px-8 lg:px-10">
         <div className="max-w-limitation w-full h-full">

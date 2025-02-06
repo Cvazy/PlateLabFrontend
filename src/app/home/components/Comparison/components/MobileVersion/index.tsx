@@ -4,22 +4,53 @@ import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper/modules";
 import { ITransformComparisons } from "../../model";
 import { Decorations } from "./components";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 
 interface MobileVersionProps {
   comparisons: ITransformComparisons[];
 }
 
 export const MobileVersion = ({ comparisons }: MobileVersionProps) => {
-  const [isLastSlide, setIsLastSlide] = useState(false);
+  const [isActiveSlideIndex, setIsActiveSlideIndex] = useState<number | null>(
+    null,
+  );
+  const [isScrollBlock, setIsScrollBlock] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const lastScrollY = useRef<number>(0);
 
-  const uniqueElementNames =
-    comparisons[0]?.elements.map((el) => el.name) || [];
+  const uniqueElementNames = useMemo(
+    () => comparisons[0]?.elements.map((el) => el.name) || [],
+    [comparisons[0]?.elements],
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+
+      const rect = containerRef.current?.getBoundingClientRect();
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - lastScrollY.current;
+      lastScrollY.current = currentScrollY;
+
+      if (isActiveSlideIndex === 0 && scrollDelta <= 0 && rect.top >= 0) {
+        setIsScrollBlock(true);
+      } else if (isScrollBlock && scrollDelta > 0) {
+        setIsScrollBlock(false);
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isActiveSlideIndex, isScrollBlock]);
 
   return (
     <div className={"w-full h-full"}>
       <div className={"p-10 w-full h-full"}>
-        <div className={"relative w-full h-full"}>
+        <div ref={containerRef} className={"relative w-full h-full"}>
           <Decorations />
 
           <Swiper
@@ -32,11 +63,13 @@ export const MobileVersion = ({ comparisons }: MobileVersionProps) => {
             pagination={{
               clickable: true,
             }}
-            onReachEnd={() => setIsLastSlide(true)}
-            onSlideChange={({ isEnd }) => setIsLastSlide(isEnd)}
+            onSlideChange={({ isEnd, activeIndex }) => {
+              setIsActiveSlideIndex(activeIndex);
+              setIsScrollBlock(isEnd);
+            }}
             modules={[Mousewheel, Pagination]}
             className={`comparison_swiper h-full ${
-              isLastSlide ? "swiper-disable-scroll" : ""
+              isScrollBlock ? "swiper-disable-scroll pointer-events-none" : ""
             }`}
           >
             {uniqueElementNames &&
