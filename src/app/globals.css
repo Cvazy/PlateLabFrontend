@@ -152,3 +152,9 @@ textarea {
   overflow: hidden;
   touch-action: none;
 }
+
+@layer utilities {
+  .pause {
+    animation-play-state: paused !important;
+  }
+}

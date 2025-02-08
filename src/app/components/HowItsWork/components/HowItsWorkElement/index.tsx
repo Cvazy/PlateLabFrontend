@@ -9,9 +9,16 @@ export const HowItsWorkElement = ({
   isTheFirst,
   isTheLast,
   isHorizontal,
-}: Omit<IHowItsWorkElementProps, "id">) => {
+  setIsPaused,
+  isPaused,
+}: Omit<IHowItsWorkElementProps, "id"> & {
+  setIsPaused: (paused: boolean) => void;
+  isPaused: boolean;
+}) => {
   return (
     <div
+      onMouseEnter={() => isActive && setIsPaused(true)} // Останавливаем только активный
+      onMouseLeave={() => isActive && setIsPaused(false)}
       className={`flex flex-col gap-6 w-full ${isHorizontal && isActive ? "" : !isHorizontal ? "" : "opacity-20"} lg:gap-0 lg:block`}
     >
       <div
@@ -22,7 +29,7 @@ export const HowItsWorkElement = ({
         >
           {isActive && (
             <div
-              className={`block ${styles.line} ${styles.horizontal_line} ${isActive ? styles.active : ""} ${isHorizontal ? "" : "lg:hidden lg:h-0"}`}
+              className={`block ${styles.line} ${styles.horizontal_line} ${isActive ? styles.active : ""} ${isHorizontal ? "" : "lg:hidden lg:h-0"} ${isPaused ? "after:pause" : ""}`}
             ></div>
           )}
 
@@ -40,7 +47,7 @@ export const HowItsWorkElement = ({
 
               {!isHorizontal && (
                 <div
-                  className={`hidden ${styles.line} ${styles.vertical_line} ${isActive ? styles.active : ""} lg:block`}
+                  className={`hidden ${styles.line} ${styles.vertical_line} ${isActive ? styles.active : ""} ${isPaused ? "after:pause" : ""} lg:block`}
                 ></div>
               )}
             </div>

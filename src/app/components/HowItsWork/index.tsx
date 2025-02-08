@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   CallToAction,
   HowItsWorkElement,
@@ -12,26 +12,49 @@ interface IHowItsWorkProps {
 }
 
 export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
-  const [activeElement, setActiveElement] = useState<number | null>(null);
+  const [activeElement, setActiveElement] = useState<number>(1);
+  const [isPaused, setIsPaused] = useState(false);
 
   const { data, isError } = useFetchAllHowItsWorkElementsQuery();
 
   const howItsWorkElements: IHowItsWork[] = data || [];
 
-  useEffect(() => {
-    const startAnimation = setTimeout(() => {
-      setActiveElement(1);
-    }, 0);
+  const lastStartTime = useRef<number | null>(null);
+  const elapsedTime = useRef<number>(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    const interval = setInterval(() => {
+  useEffect(() => {
+    if (isPaused) {
+      elapsedTime.current += Date.now() - (lastStartTime.current ?? Date.now());
+      if (intervalRef.current)
+        clearInterval(intervalRef.current as unknown as number);
+      if (timeoutRef.current)
+        clearTimeout(timeoutRef.current as unknown as number);
+      return;
+    }
+
+    lastStartTime.current = Date.now();
+
+    timeoutRef.current = setTimeout(() => {
       setActiveElement((prev) => (prev === 4 ? 1 : (prev ?? 1) + 1));
-    }, 5000);
+      elapsedTime.current = 0;
+      lastStartTime.current = Date.now();
+
+      intervalRef.current = setInterval(() => {
+        setActiveElement((prev) => (prev === 4 ? 1 : (prev ?? 1) + 1));
+        elapsedTime.current = 0;
+        lastStartTime.current = Date.now();
+      }, 5000);
+    }, 5000 - elapsedTime.current);
 
     return () => {
-      clearTimeout(startAnimation);
-      clearInterval(interval);
+      if (intervalRef.current)
+        clearInterval(intervalRef.current as unknown as number);
+      if (timeoutRef.current)
+        clearTimeout(timeoutRef.current as unknown as number);
     };
-  }, []);
+  }, [isPaused]);
 
   return (
     <div className={`flex flex-col ${isHorizontal ? "gap-[60px]" : ""} w-full`}>
@@ -60,6 +83,8 @@ export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
               isTheFirst={index === 0}
               isTheLast={index === howItsWorkElements.length - 1}
               isHorizontal={isHorizontal}
+              setIsPaused={setIsPaused}
+              isPaused={isPaused}
             />
           ))}
       </div>

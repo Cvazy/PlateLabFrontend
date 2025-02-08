@@ -25,7 +25,7 @@ export const Gallery = () => {
         >
           <div
             className={
-              "flex flex-col items-center gap-10 no-transition py-40 sticky top-0 bottom-0 px-10 w-full"
+              "flex flex-col items-center gap-10 no-transition py-40 sticky top-0 bottom-0 px-10 w-full md:py-120"
             }
           >
             <SplitText

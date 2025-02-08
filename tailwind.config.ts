@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      padding: {
+        "120": "30rem",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
