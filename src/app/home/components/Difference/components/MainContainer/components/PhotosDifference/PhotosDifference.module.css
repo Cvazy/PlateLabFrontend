@@ -1,0 +1,17 @@
+.ChangeDriver {
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 120%;
+        background: var(--red);
+        left: 50%;
+        top: -10%;
+        display: block;
+        z-index: 30;
+        box-shadow: 0 0 14px #F63737;
+    }
+}
+
+.ChangeDriverWrapper {}
