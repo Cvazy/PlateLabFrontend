@@ -16,8 +16,6 @@ export interface IComparisons {
   price_per_photo: string;
   convenience_for_restaurants: string;
   style_and_customization: string;
-  consistency: string;
-  adaptability_for_seasonal_menus: string;
 }
 
 export interface IGallery {

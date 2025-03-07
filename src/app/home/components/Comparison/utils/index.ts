@@ -5,11 +5,11 @@ export const transformData = (data: IComparisons[]) => {
     id: item.id,
     title: item.title,
     elements: Object.entries(item)
-      .filter(([key]) => key !== "id" && key !== "title") // Исключаем id и title
+      .filter(([key]) => key !== "id" && key !== "title")
       .map(([key, value]) => ({
         name: key
           .split("_")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Title Case
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" "),
         value: value,
       })),

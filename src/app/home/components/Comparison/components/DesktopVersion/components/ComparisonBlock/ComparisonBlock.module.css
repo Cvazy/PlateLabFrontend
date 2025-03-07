@@ -3,5 +3,5 @@
 }
 
 .DescriptionBlock p {
-    @apply text-center text-white
+    @apply text-white
 }

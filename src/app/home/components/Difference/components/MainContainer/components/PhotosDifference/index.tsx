@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./PhotosDifference.module.css";
 
-export const PhotosDifference = () => {
+export const PhotosDifference = ({
+  onOpacityChange,
+  setShiftPercentage,
+}: {
+  onOpacityChange: (left: number, right: number) => void;
+  setShiftPercentage: (value: ((prevState: number) => number) | number) => void;
+}) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [shift, setShift] = useState<number | string>("50%");
   const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -15,8 +21,15 @@ export const PhotosDifference = () => {
     const rect = sliderRef.current?.getBoundingClientRect();
     const maxShift = rect.width;
     const newShift = Math.max(0, Math.min(clientX - rect.left, maxShift));
+    const shiftPercentage = (newShift / maxShift) * 100;
 
     setShift(newShift);
+    setShiftPercentage(shiftPercentage);
+
+    const leftOpacity = 0.2 + 0.9 * (1 - shiftPercentage / 100);
+    const rightOpacity = 0.2 + 0.9 * (shiftPercentage / 100);
+
+    onOpacityChange(leftOpacity, rightOpacity);
 
     if (beforeRef.current) {
       if ("style" in beforeRef.current) {
@@ -69,7 +82,7 @@ export const PhotosDifference = () => {
 
   return (
     <div
-      className="flex items-center justify-center max-w-[636px] aspect-square px-6 w-full lg:px-0"
+      className="flex items-center justify-center max-w-[636px] aspect-square w-full"
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
     >
@@ -95,7 +108,7 @@ export const PhotosDifference = () => {
             className={`flex absolute justify-center top-0 z-30 h-full left-1/2 no-transition ${styles.ChangeDriver}`}
           >
             <div
-              className="flex justify-center items-center absolute top-[45%] ml-1 cursor-pointer w-[115px] h-[58px] no-transition md:w-[124px] md:h-[68px]" // Устанавливаем положение ползунка
+              className="flex justify-center items-center absolute top-[43.5%] ml-1 cursor-pointer w-[115px] h-[58px] no-transition md:w-[124px] md:h-[68px]" // Устанавливаем положение ползунка
             >
               <Image
                 width={124}

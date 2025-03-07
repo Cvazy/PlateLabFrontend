@@ -3,7 +3,6 @@
 import {
   Before,
   Benefits,
-  Comparison,
   Difference,
   Gallery,
   MainSwiper,
@@ -23,8 +22,6 @@ export default function Home() {
       <Gallery />
 
       <Benefits />
-
-      <Comparison />
 
       <ParallaxProvider>
         <ParallaxBeforeFooter />

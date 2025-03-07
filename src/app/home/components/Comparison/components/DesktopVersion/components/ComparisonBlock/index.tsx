@@ -1,18 +1,21 @@
-import Image from "next/image";
-
 import styles from "./ComparisonBlock.module.css";
 import {
   ITransformComparisons,
   ITransformComparisonsElement,
 } from "@/app/home/components/Comparison/model";
-import { Fragment } from "react";
+import { CSSProperties, Fragment } from "react";
 
 interface IComparisonBlock {
   isAIBlock: boolean;
   data: ITransformComparisons;
+  style?: CSSProperties;
 }
 
-export const ComparisonBlock = ({ data, isAIBlock }: IComparisonBlock) => {
+export const ComparisonBlock = ({
+  data,
+  isAIBlock,
+  style,
+}: IComparisonBlock) => {
   let title: string = "";
   let elements: ITransformComparisonsElement[] = [];
 
@@ -23,61 +26,50 @@ export const ComparisonBlock = ({ data, isAIBlock }: IComparisonBlock) => {
 
   return (
     <div
-      className={`${isAIBlock ? "rounded-r-[10px] border-l bg-gradient-to-b from-[#1b1b1b99] via-[#1b1b1b99] to-[#f7363724]" : "rounded-l-[10px] border-r-0"} border border-solid border-gray w-full`}
+      className={`flex flex-col items-center ${isAIBlock ? "lg:items-end" : "lg:items-start"} gap-10 w-full lg:max-w-[300px]`}
     >
-      <div
-        className={
-          "px-8 pb-10 pt-10 w-full lg:px-12 lg:pt-12 xl:pt-[60px] xl:px-[60px]"
-        }
-      >
-        <div className={"flex flex-col items-center gap-10 w-full"}>
-          <div className={"max-w-[300px] h-[89px] w-full relative"}>
-            <div className={"flex items-center justify-center w-full h-full"}>
-              <p
-                className={`font-fancy !leading-[57px] text-[80px] uppercase text-center ${isAIBlock ? "text-red" : "text-white"}`}
-              >
-                {title}
-              </p>
-            </div>
-
-            <div className={"textEffect"}></div>
-          </div>
-
-          <div className={"flex flex-col items-center gap-5 w-full"}>
-            {elements &&
-              elements.map(({ name, value }, index) => (
-                <Fragment key={name}>
-                  <div className={"flex flex-col items-center w-full"}>
-                    <p
-                      className={"text-center text-[15px] font-fancy text-gray"}
-                    >
-                      {name}
-                    </p>
-
-                    <div
-                      dangerouslySetInnerHTML={{ __html: value }}
-                      className={`flex justify-center text-center w-full ${styles.DescriptionBlock}`}
-                    />
-                  </div>
-
-                  {index !== elements.length - 1 && (
-                    <div className={"w-10 h-px bg-gray"}></div>
-                  )}
-                </Fragment>
-              ))}
-          </div>
-
-          {isAIBlock && (
-            <Image
-              width={22}
-              height={22}
-              src={"/images/logo.svg"}
-              alt={"Logo"}
-              loading={"lazy"}
-              className={"block"}
-            />
-          )}
+      <div className={"max-w-[300px] h-16 w-fit relative"}>
+        <div className={"flex items-center justify-center w-full h-full"}>
+          <p
+            style={style || {}}
+            className={`font-fancy !leading-[57px] text-[52px] uppercase text-center ${isAIBlock ? "text-red" : "text-white"}`}
+          >
+            {title}
+          </p>
         </div>
+
+        <div
+          className={`${style?.opacity === 0 ? "opacity-0" : ""} textEffect`}
+        ></div>
+      </div>
+
+      <div
+        style={style || {}}
+        className={`flex flex-col items-center ${isAIBlock ? "lg:items-end" : "lg:items-start"} gap-5 w-full`}
+      >
+        {elements &&
+          elements.map(({ name, value }, index) => (
+            <Fragment key={name}>
+              <div
+                className={`flex flex-col items-center ${isAIBlock ? "lg:items-end" : "lg:items-start"} w-full`}
+              >
+                <p
+                  className={`text-center ${isAIBlock ? "lg:text-end" : "lg:text-start"} text-[15px] font-fancy text-gray`}
+                >
+                  {name}
+                </p>
+
+                <div
+                  dangerouslySetInnerHTML={{ __html: value }}
+                  className={`flex justify-center text-center ${isAIBlock ? "lg:justify-end lg:text-end" : "lg:justify-start lg:text-start"} w-full ${styles.DescriptionBlock}`}
+                />
+              </div>
+
+              {index !== elements.length - 1 && (
+                <div className={"w-10 h-px bg-gray"}></div>
+              )}
+            </Fragment>
+          ))}
       </div>
     </div>
   );
