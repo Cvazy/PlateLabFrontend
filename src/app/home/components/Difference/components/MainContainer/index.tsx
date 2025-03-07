@@ -52,14 +52,6 @@ export const MainContainer = () => {
     });
   }, [shiftPercentage]);
 
-  if (comparisons.length > 0) {
-    console.log(
-      `<p>${(comparisons[1].elements?.[1]?.value || "")
-        .split(" ")
-        .map((word) => word.replace(/[<\/p>,]/g, ""))}</p>`,
-    );
-  }
-
   return (
     <div className="w-full">
       <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-between lg:items-start">
@@ -74,6 +66,12 @@ export const MainContainer = () => {
         <PhotosDifference
           onOpacityChange={handleOpacityChange}
           setShiftPercentage={setShiftPercentage}
+          DefaultPhotoPath={
+            comparisons.length > 0 ? comparisons[0].photo_for_difference : ""
+          }
+          AIPhotoPath={
+            comparisons.length > 0 ? comparisons[1].photo_for_difference : ""
+          }
         />
 
         <div className="hidden lg:block">

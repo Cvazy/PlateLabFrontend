@@ -13,6 +13,7 @@ export interface IPartner {
 export interface IComparisons {
   id: number | string;
   title: string;
+  photo_for_difference: string;
   price_per_photo: string;
   convenience_for_restaurants: string;
   style_and_customization: string;

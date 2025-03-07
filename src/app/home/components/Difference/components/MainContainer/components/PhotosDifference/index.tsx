@@ -1,14 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./PhotosDifference.module.css";
+import { imageLoader } from "@/app/utils";
+import CustomImage from "@/app/utils/customImage";
+
+interface IPhotosDifferenceProps {
+  onOpacityChange: (left: number, right: number) => void;
+  setShiftPercentage: (value: ((prevState: number) => number) | number) => void;
+  DefaultPhotoPath: string;
+  AIPhotoPath: string;
+}
 
 export const PhotosDifference = ({
   onOpacityChange,
   setShiftPercentage,
-}: {
-  onOpacityChange: (left: number, right: number) => void;
-  setShiftPercentage: (value: ((prevState: number) => number) | number) => void;
-}) => {
+  DefaultPhotoPath,
+  AIPhotoPath,
+}: IPhotosDifferenceProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [shift, setShift] = useState<number | string>("50%");
   const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -92,14 +100,19 @@ export const PhotosDifference = ({
             className="no-transition before w-1/2 absolute h-full left-0 top-0 z-10"
             ref={beforeRef}
           >
-            <Image
-              width={290}
-              height={290}
-              src="/images/photo.png"
-              alt="Photo image"
-              className="max-w-[517px] aspect-square w-full h-full overflow-hidden select-none object-cover object-left absolute top-0 block"
-              loading="lazy"
-            />
+            {DefaultPhotoPath.length > 0 && (
+              <CustomImage
+                width={290}
+                height={290}
+                src={DefaultPhotoPath}
+                alt={"Photo Image"}
+                loading={"lazy"}
+                loader={imageLoader}
+                className={
+                  "max-w-[517px] aspect-square w-full h-full overflow-hidden select-none object-cover object-left absolute top-0 block"
+                }
+              />
+            )}
           </div>
 
           <div
@@ -122,13 +135,19 @@ export const PhotosDifference = ({
           </div>
 
           <div className="no-transition after">
-            <Image
-              width={290}
-              height={290}
-              src="/images/ai.png"
-              alt="AI image"
-              className="max-w-[517px] aspect-square w-full absolute object-cover select-none top-0 block"
-            />
+            {AIPhotoPath.length > 0 && (
+              <CustomImage
+                width={290}
+                height={290}
+                src={AIPhotoPath}
+                alt={"AI Image"}
+                loading={"lazy"}
+                loader={imageLoader}
+                className={
+                  "max-w-[517px] aspect-square w-full absolute object-cover select-none top-0 block"
+                }
+              />
+            )}
           </div>
         </div>
       </div>
