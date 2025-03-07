@@ -109,7 +109,7 @@ export const PhotosDifference = ({
                 loading={"lazy"}
                 loader={imageLoader}
                 className={
-                  "max-w-[517px] aspect-square w-full h-full overflow-hidden select-none object-cover object-left absolute top-0 block"
+                  "max-w-[517px] aspect-square w-full h-full overflow-hidden select-none object-cover object-left absolute top-0 block rounded-l-full"
                 }
               />
             )}
@@ -144,7 +144,7 @@ export const PhotosDifference = ({
                 loading={"lazy"}
                 loader={imageLoader}
                 className={
-                  "max-w-[517px] aspect-square w-full absolute object-cover select-none top-0 block"
+                  "max-w-[517px] aspect-square w-full absolute object-cover select-none top-0 block rounded-r-full"
                 }
               />
             )}
