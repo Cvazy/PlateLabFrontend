@@ -56,7 +56,9 @@ const AboutUsPage = () => {
                     <img
                       width={675}
                       height={412}
-                      src={"https://plate-lab.ru/images/map.jpg"}
+                      src={
+                        "https://cvazy-platelabfrontend-3740.twc1.net/images/map.jpg"
+                      }
                       alt={"About Map"}
                       className={"w-full h-full rounded-lg select-none"}
                       loading={"lazy"}

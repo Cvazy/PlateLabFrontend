@@ -22,7 +22,7 @@ export const AboutImage = () => {
         <img
           width={350}
           height={350}
-          src={"https://plate-lab.ru/images/1.png"}
+          src={"https://cvazy-platelabfrontend-3740.twc1.net/images/1.png"}
           alt={"About Image"}
           className={
             "select-none opacity-20 min-w-[350px] min-h-[350px] w-full h-full sm:min-w-[400px] sm:min-h-[400px] md:min-w-[500px] md:min-h-[500px] lg:min-w-[600px] lg:min-h-[600px] xl:min-w-[730px] xl:min-h-[730px]"

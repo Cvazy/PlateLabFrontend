@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MouseEvent, TouchEvent } from "react";
 import Image from "next/image";
 import styles from "./PhotosDifference.module.css";
 import { imageLoader } from "@/app/utils";
@@ -23,7 +23,7 @@ export const PhotosDifference = ({
   const beforeRef = useRef<HTMLDivElement | null>(null);
   const changeRef = useRef<HTMLDivElement | null>(null);
 
-  const updateSlider = (clientX) => {
+  const updateSlider = (clientX: number) => {
     if (!sliderRef.current || !beforeRef.current || !changeRef.current) return;
 
     const rect = sliderRef.current?.getBoundingClientRect();
@@ -53,13 +53,13 @@ export const PhotosDifference = ({
     }
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (isActive) {
       updateSlider(e.clientX);
     }
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     if (isActive && e.touches[0]) {
       updateSlider(e.touches[0].clientX);
     }
