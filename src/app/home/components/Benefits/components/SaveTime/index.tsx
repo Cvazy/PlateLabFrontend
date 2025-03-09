@@ -5,18 +5,15 @@ import { SpotlightCard } from "@/app/ReactBitsComponents";
 
 export const SaveTime = () => {
   return (
-    <SpotlightCard className={"h-full xl:min-h-[233.5px] xl:max-h-[233.5px]"}>
+    <SpotlightCard
+      className={"h-full xl:min-h-[233.5px] xl:max-h-[233.5px]"}
+      spotlightColor={"rgba(61,61,61,0.25)"}
+    >
       <div
         className={
-          "rounded-[10px] relative border border-solid border-[#212121] bg-gradient-to-br from-[#272727] to-transparent min-h-[340px] w-full h-full xl:min-h-fit xl:from-black xl:to-[#0f0f0fcc]"
+          "rounded-[10px] relative border border-solid border-[#212121] min-h-[340px] w-full h-full xl:min-h-fit"
         }
       >
-        <div
-          className={
-            "absolute top-0 left-0 w-full h-full bg-gradient-to-bl from-dark_gray opacity-[0.125] to-[#ffffff66] hidden xl:block"
-          }
-        ></div>
-
         <div className={"relative z-10 px-4 py-5 w-full h-full"}>
           <div
             className={

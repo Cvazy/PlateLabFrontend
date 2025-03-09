@@ -27,17 +27,14 @@ export const StandOutOnline = () => {
   }, []);
 
   return (
-    <SpotlightCard className={"h-full xl:min-h-[233.5px] xl:max-h-[233.5px]"}>
+    <SpotlightCard
+      className={"h-full xl:min-h-[233.5px] xl:max-h-[233.5px]"}
+      spotlightColor={"rgba(61,61,61,0.25)"}
+    >
       <div
         ref={containerRef}
-        className={`relative rounded-[10px] border border-solid ${styles.BgContainer} border-[#212121] overflow-hidden min-h-[340px] w-full h-full xl:min-h-fit`}
+        className={`relative rounded-[10px] border border-solid border-[#212121] overflow-hidden min-h-[340px] w-full h-full xl:min-h-fit`}
       >
-        <div
-          className={
-            "absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#272727] to-transparent xl:bg-gradient-to-tr xl:from-dark_gray"
-          }
-        ></div>
-
         <div
           className={`${styles.Phone} !duration-1000 ${isAnimateVisible ? styles.animate : styles.default}`}
         >

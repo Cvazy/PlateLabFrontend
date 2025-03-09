@@ -83,10 +83,11 @@ export const Chart = () => {
       {
         label: "Turnover",
         data: salesQuantities,
-        borderColor: "#F63737",
-        backgroundColor: "transparent",
+        borderColor: "white",
         fill: true,
         tension: 0,
+        pointBackgroundColor: "white",
+        pointRadius: 4,
       },
     ],
   };
@@ -113,10 +114,10 @@ export const Chart = () => {
             type: "point",
             xValue: annotationMonth,
             yValue: annotationValue,
-            backgroundColor: "white",
+            backgroundColor: "#F63737",
             borderColor: "#F63737",
             borderWidth: 2,
-            radius: 5,
+            radius: 6,
           },
           line: {
             type: "line",
@@ -182,7 +183,7 @@ export const Chart = () => {
     <div className={"flex flex-col gap-6 w-full h-full"}>
       <p
         className={
-          "font-fancy text-right text-red !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
+          "font-fancy text-right text-white !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
         }
       >
         +
@@ -194,7 +195,7 @@ export const Chart = () => {
           duration={1}
           isFormatted={false}
           className={
-            "font-fancy text-right text-red !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
+            "font-fancy text-right text-white !leading-[normal] text-[32px] md:text-4xl lg:text-[40px] xl:text-[44px]"
           }
         />
         %

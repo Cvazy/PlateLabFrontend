@@ -128,7 +128,7 @@ export const PhotosDifference = ({
                 height={68}
                 src="/images/toddler.svg"
                 alt="Toddler"
-                className="w-[115px] h-[58px] select-none no-transition md:w-[124px] md:h-[68px]"
+                className="w-[115px] h-[58px] select-none no-transition pointer-events-none md:w-[124px] md:h-[68px]"
                 loading="lazy"
               />
             </div>

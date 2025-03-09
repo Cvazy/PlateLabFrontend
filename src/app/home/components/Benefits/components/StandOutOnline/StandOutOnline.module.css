@@ -1,8 +1,3 @@
-.BgContainer {
-    background-size: cover;
-    background: url("../../../../../../../public/images/bg.png") no-repeat center;
-}
-
 .Phone {
     position: absolute;
     z-index: 20;

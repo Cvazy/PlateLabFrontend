@@ -36,7 +36,7 @@ const ContactPage = () => {
                   </h1>
 
                   <div className={"w-full"}>
-                    <HowItsWorkContact isHorizontal={false} />
+                    <HowItsWorkContact />
                   </div>
                 </div>
               </div>

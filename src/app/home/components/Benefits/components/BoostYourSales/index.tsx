@@ -11,7 +11,7 @@ export const BoostYourSales = () => {
     >
       <div
         className={
-          "overflow-hidden rounded-[10px] border border-solid border-[#212121] bg-gradient-to-b from-[#050505bd] to-[#343232] w-full h-full"
+          "overflow-hidden rounded-[10px] border border-solid border-[#212121] w-full h-full"
         }
       >
         <div className={"px-4 py-5 w-full h-full"}>

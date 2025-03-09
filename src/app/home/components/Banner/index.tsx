@@ -1,4 +1,4 @@
-import { Button } from "@/app/components";
+import { Button, RedButton } from "@/app/components";
 import { SeeWorkBtn } from "./components";
 
 export const Banner = () => {
@@ -36,20 +36,7 @@ export const Banner = () => {
                   "flex flex-col items-center gap-6 max-w-[183px] w-full md:gap-5 lg:max-w-[337px] lg:flex-row xl:gap-4"
                 }
               >
-                <Button
-                  text={"Start your project"}
-                  textColor={"white"}
-                  fontSize={"text-[15px] lg:text-sm"}
-                  bgColor={"bg-red"}
-                  paddings={"px-4 py-3.5 lg:py-2.5"}
-                  borderRadius={"rounded"}
-                  onClick={handleClick}
-                  starReverse={true}
-                  starColor={"white"}
-                  height={"h-11 lg:h-9"}
-                  disabled={false}
-                  hoverEffect={"hover:bg-[#811C1C]"}
-                />
+                <RedButton height={"h-11"} />
 
                 <SeeWorkBtn />
               </div>

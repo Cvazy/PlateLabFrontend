@@ -16,7 +16,7 @@ export const HowItsWorkElement = ({
 }) => {
   return (
     <div
-      onMouseEnter={() => isActive && setIsPaused(true)} // Останавливаем только активный
+      onMouseEnter={() => isActive && setIsPaused(true)}
       onMouseLeave={() => isActive && setIsPaused(false)}
       className={`flex flex-col gap-6 w-full lg:gap-0 lg:block`}
     >
