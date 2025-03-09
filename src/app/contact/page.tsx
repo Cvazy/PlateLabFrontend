@@ -1,7 +1,7 @@
 "use client";
 
 import { FormToConnection } from "./components";
-import { HowItsWork } from "@/app/components";
+import { HowItsWorkContact } from "@/app/components";
 import useLenis from "@/app/hooks/useLenis";
 
 const ContactPage = () => {
@@ -36,7 +36,7 @@ const ContactPage = () => {
                   </h1>
 
                   <div className={"w-full"}>
-                    <HowItsWork isHorizontal={false} />
+                    <HowItsWorkContact isHorizontal={false} />
                   </div>
                 </div>
               </div>

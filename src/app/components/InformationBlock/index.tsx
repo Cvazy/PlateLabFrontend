@@ -1,37 +1,50 @@
-"use client";
-
-import { useState } from "react";
-import { HowItsWork, FAQ } from "@/app/components";
+import { FAQ, HowItsWorkPricing } from "@/app/components";
 
 export const InformationBlock = () => {
-  const [isFAQVisible, setIsFAQVisible] = useState(false);
-
   return (
-    <div className={"py-20 w-full"}>
-      <div className={"flex flex-col relative w-full"}>
-        <div className={"grid grid-cols-2 top-px relative z-10 w-full"}>
-          <button
-            type={"button"}
-            onClick={() => setIsFAQVisible(false)}
-            className={`${isFAQVisible ? "border-black" : "bg-[#161515] border-t border-x border-solid border-gray"} text-lg text-white !leading-none px-10 py-3.5 rounded-t-lg w-full md:text-xl lg:text-2xl xl:text-[28px]`}
-          >
-            How it works?
-          </button>
+    <div className={"pb-20 pt-16 w-full lg:pt-20"}>
+      <div className={`w-full`}>
+        <div className={"py-[60px] px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10"}>
+          <div className={"flex flex-col gap-16 w-full"}>
+            <div
+              className={
+                "pt-[60px] pb-[30px] w-full md:pb-10 lg:pb-12 xl:pb-[60px]"
+              }
+            >
+              <div
+                className={
+                  "flex flex-col items-center gap-[60px] w-full lg:gap-[71px]"
+                }
+              >
+                <h2
+                  className={
+                    "text-2xl text-center text-white !leading-none sm:text-3xl md:text-4xl lg:text-[40px]"
+                  }
+                >
+                  How it works?
+                </h2>
 
-          <button
-            type={"button"}
-            onClick={() => setIsFAQVisible(true)}
-            className={`${!isFAQVisible ? "border-black" : "bg-[#161515] border-t border-x border-solid border-gray"} text-lg text-white !leading-none px-10 py-3.5 rounded-t-lg w-full md:text-xl lg:text-2xl xl:text-[28px]`}
-          >
-            FAQ
-          </button>
-        </div>
+                <HowItsWorkPricing />
+              </div>
+            </div>
 
-        <div
-          className={`bg-gradient-to-b from-[#161515] to-[#05050591] ${isFAQVisible ? "rounded-tl-lg" : "rounded-tr-lg"} rounded-lg-b border border-solid border-gray w-full`}
-        >
-          <div className={"py-[60px] px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10"}>
-            {isFAQVisible ? <FAQ /> : <HowItsWork isHorizontal={true} />}
+            <div
+              className={
+                "pt-[60px] pb-[30px] w-full md:pb-10 lg:pb-12 xl:pb-[60px]"
+              }
+            >
+              <div className={"flex flex-col items-center gap-[60px] w-full"}>
+                <h2
+                  className={
+                    "text-2xl text-center text-white !leading-none sm:text-3xl md:text-4xl lg:text-[40px]"
+                  }
+                >
+                  FAQ
+                </h2>
+
+                <FAQ />
+              </div>
+            </div>
           </div>
         </div>
       </div>

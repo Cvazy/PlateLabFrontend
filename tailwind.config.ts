@@ -23,6 +23,7 @@ export default {
       fontFamily: {
         sans: ["Groteska", "sans-serif"],
         fancy: ["Helvetica", "sans-serif"],
+        proxima: ["Proxima Nova", "sans-serif"],
         sf_pro: ["SF Pro  Display", "sans-serif"],
       },
       maxWidth: {

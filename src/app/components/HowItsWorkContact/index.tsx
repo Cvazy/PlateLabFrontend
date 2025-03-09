@@ -1,17 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  CallToAction,
-  HowItsWorkElement,
-} from "@/app/components/HowItsWork/components";
+import { HowItsWorkElement } from "@/app/components/HowItsWorkContact/components";
 import { IHowItsWork, useFetchAllHowItsWorkElementsQuery } from "@/app/contact";
 
-interface IHowItsWorkProps {
-  isHorizontal: boolean;
-}
-
-export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
+export const HowItsWorkContact = () => {
   const [activeElement, setActiveElement] = useState<number>(1);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -57,7 +50,7 @@ export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
   }, [isPaused]);
 
   return (
-    <div className={`flex flex-col ${isHorizontal ? "gap-[60px]" : ""} w-full`}>
+    <div className={`flex flex-col w-full`}>
       {isError && (
         <p
           className={
@@ -70,7 +63,7 @@ export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
       )}
 
       <div
-        className={`flex flex-col ${isHorizontal ? "gap-6 lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-10" : "rounded-tl-lg border border-solid border-gray p-4 gap-6 sm:p-6 md:p-9 lg:rounded-none lg:border-none lg:p-0 lg:gap-0"} w-full`}
+        className={`flex flex-col rounded-tl-lg border border-solid border-gray p-4 gap-6 w-full sm:p-6 md:p-9 lg:rounded-none lg:border-none lg:p-0 lg:gap-0`}
       >
         {howItsWorkElements &&
           howItsWorkElements.map(({ id, title, description }, index) => (
@@ -82,14 +75,13 @@ export const HowItsWork = ({ isHorizontal }: IHowItsWorkProps) => {
               numElement={index + 1}
               isTheFirst={index === 0}
               isTheLast={index === howItsWorkElements.length - 1}
-              isHorizontal={isHorizontal}
               setIsPaused={setIsPaused}
               isPaused={isPaused}
             />
           ))}
       </div>
 
-      {isHorizontal && <CallToAction />}
+      {/*{isHorizontal && <CallToAction />}*/}
     </div>
   );
 };
