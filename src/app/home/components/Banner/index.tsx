@@ -1,9 +1,6 @@
-import { Button, RedButton } from "@/app/components";
-import { SeeWorkBtn } from "./components";
+import { RedButton, SceondaryButton } from "@/app/components";
 
 export const Banner = () => {
-  const handleClick = () => {};
-
   return (
     <div className={"absolute z-40 top-1/4 left-0 right-0 px-5 w-full"}>
       <div className={"flex justify-center w-full"}>
@@ -38,7 +35,7 @@ export const Banner = () => {
               >
                 <RedButton height={"h-11"} />
 
-                <SeeWorkBtn />
+                <SceondaryButton height={"h-11"} />
               </div>
             </div>
           </div>

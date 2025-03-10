@@ -1,17 +1,23 @@
-.ChangeDriver {
-
-    &:before {
-        content: "";
-        position: absolute;
-        width: 2px;
-        height: 120%;
-        background: var(--red);
-        left: 50%;
-        top: -10%;
-        display: block;
-        z-index: 30;
-        box-shadow: 0 0 14px #F63737;
-    }
+.ChangeDriver::before,
+.ChangeDriver::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 2px;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 1s ease-in-out;
 }
 
-.ChangeDriverWrapper {}
+.ChangeDriver::before {
+    top: 50%;
+    height: 50%;
+    transform-origin: center top;
+}
+
+.ChangeDriver::after {
+    bottom: 50%;
+    height: 50%;
+    transform-origin: center bottom;
+}

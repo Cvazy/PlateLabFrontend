@@ -33,7 +33,7 @@ export const HowItsWorkPricing = () => {
       const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const startFill = windowHeight * 1.5;
+      const startFill = windowHeight * 2;
       const endFill = windowHeight / 3;
 
       const offsetStart = 0.025;
@@ -82,11 +82,12 @@ export const HowItsWorkPricing = () => {
           >
             <div className={"no-transition relative bg-gray w-[2px] h-full"}>
               <div
-                className={"absolute top-0 left-0 w-[2px] h-full bg-red"}
+                className={
+                  "no-transition absolute top-0 left-0 w-[2px] h-full bg-red"
+                }
                 style={{
                   transform: `scaleY(${scrollProgress})`,
                   transformOrigin: "top",
-                  transition: "transform 0.25s ease",
                 }}
               ></div>
             </div>

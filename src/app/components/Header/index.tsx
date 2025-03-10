@@ -9,7 +9,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 absolute ${isMobileMenuOpen ? "bg-black" : ""}`}
+      className={`flex justify-center items-center w-full border-b border-solid border-gray z-50 h-20 ${isMobileMenuOpen ? "bg-black fixed" : "absolute"}`}
     >
       <div
         className={

@@ -1,7 +1,7 @@
 "use client";
 
 import { Billet, GalleryContainer } from "./components";
-import { Button } from "@/app/components";
+import { Button, SceondaryButton } from "@/app/components";
 import { SplitText } from "@/app/ReactBitsComponents";
 
 export const Gallery = () => {
@@ -41,20 +41,8 @@ export const Gallery = () => {
               rootMargin="-50px"
             />
 
-            <div className={"block max-w-36 w-full md:hidden"}>
-              <Button
-                text={"More cases"}
-                textColor={"black"}
-                fontSize={"text-[15px]"}
-                bgColor={"bg-white"}
-                paddings={"px-4 py-3.5"}
-                borderRadius={"rounded"}
-                onClick={handleClick}
-                starReverse={true}
-                starColor={"black"}
-                height={"h-11"}
-                disabled={false}
-              />
+            <div className={"block pointer-events-auto md:hidden"}>
+              <SceondaryButton height={"h-11"} />
             </div>
           </div>
         </div>

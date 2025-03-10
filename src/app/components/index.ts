@@ -12,3 +12,4 @@ export * from "./NetworkItem";
 export * from "./InformationBlock";
 export * from "./FAQ";
 export * from "./RedButton";
+export * from "./SceondaryButton";

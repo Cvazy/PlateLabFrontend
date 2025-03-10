@@ -11,7 +11,7 @@ export const GalleryContainer = () => {
   const { data } = useFetchAllGalleryQuery();
   const containerRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
-  const [scale, setScale] = useState(1.5);
+  const [scale, setScale] = useState(0.78);
 
   const gallery: IGallery[] = data || [];
 
@@ -20,7 +20,6 @@ export const GalleryContainer = () => {
       if (!containerRef.current) return;
 
       const currentScrollY = window.scrollY;
-      const scrollDelta = currentScrollY - lastScrollY.current;
       lastScrollY.current = currentScrollY;
 
       const container = containerRef.current;
@@ -28,20 +27,7 @@ export const GalleryContainer = () => {
       const containerHeight = rect.height;
 
       if (rect.top < 1000 && rect.bottom > 100) {
-        const scrollRatio = Math.min(
-          Math.max(currentScrollY / containerHeight, 0),
-          1,
-        );
-
-        if (scrollDelta > 0 && rect.top < 1000) {
-          const newScale = 1.45 - scrollRatio * 0.375;
-
-          setScale(Math.max(newScale, 0.75));
-        } else if (scrollDelta < 0 && rect.bottom > 100) {
-          const newScale = 1.5 - scrollRatio * 0.375;
-
-          setScale(Math.min(newScale, 1.5));
-        }
+        setScale((currentScrollY / containerHeight) * 0.5);
       }
     };
 

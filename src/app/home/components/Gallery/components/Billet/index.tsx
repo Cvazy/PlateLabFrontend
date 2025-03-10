@@ -1,11 +1,9 @@
 "use client";
 
-import { Button } from "@/app/components";
+import { Button, SceondaryButton } from "@/app/components";
 import { BilletLogo } from "./components";
 
 export const Billet = () => {
-  const handleClick = () => {};
-
   return (
     <div
       className={
@@ -41,20 +39,8 @@ export const Billet = () => {
                   </p>
                 </div>
 
-                <div className={"hidden w-full md:block md:max-w-32"}>
-                  <Button
-                    text={"More cases"}
-                    textColor={"black"}
-                    fontSize={"text-sm"}
-                    bgColor={"bg-white"}
-                    paddings={"px-3 py-3 lg:py-2"}
-                    borderRadius={"rounded"}
-                    onClick={handleClick}
-                    starReverse={true}
-                    starColor={"black"}
-                    height={"h-10 lg:h-8"}
-                    disabled={false}
-                  />
+                <div className={"hidden md:block"}>
+                  <SceondaryButton height={"h-9"} />
                 </div>
               </div>
             </div>
