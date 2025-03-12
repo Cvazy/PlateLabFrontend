@@ -57,6 +57,7 @@ export const PartnersList = () => {
       >
         <div className={"overflow-hidden relative w-full"}>
           <div
+            key={Date.now()}
             className={`flex items-center gap-[60px] ${styles.AnimateScroll} w-max h-full`}
           >
             {repeatedPartners &&

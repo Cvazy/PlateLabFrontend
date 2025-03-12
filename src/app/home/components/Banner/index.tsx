@@ -10,23 +10,43 @@ export const Banner = () => {
               "flex flex-col items-center gap-[60px] w-full md:gap-14 lg:gap-12 xl:gap-11"
             }
           >
-            <h1
-              className={
-                "text-center !leading-none text-white text-[40px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
-              }
-            >
-              AI Photography for restaurants.
-            </h1>
-
-            <div className={"flex flex-col items-center gap-10 w-full"}>
-              <p
+            <div>
+              <h1
                 className={
-                  "font-fancy text-base text-center text-white tracking-[-0.0125em] md:text-lg xl:text-xl"
+                  "text-center !leading-none text-white text-[40px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
                 }
               >
-                Save time and money: AI-crafted photos that look stunning,
-                professional, and sell more.
-              </p>
+                AI Photography
+              </h1>
+
+              <h2
+                className={
+                  "text-center !leading-none text-white text-[40px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
+                }
+              >
+                For Restaurants.
+              </h2>
+            </div>
+
+            <div className={"flex flex-col items-center gap-10 w-full"}>
+              <div>
+                <p
+                  className={
+                    "font-fancy text-base text-center text-white tracking-[-0.0125em] md:text-lg lg:text-xl xl:text-[22px]"
+                  }
+                >
+                  AI-crafted photos that look stunning,
+                </p>
+
+                <p
+                  className={
+                    "font-fancy text-base text-center text-white tracking-[-0.0125em] md:text-lg lg:text-xl xl:text-[22px]"
+                  }
+                >
+                  professional, and{" "}
+                  <span className={"text-red"}>sell more.</span>
+                </p>
+              </div>
 
               <div
                 className={

@@ -21,6 +21,7 @@ export const PhotosDifference = ({
   const [addShadow, setAddShadow] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [shift, setShift] = useState<number | string>("50%");
+  const [hasHovered, setHasHovered] = useState<boolean>(false);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const beforeRef = useRef<HTMLDivElement | null>(null);
   const changeRef = useRef<HTMLDivElement | null>(null);
@@ -81,7 +82,10 @@ export const PhotosDifference = ({
     const slider = sliderRef.current;
     if (!slider) return;
 
-    const handleStart = () => setIsActive(true);
+    const handleStart = () => {
+      setIsActive(true);
+      setHasHovered(false);
+    };
 
     slider.addEventListener("mousedown", handleStart);
     slider.addEventListener("touchstart", handleStart, { passive: true });
@@ -127,20 +131,37 @@ export const PhotosDifference = ({
     };
   }, []);
 
+  const handleMouseEnter = () => {
+    if (!hasHovered && typeof shift !== "number") {
+      setHasHovered(true);
+    }
+  };
+
   return (
     <div
       className="flex items-center justify-center max-w-[636px] aspect-square w-full"
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
+      onMouseEnter={handleMouseEnter}
+      data-cursor-text={hasHovered ? "Move the slider to compare" : undefined}
     >
       <div
         ref={sliderRef}
         className="max-w-[517px] p-6 aspect-square w-full lg:p-0"
+        data-cursor-text={hasHovered ? "Move the slider to compare" : undefined}
       >
-        <div className={`z-0 relative w-full h-full`}>
+        <div
+          className={`z-0 relative w-full h-full`}
+          data-cursor-text={
+            hasHovered ? "Move the slider to compare" : undefined
+          }
+        >
           <div
             ref={beforeRef}
             className="no-transition before w-1/2 absolute h-full left-0 top-0 z-10"
+            data-cursor-text={
+              hasHovered ? "Move the slider to compare" : undefined
+            }
           >
             {DefaultPhotoPath.length > 0 && (
               <CustomImage
@@ -153,6 +174,9 @@ export const PhotosDifference = ({
                 className={
                   "max-w-[517px] aspect-square w-full h-full overflow-hidden select-none object-cover object-left absolute top-0 block rounded-l-full"
                 }
+                data-cursor-text={
+                  hasHovered ? "Move the slider to compare" : undefined
+                }
               />
             )}
           </div>
@@ -162,9 +186,19 @@ export const PhotosDifference = ({
             style={{
               left: `${shift}px`,
             }}
+            onMouseEnter={() => setAddShadow(true)}
+            onMouseLeave={() => setAddShadow(false)}
+            data-cursor-text={
+              hasHovered ? "Move the slider to compare" : undefined
+            }
             className={`flex absolute justify-center top-0 z-30 w-[2px] h-full left-1/2 no-transition ${styles.ChangeDriver} ${addShadow ? "after:shadow-[0_0_8px_#F63737] before:shadow-[0_0_8px_#F63737]" : ""} ${lineAnimate ? "before:!scale-y-125 after:!scale-y-125" : "before:!scale-y-0 after:!scale-y-0"}`}
           >
-            <div className="flex justify-center items-center absolute top-[43.5%] ml-1 cursor-pointer w-[115px] h-[58px] no-transition md:w-[124px] md:h-[68px]">
+            <div
+              data-cursor-text={
+                hasHovered ? "Move the slider to compare" : undefined
+              }
+              className="flex justify-center items-center absolute top-[43.5%] ml-[0.03rem] cursor-pointer w-[115px] h-[58px] no-transition md:w-[124px] md:h-[68px]"
+            >
               <Image
                 width={124}
                 height={68}
@@ -172,11 +206,19 @@ export const PhotosDifference = ({
                 alt="Toddler"
                 className="w-[115px] h-[58px] select-none no-transition pointer-events-none md:w-[124px] md:h-[68px]"
                 loading="lazy"
+                data-cursor-text={
+                  hasHovered ? "Move the slider to compare" : undefined
+                }
               />
             </div>
           </div>
 
-          <div className="no-transition after">
+          <div
+            className="no-transition after"
+            data-cursor-text={
+              hasHovered ? "Move the slider to compare" : undefined
+            }
+          >
             {AIPhotoPath.length > 0 && (
               <CustomImage
                 width={290}
@@ -187,6 +229,9 @@ export const PhotosDifference = ({
                 loader={imageLoader}
                 className={
                   "max-w-[517px] aspect-square w-full absolute object-cover select-none top-0 block rounded-r-full"
+                }
+                data-cursor-text={
+                  hasHovered ? "Move the slider to compare" : undefined
                 }
               />
             )}

@@ -4,7 +4,7 @@ export const InformationBlock = () => {
   return (
     <div className={"pb-20 pt-16 w-full lg:pt-20"}>
       <div className={`w-full`}>
-        <div className={"py-[60px] px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10"}>
+        <div className={"py-[60px]"}>
           <div className={"flex flex-col gap-16 w-full"}>
             <div
               className={

@@ -33,7 +33,7 @@ export const HowItsWorkPricing = () => {
       const rect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const startFill = windowHeight * 2;
+      const startFill = windowHeight * 2.75;
       const endFill = windowHeight / 3;
 
       const offsetStart = 0.025;

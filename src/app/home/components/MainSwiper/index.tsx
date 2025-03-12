@@ -32,6 +32,7 @@ export const MainSwiper = () => {
           pagination={{
             clickable: true,
           }}
+          speed={2000}
           modules={[Pagination]}
           className={"main_swiper"}
         >

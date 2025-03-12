@@ -21,7 +21,7 @@ export const RedButton = ({ height }: IRedButtonProps) => {
             "text-sm font-fancy !leading-none text-white text-left whitespace-nowrap"
           }
         >
-          Start your project
+          Start Your Project
         </p>
 
         <Image

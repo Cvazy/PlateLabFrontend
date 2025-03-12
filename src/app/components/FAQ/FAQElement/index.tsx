@@ -19,7 +19,7 @@ export const FAQElement = ({
       <div className={"flex flex-col p-4 w-full"}>
         <div className={"flex items-center justify-between gap-2.5 w-full"}>
           <p
-            className={`text-left ${isActive ? "text-white" : "text-[#717171]"} text-sm !leading-none w-full md:text-base lg:text-lg xl:text-xl`}
+            className={`text-left ${isActive ? "text-white" : "text-[#717171]"} text-xl !leading-none w-full`}
           >
             {question}
           </p>
@@ -59,7 +59,7 @@ export const FAQElement = ({
         >
           <div className={"mt-5 w-full"}>
             <p
-              className={`font-fancy text-left text-white text-xs !leading-none w-full md:text-sm lg:text-base`}
+              className={`font-fancy text-left text-white text-base !leading-none w-full`}
             >
               {answer}
             </p>
