@@ -1,57 +1,34 @@
 import { IGridElement } from "@/app/home/components/Before/model";
 
-import styles from "./GridElement.module.css";
 import { CountUp } from "@/app/ReactBitsComponents";
-import { useEffect, useState } from "react";
 
 interface IGridElementProps extends Omit<IGridElement, "id"> {
-  valuesSwitched: boolean;
-  isFirstlyAnimation: boolean;
+  isBlockAfter?: boolean;
+  isActive: boolean;
 }
 
 export const GridElement = ({
   start_value,
   end_value,
   name,
-  valuesSwitched,
-  isFirstlyAnimation,
+  isActive,
+  isBlockAfter = false,
 }: IGridElementProps) => {
-  const initialPercentage = (start_value / end_value) * 100;
-  const [lineWidth, setLineWidth] = useState(initialPercentage);
-
-  useEffect(() => {
-    if (valuesSwitched) {
-      setLineWidth(100);
-    } else {
-      setLineWidth(initialPercentage);
-    }
-  }, [valuesSwitched, start_value, end_value, initialPercentage]);
-
   return (
     <div className={"flex flex-col items-start gap-1 w-full"}>
       <CountUp
-        from={valuesSwitched ? start_value : isFirstlyAnimation ? 0 : end_value}
-        to={valuesSwitched ? end_value : start_value}
+        from={isBlockAfter ? start_value : 0}
+        to={isBlockAfter ? end_value : start_value}
         separator={","}
         direction={"up"}
+        startWhen={isActive}
         duration={1}
         isFormatted={true}
-        className={
-          "text-white text-[28px] !leading-[36px] text-left w-full sm:!leading-[45px] sm:text-4xl"
-        }
+        className={`${isActive ? "text-white" : "text-gray"} text-[28px] !leading-[36px] text-left w-full sm:!leading-[45px] sm:text-4xl`}
       />
 
-      <div className={`${styles.line} no-transition`}>
-        <div
-          className={`${styles.fillLine} no-transition`}
-          style={{ width: `${lineWidth}%` }}
-        ></div>
-      </div>
-
       <p
-        className={
-          "text-[13px] font-fancy text-light_gray leading-5 sm:text-[15px] md:text-base"
-        }
+        className={`text-[13px] font-fancy ${isActive ? "text-light_gray" : "text-[#343434]"} leading-5 sm:text-[15px] md:text-base`}
       >
         {name}
       </p>
