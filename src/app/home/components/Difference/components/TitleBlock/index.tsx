@@ -9,7 +9,7 @@ export const TitleBlock = () => {
 
           <p
             className={
-              "text-light_gray font-fancy text-center text-lg !leading-[22px] md:text-xl md:!leading-[28px] lg:text-2xl lg:!leading-[30px]"
+              "text-light_gray font-fancy text-center text-base tracking-[-0.0125em] md:text-lg lg:text-xl xl:text-[22px]"
             }
           >
             No difference in realism—just in{" "}

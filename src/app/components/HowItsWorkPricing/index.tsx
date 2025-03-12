@@ -34,7 +34,7 @@ export const HowItsWorkPricing = () => {
       const windowHeight = window.innerHeight;
 
       const startFill = windowHeight * 2.75;
-      const endFill = windowHeight / 3;
+      const endFill = windowHeight / 2;
 
       const offsetStart = 0.025;
 

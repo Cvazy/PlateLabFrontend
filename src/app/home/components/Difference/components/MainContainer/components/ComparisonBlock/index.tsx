@@ -2,7 +2,7 @@ import styles from "./ComparisonBlock.module.css";
 import {
   ITransformComparisons,
   ITransformComparisonsElement,
-} from "@/app/home/components/Comparison/model";
+} from "../../../../model";
 import { CSSProperties, Fragment } from "react";
 
 interface IComparisonBlock {

@@ -15,7 +15,6 @@ interface CountUpProps {
   onEnd?: () => void;
   isFormatted: boolean;
 }
-
 export function CountUp({
   to,
   from = 0,
@@ -42,9 +41,29 @@ export function CountUp({
 
   const isInView = useInView(ref, { once: true, margin: "0px" });
 
+  // Функция для форматирования числа
+  const formatNumber = (value: number) => {
+    const options = {
+      useGrouping: !!separator,
+      minimumFractionDigits:
+        Number.isInteger(to) && Number.isInteger(from) ? 0 : 1,
+      maximumFractionDigits:
+        Number.isInteger(to) && Number.isInteger(from) ? 0 : 1,
+    };
+
+    const formattedNumber = isFormatted
+      ? ValueTransform(+value.toFixed(1))
+      : Intl.NumberFormat("en-US", options).format(Number(value.toFixed(1)));
+
+    return separator
+      ? formattedNumber.replace(/,/g, separator)
+      : formattedNumber;
+  };
+
+  // Устанавливаем начальное значение с форматированием
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = String(direction === "down" ? to : from);
+      ref.current.textContent = formatNumber(direction === "down" ? to : from);
     }
   }, [from, to, direction]);
 
@@ -88,28 +107,12 @@ export function CountUp({
   useEffect(() => {
     const unsubscribe = springValue.on("change", (latest) => {
       if (ref.current) {
-        const options = {
-          useGrouping: !!separator,
-          minimumFractionDigits:
-            Number.isInteger(to) && Number.isInteger(from) ? 0 : 1,
-          maximumFractionDigits:
-            Number.isInteger(to) && Number.isInteger(from) ? 0 : 1,
-        };
-
-        const formattedNumber = isFormatted
-          ? ValueTransform(+latest.toFixed(1))
-          : Intl.NumberFormat("en-US", options).format(
-              Number(latest.toFixed(1)),
-            );
-
-        ref.current.textContent = separator
-          ? formattedNumber.replace(/,/g, separator)
-          : formattedNumber;
+        ref.current.textContent = formatNumber(latest);
       }
     });
 
     return () => unsubscribe();
-  }, [springValue, separator]);
+  }, [springValue, separator, isFormatted, from, to]);
 
   return <span className={`${className}`} ref={ref} />;
 }

@@ -1,8 +1,7 @@
-import { PhotosDifference } from "./components";
+import { ComparisonBlock, PhotosDifference } from "./components";
 import { useFetchAllComparisonQuery } from "@/app/home";
-import { ITransformComparisons } from "@/app/home/components/Comparison/model";
-import { transformData } from "@/app/home/components/Comparison/utils";
-import { ComparisonBlock } from "@/app/home/components/Comparison/components/DesktopVersion/components";
+import { ITransformComparisons } from "../../model";
+import { transformData } from "../../utils";
 import { useState, useEffect, useMemo } from "react";
 
 export const MainContainer = () => {

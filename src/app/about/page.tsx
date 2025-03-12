@@ -7,14 +7,11 @@ import {
   useFetchAllNetworksQuery,
 } from "@/app/components/Footer/model";
 import Image from "next/image";
-import useLenis from "@/app/hooks/useLenis";
 
 const AboutUsPage = () => {
   const { data, isLoading, isError } = useFetchAllNetworksQuery();
 
   const networks: INetwork[] = data || [];
-
-  useLenis(false);
 
   return (
     <div className={"flex justify-center pt-20 w-full overflow-x-hidden"}>

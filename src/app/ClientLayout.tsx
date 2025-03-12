@@ -5,6 +5,7 @@ import { store } from "@/app/store";
 import { CustomCursor, Footer, Header, Loader } from "@/app/components";
 import React from "react";
 import { usePathname } from "next/navigation";
+import useLenis from "@/app/hooks/useLenis";
 
 export default function ClientLayout({
   children,
@@ -13,6 +14,8 @@ export default function ClientLayout({
 }>) {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
+
+  useLenis(false);
 
   return (
     <Provider store={store}>
