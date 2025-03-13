@@ -136,7 +136,7 @@ export const PhotosDifference = ({
 
   return (
     <div
-      className="flex items-center justify-center max-w-[636px] aspect-square w-full"
+      className="flex items-center justify-center max-w-[636px] aspect-square w-full lg:w-1/2"
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
       onMouseEnter={handleMouseEnter}

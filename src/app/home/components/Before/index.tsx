@@ -1,11 +1,14 @@
 "use client";
 
 import { ElementsContainer, Phone } from "./components";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Before = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const afterButtonRef = useRef<HTMLDivElement>(null);
   const [isBeforeActive, setBeforeActive] = useState<boolean>(true);
   const [valuesSwitched, setValuesSwitched] = useState<boolean>(false);
+  const [isButtonClick, setIsButtonClick] = useState<boolean>(false);
 
   const handleBeforeActive = () => {
     setValuesSwitched(false);
@@ -17,8 +20,29 @@ export const Before = () => {
     setBeforeActive(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !afterButtonRef.current || isButtonClick)
+        return;
+
+      const container = sectionRef.current;
+      const rect = container.getBoundingClientRect();
+
+      if (rect.top <= 0) {
+        afterButtonRef.current.click();
+        setIsButtonClick(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isButtonClick]);
+
   return (
-    <div className="flex justify-center overflow-hidden w-full">
+    <div
+      ref={sectionRef}
+      className="flex justify-center overflow-hidden w-full"
+    >
       <div className="flex justify-center px-5 py-8 w-full h-full sm:py-10 sm:px-6 md:py-14 md:px-8 lg:py-20 lg:px-10">
         <div className="max-w-limitation w-full h-full">
           <div
@@ -68,6 +92,7 @@ export const Before = () => {
 
                       <div
                         role={"button"}
+                        ref={afterButtonRef}
                         onClick={handleAfterActive}
                         className={"w-fit lg:w-full"}
                       >

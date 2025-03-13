@@ -81,10 +81,10 @@ export const MainContainer = () => {
   return (
     <div className="w-full">
       <div className={"flex flex-col items-center gap-6 w-full"}>
-        <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-between lg:items-start">
+        <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-evenly lg:gap-1 lg:items-start">
           <div
             style={{ opacity: mainOpacity, transition: "opacity 0.5s ease" }}
-            className="hidden self-center lg:block"
+            className="hidden self-center justify-end w-1/4 lg:flex"
           >
             <DesktopElement
               name={
@@ -112,7 +112,7 @@ export const MainContainer = () => {
 
           <div
             style={{ opacity: mainOpacity, transition: "opacity 0.5s ease" }}
-            className="hidden self-center flex-col items-start gap-20 lg:flex xl:gap-[220px]"
+            className="hidden self-center flex-col items-start gap-20 w-1/4 lg:flex xl:gap-[220px]"
           >
             <DesktopElement
               name={

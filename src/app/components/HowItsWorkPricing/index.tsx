@@ -102,7 +102,7 @@ export const HowItsWorkPricing = () => {
               howItsWorkElements?.map(({ id, title, description }, index) => (
                 <div
                   key={id}
-                  className={`flex justify-start ${index % 2 === 0 ? "" : "self-end"} w-full lg:w-[46%]`}
+                  className={`flex justify-start ${index % 2 === 0 ? "lg:justify-end" : "self-end"} w-full lg:w-[46%]`}
                 >
                   <div
                     ref={(el) => setBlockRef(el, index)}

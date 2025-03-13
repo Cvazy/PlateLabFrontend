@@ -12,7 +12,7 @@ export const PriceElement = ({
       className={"!border-gray"}
       spotlightColor={"rgba(61,61,61,0.5)"}
     >
-      <div className={"border border-solid border-gray rounded-[10px] w-full"}>
+      <div className={"rounded-[10px] w-full"}>
         <div className={"flex flex-col gap-[30px] md:gap-9 w-full lg:gap-10"}>
           <div
             className={`h-[30px] ${is_the_best_price ? "bg-red" : "bg-transparent"} rounded-t-[10px] w-full`}
