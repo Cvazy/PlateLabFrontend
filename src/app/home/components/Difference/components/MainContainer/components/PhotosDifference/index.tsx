@@ -5,7 +5,7 @@ import { imageLoader } from "@/app/utils";
 import CustomImage from "@/app/utils/customImage";
 
 interface IPhotosDifferenceProps {
-  onOpacityChange: (left: number, right: number) => void;
+  onOpacityChange: () => void;
   setShiftPercentage: (value: ((prevState: number) => number) | number) => void;
   DefaultPhotoPath: string;
   AIPhotoPath: string;
@@ -37,16 +37,13 @@ export const PhotosDifference = ({
     setShift(newShift);
     setShiftPercentage(shiftPercentage);
 
-    const leftOpacity = 0.2 + 0.9 * (1 - shiftPercentage / 100);
-    const rightOpacity = 0.2 + 0.9 * (shiftPercentage / 100);
-
-    if (leftOpacity > 0.9 || rightOpacity > 0.9) {
+    if (shiftPercentage >= 90 || shiftPercentage <= 10) {
       setAddShadow(true);
     } else {
       setAddShadow(false);
     }
 
-    onOpacityChange(leftOpacity, rightOpacity);
+    onOpacityChange();
 
     if (beforeRef.current) {
       if ("style" in beforeRef.current) {
@@ -191,7 +188,7 @@ export const PhotosDifference = ({
             data-cursor-text={
               hasHovered ? "Move the slider to compare" : undefined
             }
-            className={`flex absolute justify-center top-0 z-30 w-[2px] h-full left-1/2 no-transition ${styles.ChangeDriver} ${addShadow ? "after:shadow-[0_0_8px_#F63737] before:shadow-[0_0_8px_#F63737]" : ""} ${lineAnimate ? "before:!scale-y-125 after:!scale-y-125" : "before:!scale-y-0 after:!scale-y-0"}`}
+            className={`flex absolute justify-center top-0 z-30 w-[2px] h-full left-1/2 no-transition ${styles.ChangeDriver} ${addShadow ? "after:shadow-[0_0_8px_#F63737] before:shadow-[0_0_8px_#F63737]" : ""} ${lineAnimate ? "before:!scale-y-125 before:lg:!scale-y-100 before:xl:!scale-y-125 after:!scale-y-125 after:lg:!scale-y-100 after:xl:!scale-y-125" : "before:!scale-y-0 after:!scale-y-0"}`}
           >
             <div
               data-cursor-text={

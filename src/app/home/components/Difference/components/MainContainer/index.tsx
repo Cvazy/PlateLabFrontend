@@ -1,8 +1,14 @@
-import { ComparisonBlock, PhotosDifference } from "./components";
+import {
+  ComparisonBlock,
+  DesktopElement,
+  PhotosDifference,
+} from "./components";
 import { useFetchAllComparisonQuery } from "@/app/home";
 import { ITransformComparisons } from "../../model";
 import { transformData } from "../../utils";
 import { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
+import styles from "./MainContainer.module.css";
 
 export const MainContainer = () => {
   const { data } = useFetchAllComparisonQuery();
@@ -17,18 +23,21 @@ export const MainContainer = () => {
   const [selectedComparison, setSelectedComparison] =
     useState<ITransformComparisons | null>(null);
 
-  const [leftOpacity, setLeftOpacity] = useState<number>(0);
-  const [rightOpacity, setRightOpacity] = useState<number>(0);
+  const [mainOpacity, setMainOpacity] = useState<number>(0);
 
-  const handleOpacityChange = (left: number, right: number): void => {
-    setLeftOpacity(left);
-    setRightOpacity(right);
+  const [currentLogo, setCurrentLogo] = useState<string>(
+    "/images/plateLabDifference.svg",
+  );
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
+  const handleOpacityChange = (): void => {
+    setMainOpacity(100);
   };
 
   useEffect(() => {
     if (comparisons.length > 1) {
       setSelectedComparison(
-        shiftPercentage >= 50 ? comparisons[1] : comparisons[0],
+        shiftPercentage <= 50 ? comparisons[1] : comparisons[0],
       );
     }
   }, [shiftPercentage, comparisons]);
@@ -51,61 +60,144 @@ export const MainContainer = () => {
     });
   }, [shiftPercentage]);
 
+  useEffect(() => {
+    if (isAnimating) return;
+
+    const newLogo =
+      shiftPercentage > 50
+        ? "/images/photoDifference.svg"
+        : "/images/plateLabDifference.svg";
+
+    if (newLogo !== currentLogo) {
+      setIsAnimating(true);
+
+      setTimeout(() => {
+        setCurrentLogo(newLogo);
+        setIsAnimating(false);
+      }, 500);
+    }
+  }, [shiftPercentage, currentLogo, isAnimating]);
+
   return (
     <div className="w-full">
-      <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-between lg:items-start">
-        <div className="hidden lg:block">
-          <ComparisonBlock
-            isAIBlock={false}
-            data={comparisons[0]}
-            style={{ opacity: leftOpacity }}
-          />
-        </div>
-
-        <PhotosDifference
-          onOpacityChange={handleOpacityChange}
-          setShiftPercentage={setShiftPercentage}
-          DefaultPhotoPath={
-            comparisons.length > 0 ? comparisons[0].photo_for_difference : ""
-          }
-          AIPhotoPath={
-            comparisons.length > 0 ? comparisons[1].photo_for_difference : ""
-          }
-        />
-
-        <div className="hidden lg:block">
-          <ComparisonBlock
-            isAIBlock={true}
-            data={comparisons[1]}
-            style={{ opacity: rightOpacity }}
-          />
-        </div>
-
-        {selectedComparison && selectedComparison?.title?.length > 0 && (
-          <div className="block lg:hidden">
-            <ComparisonBlock
-              isAIBlock={shiftPercentage >= 50}
-              data={{
-                ...selectedComparison,
-                elements: [
-                  {
-                    name:
-                      selectedComparison.elements?.[currentElement]?.name || "",
-                    value:
-                      currentElement === 1
-                        ? `<p>${(comparisons[0].elements?.[1]?.value || "")
-                            .split(" ")
-                            .map((word) => word.replace(/<\/?p>|,/g, ""))
-                            .slice(0, 3)
-                            .join(" ")} </p>`
-                        : selectedComparison.elements?.[currentElement]
-                            ?.value || "",
-                  },
-                ],
-              }}
+      <div className={"flex flex-col items-center gap-6 w-full"}>
+        <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-between lg:items-start">
+          <div
+            style={{ opacity: mainOpacity, transition: "opacity 0.5s ease" }}
+            className="hidden self-center lg:block"
+          >
+            <DesktopElement
+              name={
+                comparisons[shiftPercentage <= 50 ? 1 : 0]?.elements[0]?.name ||
+                ""
+              }
+              value={
+                comparisons[shiftPercentage <= 50 ? 1 : 0]?.elements[0]
+                  ?.value || ""
+              }
+              isAIBlock={shiftPercentage <= 50}
             />
           </div>
-        )}
+
+          <PhotosDifference
+            onOpacityChange={handleOpacityChange}
+            setShiftPercentage={setShiftPercentage}
+            DefaultPhotoPath={
+              comparisons.length > 0 ? comparisons[0].photo_for_difference : ""
+            }
+            AIPhotoPath={
+              comparisons.length > 0 ? comparisons[1].photo_for_difference : ""
+            }
+          />
+
+          <div
+            style={{ opacity: mainOpacity, transition: "opacity 0.5s ease" }}
+            className="hidden self-center flex-col items-start gap-20 lg:flex xl:gap-[220px]"
+          >
+            <DesktopElement
+              name={
+                comparisons[shiftPercentage <= 50 ? 1 : 0]?.elements[1]?.name ||
+                ""
+              }
+              value={
+                comparisons[shiftPercentage <= 50 ? 1 : 0]?.elements[1]
+                  ?.value || ""
+              }
+              isAIBlock={shiftPercentage <= 50}
+            />
+
+            <DesktopElement
+              name={
+                comparisons[shiftPercentage <= 50 ? 1 : 0]?.elements[2]?.name ||
+                ""
+              }
+              value={
+                comparisons[shiftPercentage <= 50 ? 1 : 0]?.elements[2]
+                  ?.value || ""
+              }
+              isAIBlock={shiftPercentage <= 50}
+            />
+          </div>
+
+          {selectedComparison && selectedComparison?.title?.length > 0 && (
+            <div className="block lg:hidden">
+              <ComparisonBlock
+                isAIBlock={shiftPercentage <= 50}
+                data={{
+                  ...selectedComparison,
+                  elements: [
+                    {
+                      name:
+                        selectedComparison.elements?.[currentElement]?.name ||
+                        "",
+                      value:
+                        selectedComparison.elements?.[currentElement]?.value ||
+                        "",
+                    },
+                  ],
+                }}
+              />
+            </div>
+          )}
+        </div>
+
+        <div style={{ opacity: mainOpacity }} className={"hidden lg:block"}>
+          <div
+            className={
+              "flex justify-center w-[140px] h-[65px] relative overflow-hidden"
+            }
+          >
+            <div
+              className={`absolute w-[138px] h-[65px] transition-transform duration-500 ${
+                isAnimating ? styles.animateSlideOut : ""
+              }`}
+            >
+              <Image
+                width={138}
+                height={60}
+                src={currentLogo}
+                alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+              />
+            </div>
+
+            {isAnimating && (
+              <div
+                className={`absolute w-[134px] h-[65px] transition-transform duration-500 ${styles.animateSlideIn}`}
+              >
+                <Image
+                  width={134}
+                  height={60}
+                  src={
+                    shiftPercentage > 50
+                      ? "/images/photoDifference.svg"
+                      : "/images/plateLabDifference.svg"
+                  }
+                  alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+                />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
