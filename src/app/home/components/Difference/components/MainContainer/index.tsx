@@ -8,8 +8,8 @@ import { ITransformComparisons } from "../../model";
 import { transformData } from "../../utils";
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
-import styles from "./MainContainer.module.css";
 import { DecryptedText } from "@/app/ReactBitsComponents";
+import { motion } from "framer-motion";
 
 export const MainContainer = () => {
   const { data } = useFetchAllComparisonQuery();
@@ -86,41 +86,20 @@ export const MainContainer = () => {
           className={"hidden items-center gap-2.5 flex-nowrap lg:flex"}
           style={{ opacity: mainOpacity }}
         >
-          <div
-            className={
-              "flex justify-center w-[31px] h-[31px] relative overflow-hidden"
-            }
+          <motion.div
+            key={currentLogo}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <div
-              className={`absolute w-[31px] h-[31px] transition-transform duration-500 ${
-                isAnimating ? styles.animateSlideOut : ""
-              }`}
-            >
-              <Image
-                width={31}
-                height={31}
-                src={currentLogo}
-                alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
-              />
-            </div>
-
-            {isAnimating && (
-              <div
-                className={`absolute w-[31px] h-[31px] transition-transform duration-500 ${styles.animateSlideIn}`}
-              >
-                <Image
-                  width={31}
-                  height={31}
-                  src={
-                    shiftPercentage > 50
-                      ? "/images/photoDifference.svg"
-                      : "/images/plateLabDifference.svg"
-                  }
-                  alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
-                />
-              </div>
-            )}
-          </div>
+            <Image
+              width={31}
+              height={31}
+              src={currentLogo}
+              alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+            />
+          </motion.div>
 
           <DecryptedText
             text={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}

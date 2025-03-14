@@ -68,7 +68,7 @@ export const Before = () => {
               "flex flex-col items-center gap-14 w-full sm:gap-16 md:gap-20 lg:gap-24"
             }
           >
-            <div className={"flex flex-col items-center gap-2 w-full"}>
+            <div className={"flex flex-col items-center gap-3 w-full"}>
               <h2
                 className={
                   "text-[32px] text-white !leading-none sm:text-4xl md:text-[40px] lg:text-5xl xl:text-[54px]"
@@ -82,7 +82,7 @@ export const Before = () => {
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-5 w-full h-full md:gap-10 lg:flex-row lg:justify-center lg:items-start lg:gap-8 xl:gap-11">
+            <div className="flex flex-col items-center gap-5 w-full h-full md:gap-10 lg:flex-row lg:justify-center lg:items-start lg:gap-14 xl:gap-16">
               <div className="w-full h-auto lg:h-full lg:max-w-[370px]">
                 <div className="flex flex-col items-start gap-6 w-full sm:gap-7 md:gap-8 lg:gap-16 xl:gap-[71px]">
                   <div className="flex flex-col items-start gap-0 w-full lg:gap-4">

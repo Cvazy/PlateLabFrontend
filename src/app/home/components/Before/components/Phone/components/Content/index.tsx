@@ -29,7 +29,7 @@ export const Content = React.memo(
         className={`w-full h-full bg-black overflow-scroll ${styles.Wrapper}`}
       >
         <div className={"w-full h-fit"}>
-          <div className={"pt-6 w-full"}>
+          <div className={"pt-6 w-full overflow-hidden"}>
             <div className={"flex flex-col items-start gap-6 w-full lg:gap-8"}>
               <div className={"flex flex-col items-start gap-3 w-full"}>
                 <p

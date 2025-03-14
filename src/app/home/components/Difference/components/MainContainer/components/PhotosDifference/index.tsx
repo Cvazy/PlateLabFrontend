@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./PhotosDifference.module.css";
 import { imageLoader } from "@/app/utils";
 import CustomImage from "@/app/utils/customImage";
+import useLenis from "@/app/hooks/useLenis";
 
 interface IPhotosDifferenceProps {
   onOpacityChange: () => void;
@@ -17,6 +18,8 @@ export const PhotosDifference = ({
   DefaultPhotoPath,
   AIPhotoPath,
 }: IPhotosDifferenceProps) => {
+  const [isInteracting, setIsInteracting] = useState<boolean>(false);
+
   const [lineAnimate, setLineAnimate] = useState<boolean>(false);
   const [addShadow, setAddShadow] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -25,6 +28,28 @@ export const PhotosDifference = ({
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const beforeRef = useRef<HTMLDivElement | null>(null);
   const changeRef = useRef<HTMLDivElement | null>(null);
+
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 768px)").matches;
+
+  useEffect(() => {
+    if (isMobile) {
+      document.documentElement.style.overflowY = isInteracting
+        ? "hidden"
+        : "auto";
+      document.documentElement.style.touchAction = isInteracting
+        ? "none"
+        : "auto";
+    }
+
+    return () => {
+      if (isMobile) {
+        document.documentElement.style.overflowY = "auto";
+        document.documentElement.style.touchAction = "auto";
+      }
+    };
+  }, [isInteracting, isMobile]);
 
   const updateSlider = (clientX: number) => {
     if (!sliderRef.current || !beforeRef.current || !changeRef.current) return;
@@ -73,6 +98,7 @@ export const PhotosDifference = ({
 
   const handleEnd = () => {
     setIsActive(false);
+    setIsInteracting(false);
   };
 
   useEffect(() => {
@@ -82,6 +108,7 @@ export const PhotosDifference = ({
     const handleStart = () => {
       setIsActive(true);
       setHasHovered(false);
+      setIsInteracting(true);
     };
 
     slider.addEventListener("mousedown", handleStart);
