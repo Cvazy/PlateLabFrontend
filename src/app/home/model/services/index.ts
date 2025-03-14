@@ -47,6 +47,10 @@ export const homeApi = createApi({
       query: () => "/api/v1/before/restaurant",
     }),
 
+    fetchBeforePartners: builder.query<IPartner[], void>({
+      query: () => "/api/v1/before/partners",
+    }),
+
     fetchBeforeParameters: builder.query<IParameters[], void>({
       query: () => "/api/v1/before/parameters",
     }),
@@ -65,5 +69,6 @@ export const {
   useFetchAllSalesQuery,
   useFetchBeforeParametersQuery,
   useFetchBeforeRestaurantQuery,
+  useFetchBeforePartnersQuery,
   useFetchParallaxQuery,
 } = homeApi;

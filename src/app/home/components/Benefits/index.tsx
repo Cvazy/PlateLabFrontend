@@ -18,7 +18,7 @@ export const Benefits = () => {
                   "text-[32px] text-white !leading-none sm:text-4xl md:text-[40px] lg:text-5xl xl:text-[54px]"
                 }
               >
-                Benefits<span className={"text-gray"}>.</span>
+                Difference that Matters<span className={"text-gray"}>.</span>
               </h2>
 
               <div className={"grid gap-4 w-full xl:grid-cols-2"}>

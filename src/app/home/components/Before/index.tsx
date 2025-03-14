@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementsContainer, Phone } from "./components";
+import { ElementsContainer, Partners, Phone } from "./components";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -68,13 +68,19 @@ export const Before = () => {
               "flex flex-col items-center gap-14 w-full sm:gap-16 md:gap-20 lg:gap-24"
             }
           >
-            <h2
-              className={
-                "text-[32px] text-white !leading-none sm:text-4xl md:text-[40px] lg:text-5xl xl:text-[54px]"
-              }
-            >
-              Difference in Revenue.
-            </h2>
+            <div className={"flex flex-col items-center gap-2 w-full"}>
+              <h2
+                className={
+                  "text-[32px] text-white !leading-none sm:text-4xl md:text-[40px] lg:text-5xl xl:text-[54px]"
+                }
+              >
+                Difference in Revenue.
+              </h2>
+
+              <div className={"hidden lg:block"}>
+                <Partners />
+              </div>
+            </div>
 
             <div className="flex flex-col items-center gap-5 w-full h-full md:gap-10 lg:flex-row lg:justify-center lg:items-start lg:gap-8 xl:gap-11">
               <div className="w-full h-auto lg:h-full lg:max-w-[370px]">
@@ -212,8 +218,14 @@ export const Before = () => {
               </div>
 
               <div className="flex justify-center w-fit h-full">
-                <div className="flex justify-center w-full relative">
-                  <Phone valuesSwitched={valuesSwitched} />
+                <div className={"flex flex-col items-center gap-2 w-full"}>
+                  <div className={"block lg:hidden"}>
+                    <Partners />
+                  </div>
+
+                  <div className="flex justify-center w-full relative">
+                    <Phone valuesSwitched={valuesSwitched} />
+                  </div>
                 </div>
               </div>
             </div>
