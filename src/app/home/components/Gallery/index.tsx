@@ -29,7 +29,7 @@ export const Gallery = () => {
             }
           >
             <SplitText
-              text="Created by PlateLab"
+              text="Difference in Visuals."
               className={
                 "h-20 text-4xl text-white text-center no-transition !leading-none sm:h-12 sm:text-[40px] md:h-14 md:text-5xl lg:h-16 lg:text-6xl xl:h-20 xl:text-[64px]"
               }

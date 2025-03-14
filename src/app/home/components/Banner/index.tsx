@@ -1,4 +1,8 @@
-import { RedButton, SceondaryButton } from "@/app/components";
+import {
+  DelayedLink,
+  StartProjectButton,
+  SceondaryButton,
+} from "@/app/components";
 
 export const Banner = () => {
   return (
@@ -44,7 +48,13 @@ export const Banner = () => {
                   }
                 >
                   professional, and{" "}
-                  <span className={"text-red"}>sell more.</span>
+                  <DelayedLink
+                    href={"/pricing"}
+                    className={"text-red"}
+                    data-cursor-text={"Sales increase up to 126%"}
+                  >
+                    sell more.
+                  </DelayedLink>
                 </p>
               </div>
 
@@ -53,7 +63,13 @@ export const Banner = () => {
                   "flex flex-col items-center gap-6 max-w-[183px] w-full md:gap-5 lg:max-w-[337px] lg:flex-row xl:gap-4"
                 }
               >
-                <RedButton height={"h-11"} />
+                <div className={"w-[167px]"}>
+                  <StartProjectButton
+                    height={"h-11"}
+                    bgColor={"bg-red"}
+                    textColor={"text-white"}
+                  />
+                </div>
 
                 <SceondaryButton height={"h-11"} />
               </div>

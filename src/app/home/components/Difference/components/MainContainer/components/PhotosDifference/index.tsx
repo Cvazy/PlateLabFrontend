@@ -136,7 +136,7 @@ export const PhotosDifference = ({
 
   return (
     <div
-      className="flex items-center justify-center max-w-[636px] aspect-square w-full lg:w-1/2"
+      className="flex items-center justify-center max-w-[636px] aspect-square p-6 w-full lg:w-1/2 lg:my-4 lg:p-0"
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
       onMouseEnter={handleMouseEnter}
@@ -144,7 +144,7 @@ export const PhotosDifference = ({
     >
       <div
         ref={sliderRef}
-        className="max-w-[517px] p-6 aspect-square w-full lg:p-0"
+        className="max-w-[517px] aspect-square w-full"
         data-cursor-text={hasHovered ? "Move the slider to compare" : undefined}
       >
         <div

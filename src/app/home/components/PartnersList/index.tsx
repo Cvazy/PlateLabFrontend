@@ -2,7 +2,7 @@
 
 import { DelayedLink } from "@/app/components";
 import { useState } from "react";
-import { SplitText } from "@/app/ReactBitsComponents";
+import { DecryptedText, SplitText } from "@/app/ReactBitsComponents";
 import { RunLine } from "@/app/home/components/PartnersList/components";
 
 export const PartnersList = () => {
@@ -22,12 +22,19 @@ export const PartnersList = () => {
             "flex items-center justify-center no-transition w-full h-full"
           }
         >
-          <div className={"flex items-center gap-4 flex-nowrap no-transition"}>
-            <SplitText
+          <div className={"flex items-center flex-nowrap no-transition"}>
+            <DecryptedText
               text={"More cases"}
+              speed={100}
+              revealDirection="end"
               className={
                 "text-center text-xl text-white no-transition whitespace-nowrap"
               }
+              triggerAnimation={isHovered}
+            />
+
+            <SplitText
+              text={""}
               delay={25}
               animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
               animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}

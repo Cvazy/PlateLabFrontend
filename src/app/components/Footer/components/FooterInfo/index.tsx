@@ -1,6 +1,7 @@
 "use client";
 
 import { IFooter, useFetchFooterInformationQuery } from "../../model";
+import { StartProjectButton } from "@/app/components";
 
 interface IFooterInfoProps {
   isMainPage: boolean;
@@ -25,6 +26,17 @@ export const FooterInfo = ({ isMainPage }: IFooterInfoProps) => {
         dangerouslySetInnerHTML={{ __html: description }}
         className={`text-[15px] ${isMainPage ? "text-light_gray" : "text-gray"} font-fancy uppercase !leading-none md:text-base`}
       />
+
+      <div className={"w-full lg:w-[276px]"}>
+        <StartProjectButton
+          height={"h-[54px]"}
+          rounded={"rounded-[10px]"}
+          bgColor={isMainPage ? "bg-[#151515]" : "bg-white"}
+          textColor={isMainPage ? "text-white" : "text-[#151515]"}
+          arrowColor={isMainPage ? "white" : "#151515"}
+          fontSize={"text-xl"}
+        />
+      </div>
     </div>
   );
 };

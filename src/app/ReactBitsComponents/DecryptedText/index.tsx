@@ -13,6 +13,7 @@ interface IDecryptedTextProps {
   encryptedClassName?: string;
   parentClassName?: string;
   animateOn?: "view" | "hover";
+  triggerAnimation?: boolean;
 }
 
 export function DecryptedText({
@@ -27,6 +28,7 @@ export function DecryptedText({
   parentClassName = "",
   encryptedClassName = "",
   animateOn = "hover",
+  triggerAnimation,
   ...props
 }: IDecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text);
@@ -204,6 +206,21 @@ export function DecryptedText({
           onMouseLeave: () => setIsHovering(false),
         }
       : {};
+
+  useEffect(() => {
+    if (animateOn !== "hover") return;
+
+    if (triggerAnimation) {
+      setIsHovering(true);
+      setHasAnimated(false);
+    }
+
+    if (!triggerAnimation) {
+      setIsHovering(false);
+      setRevealedIndices(new Set());
+      setDisplayText(text);
+    }
+  }, [triggerAnimation]);
 
   return (
     <motion.span

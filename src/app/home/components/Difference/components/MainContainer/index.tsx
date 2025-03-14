@@ -9,6 +9,7 @@ import { transformData } from "../../utils";
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import styles from "./MainContainer.module.css";
+import { DecryptedText } from "@/app/ReactBitsComponents";
 
 export const MainContainer = () => {
   const { data } = useFetchAllComparisonQuery();
@@ -81,6 +82,61 @@ export const MainContainer = () => {
   return (
     <div className="w-full">
       <div className={"flex flex-col items-center gap-6 w-full"}>
+        <div
+          className={"hidden items-center gap-2.5 flex-nowrap lg:flex"}
+          style={{ opacity: mainOpacity }}
+        >
+          <div
+            className={
+              "flex justify-center w-[31px] h-[31px] relative overflow-hidden"
+            }
+          >
+            <div
+              className={`absolute w-[31px] h-[31px] transition-transform duration-500 ${
+                isAnimating ? styles.animateSlideOut : ""
+              }`}
+            >
+              <Image
+                width={31}
+                height={31}
+                src={currentLogo}
+                alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+              />
+            </div>
+
+            {isAnimating && (
+              <div
+                className={`absolute w-[31px] h-[31px] transition-transform duration-500 ${styles.animateSlideIn}`}
+              >
+                <Image
+                  width={31}
+                  height={31}
+                  src={
+                    shiftPercentage > 50
+                      ? "/images/photoDifference.svg"
+                      : "/images/plateLabDifference.svg"
+                  }
+                  alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+                />
+              </div>
+            )}
+          </div>
+
+          <DecryptedText
+            text={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+            speed={50}
+            revealDirection="end"
+            className={"text-[32px] leading-10 text-white whitespace-nowrap"}
+            parentClassName={
+              "text-[32px] leading-10 text-white whitespace-nowrap"
+            }
+            encryptedClassName={
+              "text-[32px] leading-10 text-white whitespace-nowrap"
+            }
+            triggerAnimation={isAnimating}
+          />
+        </div>
+
         <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-evenly lg:gap-1 lg:items-start">
           <div
             style={{ opacity: mainOpacity, transition: "opacity 0.5s ease" }}
@@ -162,41 +218,14 @@ export const MainContainer = () => {
         </div>
 
         <div style={{ opacity: mainOpacity }} className={"hidden lg:block"}>
-          <div
+          <p
             className={
-              "flex justify-center w-[140px] h-[65px] relative overflow-hidden"
+              "text-light_gray font-fancy text-center tracking-[-0.0125em] text-xl xl:text-[22px]"
             }
           >
-            <div
-              className={`absolute w-[138px] h-[65px] transition-transform duration-500 ${
-                isAnimating ? styles.animateSlideOut : ""
-              }`}
-            >
-              <Image
-                width={138}
-                height={60}
-                src={currentLogo}
-                alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
-              />
-            </div>
-
-            {isAnimating && (
-              <div
-                className={`absolute w-[134px] h-[65px] transition-transform duration-500 ${styles.animateSlideIn}`}
-              >
-                <Image
-                  width={134}
-                  height={60}
-                  src={
-                    shiftPercentage > 50
-                      ? "/images/photoDifference.svg"
-                      : "/images/plateLabDifference.svg"
-                  }
-                  alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
-                />
-              </div>
-            )}
-          </div>
+            No difference in realism—just in{" "}
+            <span className="text-red">price.</span>
+          </p>
         </div>
       </div>
     </div>

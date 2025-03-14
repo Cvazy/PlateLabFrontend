@@ -39,7 +39,7 @@ export const GridElement = ({
       )}
 
       <p
-        className={`text-[13px] font-fancy ${isActive ? "text-light_gray" : "text-[#343434]"} leading-5 sm:text-[15px] md:text-base`}
+        className={`text-[13px] font-fancy ${isActive ? "text-light_gray" : "text-[#343434]"} whitespace-nowrap leading-5 sm:text-[15px] md:text-base`}
       >
         {name}
       </p>

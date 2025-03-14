@@ -11,5 +11,5 @@ export * from "./Footer";
 export * from "./NetworkItem";
 export * from "./InformationBlock";
 export * from "./FAQ";
-export * from "./RedButton";
+export * from "./StartProjectButton";
 export * from "./SceondaryButton";

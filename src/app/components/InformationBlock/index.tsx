@@ -30,7 +30,7 @@ export const InformationBlock = () => {
 
             <div
               className={
-                "pt-[60px] pb-[30px] w-full md:pb-10 lg:pb-12 xl:pb-[60px]"
+                "pt-[60px] pb-[30px] w-full self-center max-w-[960px] md:pb-10 lg:pb-12 xl:pb-[60px]"
               }
             >
               <div className={"flex flex-col items-center gap-[60px] w-full"}>

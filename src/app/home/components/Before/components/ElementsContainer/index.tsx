@@ -15,7 +15,7 @@ export const ElementsContainer = ({
 
   return (
     <div
-      className={`${activeCondition ? "grid" : "hidden"} grid-cols-3 justify-center gap-10 w-full lg:!flex lg:flex-col lg:justify-start lg:items-start lg:gap-8`}
+      className={`${activeCondition ? "grid" : "hidden"} grid-cols-3 justify-center gap-10 w-full lg:!flex lg:flex-col lg:justify-start lg:items-start lg:gap-8 lg:w-fit`}
     >
       {!!parameters.length &&
         parameters.map(({ id, name, start_value, end_value }) => (
