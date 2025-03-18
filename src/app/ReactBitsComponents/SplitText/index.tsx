@@ -120,8 +120,8 @@ export const SplitText = ({
           className="inline-block no-transition"
         >
           <Image
-            width={32}
-            height={32}
+            width={10}
+            height={10}
             src={iconSrc}
             alt={iconAlt || "Icon"}
             loading="lazy"

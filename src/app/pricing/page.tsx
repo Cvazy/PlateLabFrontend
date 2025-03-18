@@ -26,8 +26,6 @@ const PricingPage = () => {
           </div>
 
           <InformationBlock />
-
-          <Contact />
         </div>
       </div>
     </div>

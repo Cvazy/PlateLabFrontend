@@ -16,11 +16,9 @@ export const ComparisonBlock = ({
   isAIBlock,
   style,
 }: IComparisonBlock) => {
-  let title: string = "";
   let elements: ITransformComparisonsElement[] = [];
 
   if (data) {
-    title = data.title;
     elements = data.elements;
   }
 
@@ -28,21 +26,6 @@ export const ComparisonBlock = ({
     <div
       className={`flex flex-col items-center ${isAIBlock ? "lg:items-end" : "lg:items-start"} gap-10 w-full lg:max-w-[300px]`}
     >
-      <div className={"max-w-[300px] h-16 w-fit relative"}>
-        <div className={"flex items-center justify-center w-full h-full"}>
-          <p
-            style={style || {}}
-            className={`font-fancy !leading-[57px] text-[52px] uppercase text-center ${isAIBlock ? "text-red" : "text-white"}`}
-          >
-            {title}
-          </p>
-        </div>
-
-        <div
-          className={`${style?.opacity === 0 ? "opacity-0" : ""} textEffect`}
-        ></div>
-      </div>
-
       <div
         style={style || {}}
         className={`flex flex-col items-center ${isAIBlock ? "lg:items-end" : "lg:items-start"} gap-5 w-full`}

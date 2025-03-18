@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Contact } from "@/app/components";
-import { BigGallery, RestaurantList } from "./components";
+import { BigGallery, CTA, RestaurantList } from "./components";
 
 import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases";
 
@@ -18,7 +17,7 @@ const CasesPage = () => {
       <div
         className={"flex justify-center px-5 w-full sm:px-6 md:px-8 lg:px-10"}
       >
-        <div className={"max-w-limitation w-full"}>
+        <div className={"flex flex-col gap-16 max-w-limitation w-full"}>
           <div className={"pt-20 w-full lg:pt-[60px]"}>
             <div className={"flex flex-col items-center gap-10 w-full"}>
               <h1
@@ -56,7 +55,7 @@ const CasesPage = () => {
             </div>
           </div>
 
-          <Contact />
+          <CTA />
         </div>
       </div>
     </div>

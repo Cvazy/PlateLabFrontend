@@ -1,5 +1,9 @@
 import { SplitText } from "@/app/ReactBitsComponents";
-import { DelayedLink } from "@/app/components";
+import {
+  DelayedLink,
+  SceondaryButton,
+  StartProjectButton,
+} from "@/app/components";
 import Image from "next/image";
 import styles from "./TextBlock.module.css";
 import React, { useState } from "react";
@@ -58,35 +62,22 @@ export const TextBlock = React.memo(
               />
             </div>
 
-            <DelayedLink
-              href={"/cases"}
-              className={"flex items-center gap-4 flex-nowrap"}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+            <div
+              className={
+                "flex flex-col items-center gap-6 max-w-[183px] w-full md:gap-5 lg:max-w-[337px] lg:flex-row xl:gap-4"
+              }
             >
-              <p
-                className={
-                  "text-white font-fancy text-sm !leading-none md:text-base"
-                }
-              >
-                See our work
-              </p>
-
-              <div
-                className={
-                  "flex items-center justify-center w-8 h-8 relative overflow-hidden rounded-full bg-white"
-                }
-              >
-                <Image
-                  width={24}
-                  height={24}
-                  src={"/images/right_arrow_black.svg"}
-                  alt={"Arrow"}
-                  loading={"lazy"}
-                  className={`${isHovered ? styles.HoverButton : ""}`}
+              <div className={"w-[167px]"}>
+                <StartProjectButton
+                  height={"h-11"}
+                  bgColor={"bg-white"}
+                  textColor={"text-[#151515]"}
+                  arrowColor={"#151515"}
                 />
               </div>
-            </DelayedLink>
+
+              <SceondaryButton height={"h-11"} />
+            </div>
           </div>
         </div>
       </div>

@@ -1,10 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { HowItsWorkElement } from "@/app/components/HowItsWorkContact/components";
+import { useState, useEffect, useRef, ReactNode } from "react";
+import {
+  HowItsWorkElement,
+  HowItsWorkElementMobile,
+} from "@/app/components/HowItsWorkContact/components";
 import { IHowItsWork, useFetchAllHowItsWorkElementsQuery } from "@/app/contact";
+import Stepper, { Step } from "@/app/ReactBitsComponents/Stepper";
+import styles from "@/app/components/HowItsWorkContact/components/HowItsWorkElement/HowItsWorkElement.module.css";
 
 export const HowItsWorkContact = () => {
+  const [name, setName] = useState<string>("");
+
   const [activeElement, setActiveElement] = useState<number>(1);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -62,9 +69,7 @@ export const HowItsWorkContact = () => {
         </p>
       )}
 
-      <div
-        className={`flex flex-col rounded-tl-lg border border-solid border-gray p-4 gap-6 w-full sm:p-6 md:p-9 lg:rounded-none lg:border-none lg:p-0 lg:gap-0`}
-      >
+      <div className={`hidden flex-col w-full lg:flex`}>
         {howItsWorkElements &&
           howItsWorkElements.map(({ id, title, description }, index) => (
             <HowItsWorkElement
@@ -81,7 +86,31 @@ export const HowItsWorkContact = () => {
           ))}
       </div>
 
-      {/*{isHorizontal && <CallToAction />}*/}
+      <div className={`p-4 w-full sm:p-6 md:p-9 lg:hidden`}>
+        <Stepper
+          initialStep={1}
+          onStepChange={(step) => {
+            console.log(step);
+          }}
+          onFinalStepCompleted={() => console.log("All steps completed!")}
+          backButtonText="Previous"
+          nextButtonText="Next"
+        >
+          {howItsWorkElements &&
+            howItsWorkElements.map(
+              ({ id, title, description }, index) =>
+                (
+                  <Step key={id}>
+                    <HowItsWorkElementMobile
+                      title={title}
+                      description={description}
+                      numElement={index + 1}
+                    />
+                  </Step>
+                ) as ReactNode,
+            )}
+        </Stepper>
+      </div>
     </div>
   );
 };

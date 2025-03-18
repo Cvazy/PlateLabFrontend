@@ -77,9 +77,7 @@ export const Before = () => {
                 Difference in Revenue.
               </h2>
 
-              <div className={"hidden lg:block"}>
-                <Partners />
-              </div>
+              <Partners />
             </div>
 
             <div className="flex flex-col items-center gap-5 w-full h-full md:gap-10 lg:flex-row lg:justify-center lg:items-start lg:gap-14 xl:gap-16">
@@ -218,14 +216,8 @@ export const Before = () => {
               </div>
 
               <div className="flex justify-center w-fit h-full">
-                <div className={"flex flex-col items-center gap-2 w-full"}>
-                  <div className={"block lg:hidden"}>
-                    <Partners />
-                  </div>
-
-                  <div className="flex justify-center w-full relative">
-                    <Phone valuesSwitched={valuesSwitched} />
-                  </div>
+                <div className="flex justify-center w-full relative">
+                  <Phone valuesSwitched={valuesSwitched} />
                 </div>
               </div>
             </div>

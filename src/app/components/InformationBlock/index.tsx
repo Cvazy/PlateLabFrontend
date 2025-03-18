@@ -18,7 +18,7 @@ export const InformationBlock = () => {
               >
                 <h2
                   className={
-                    "text-2xl text-center text-white !leading-none sm:text-3xl md:text-4xl lg:text-[40px]"
+                    "text-3xl text-center text-white !leading-none md:text-4xl lg:text-[40px]"
                   }
                 >
                   How it works?

@@ -1,6 +1,7 @@
 import {
   ComparisonBlock,
   DesktopElement,
+  NoDifferenceTitle,
   PhotosDifference,
 } from "./components";
 import { useFetchAllComparisonQuery } from "@/app/home";
@@ -23,6 +24,7 @@ export const MainContainer = () => {
   const [shiftPercentage, setShiftPercentage] = useState<number>(50);
   const [selectedComparison, setSelectedComparison] =
     useState<ITransformComparisons | null>(null);
+  const [hasMoved, setHasMoved] = useState(false);
 
   const [mainOpacity, setMainOpacity] = useState<number>(0);
 
@@ -31,8 +33,31 @@ export const MainContainer = () => {
   );
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   const handleOpacityChange = (): void => {
     setMainOpacity(100);
+  };
+
+  const handleSliderMove = (percentage: number) => {
+    setShiftPercentage(percentage);
+    if (!hasMoved) {
+      setHasMoved(true);
+    }
   };
 
   useEffect(() => {
@@ -56,7 +81,11 @@ export const MainContainer = () => {
       ) {
         return 1;
       } else {
-        return 2;
+        if (!isMobile) {
+          return 2;
+        } else {
+          return 1;
+        }
       }
     });
   }, [shiftPercentage]);
@@ -82,38 +111,66 @@ export const MainContainer = () => {
   return (
     <div className="w-full">
       <div className={"flex flex-col items-center gap-6 w-full"}>
-        <div
-          className={"hidden items-center gap-2.5 flex-nowrap lg:flex"}
-          style={{ opacity: mainOpacity }}
-        >
-          <motion.div
-            key={currentLogo}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+        <div className={"flex flex-col items-center gap-4 lg:gap-0"}>
+          <div
+            className={"flex items-center gap-2.5 flex-nowrap"}
+            style={{ opacity: isMobile ? 1 : mainOpacity }}
           >
-            <Image
-              width={31}
-              height={31}
-              src={currentLogo}
-              alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
-            />
-          </motion.div>
+            <motion.div
+              key={currentLogo}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <Image
+                width={31}
+                height={31}
+                src={currentLogo}
+                alt={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+              />
+            </motion.div>
 
-          <DecryptedText
-            text={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
-            speed={50}
-            revealDirection="end"
-            className={"text-[32px] leading-10 text-white whitespace-nowrap"}
-            parentClassName={
-              "text-[32px] leading-10 text-white whitespace-nowrap"
-            }
-            encryptedClassName={
-              "text-[32px] leading-10 text-white whitespace-nowrap"
-            }
-            triggerAnimation={isAnimating}
-          />
+            <DecryptedText
+              text={shiftPercentage > 50 ? "Real Photo" : "PlateLab"}
+              speed={50}
+              animateOn={"view"}
+              revealDirection="end"
+              className={"text-[32px] leading-10 text-white whitespace-nowrap"}
+              parentClassName={
+                "text-[32px] leading-10 text-white whitespace-nowrap"
+              }
+              encryptedClassName={
+                "text-[32px] leading-10 text-white whitespace-nowrap"
+              }
+              triggerAnimation={isAnimating}
+            />
+          </div>
+
+          <div className={"w-full lg:hidden"}>
+            {!hasMoved ? (
+              <NoDifferenceTitle />
+            ) : (
+              selectedComparison && (
+                <ComparisonBlock
+                  isAIBlock={shiftPercentage <= 50}
+                  data={{
+                    ...selectedComparison,
+                    elements: [
+                      {
+                        name:
+                          selectedComparison.elements?.[currentElement]?.name ||
+                          "",
+                        value:
+                          selectedComparison.elements?.[currentElement]
+                            ?.value || "",
+                      },
+                    ],
+                  }}
+                />
+              )
+            )}
+          </div>
         </div>
 
         <div className="flex flex-col items-center gap-11 w-full lg:flex-row lg:justify-evenly lg:gap-1 lg:items-start">
@@ -136,7 +193,7 @@ export const MainContainer = () => {
 
           <PhotosDifference
             onOpacityChange={handleOpacityChange}
-            setShiftPercentage={setShiftPercentage}
+            handleSliderMove={handleSliderMove}
             DefaultPhotoPath={
               comparisons.length > 0 ? comparisons[0].photo_for_difference : ""
             }
@@ -173,38 +230,10 @@ export const MainContainer = () => {
               isAIBlock={shiftPercentage <= 50}
             />
           </div>
-
-          {selectedComparison && selectedComparison?.title?.length > 0 && (
-            <div className="block lg:hidden">
-              <ComparisonBlock
-                isAIBlock={shiftPercentage <= 50}
-                data={{
-                  ...selectedComparison,
-                  elements: [
-                    {
-                      name:
-                        selectedComparison.elements?.[currentElement]?.name ||
-                        "",
-                      value:
-                        selectedComparison.elements?.[currentElement]?.value ||
-                        "",
-                    },
-                  ],
-                }}
-              />
-            </div>
-          )}
         </div>
 
         <div style={{ opacity: mainOpacity }} className={"hidden lg:block"}>
-          <p
-            className={
-              "text-light_gray font-fancy text-center tracking-[-0.0125em] text-xl xl:text-[22px]"
-            }
-          >
-            No difference in realism—just in{" "}
-            <span className="text-red">price.</span>
-          </p>
+          <NoDifferenceTitle />
         </div>
       </div>
     </div>

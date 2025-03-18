@@ -25,10 +25,10 @@ export const PartnersList = () => {
           <div className={"flex items-center flex-nowrap no-transition"}>
             <DecryptedText
               text={"More cases"}
-              speed={100}
+              speed={50}
               revealDirection="end"
               className={
-                "text-center text-xl text-white no-transition whitespace-nowrap"
+                "text-center text-lg text-white no-transition whitespace-nowrap"
               }
               triggerAnimation={isHovered}
             />
@@ -41,7 +41,7 @@ export const PartnersList = () => {
               easing={"easeOutCubic"}
               threshold={0.1}
               rootMargin={"-700px"}
-              iconSrc={"/images/right_arrow.svg"}
+              iconSrc={"/images/before_arrow.svg"}
               iconAlt={"Go on cases"}
               isHovered={isHovered}
             />

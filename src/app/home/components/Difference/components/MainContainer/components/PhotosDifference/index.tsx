@@ -7,14 +7,14 @@ import useLenis from "@/app/hooks/useLenis";
 
 interface IPhotosDifferenceProps {
   onOpacityChange: () => void;
-  setShiftPercentage: (value: ((prevState: number) => number) | number) => void;
+  handleSliderMove(percentage: number): void;
   DefaultPhotoPath: string;
   AIPhotoPath: string;
 }
 
 export const PhotosDifference = ({
   onOpacityChange,
-  setShiftPercentage,
+  handleSliderMove,
   DefaultPhotoPath,
   AIPhotoPath,
 }: IPhotosDifferenceProps) => {
@@ -41,12 +41,18 @@ export const PhotosDifference = ({
       document.documentElement.style.touchAction = isInteracting
         ? "none"
         : "auto";
+
+      document.body.style.overflowY = isInteracting ? "hidden" : "auto";
+      document.body.style.touchAction = isInteracting ? "none" : "auto";
     }
 
     return () => {
       if (isMobile) {
         document.documentElement.style.overflowY = "auto";
         document.documentElement.style.touchAction = "auto";
+
+        document.body.style.overflowY = "auto";
+        document.body.style.touchAction = "auto";
       }
     };
   }, [isInteracting, isMobile]);
@@ -60,7 +66,7 @@ export const PhotosDifference = ({
     const shiftPercentage = (newShift / maxShift) * 100;
 
     setShift(newShift);
-    setShiftPercentage(shiftPercentage);
+    handleSliderMove(shiftPercentage);
 
     if (shiftPercentage >= 90 || shiftPercentage <= 10) {
       setAddShadow(true);
