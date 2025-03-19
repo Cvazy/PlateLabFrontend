@@ -28,7 +28,7 @@ export const PartnersList = () => {
               speed={50}
               revealDirection="end"
               className={
-                "text-center text-lg text-white no-transition whitespace-nowrap"
+                "text-center text-lg text-white no-transition whitespace-nowrap pointer-events-none"
               }
               triggerAnimation={isHovered}
             />

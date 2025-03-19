@@ -76,18 +76,13 @@ export default function Stepper({
     }
   };
 
-  const handleComplete = () => {
-    setDirection(1);
-    updateStep(totalSteps + 1);
-  };
-
   return (
     <div
-      className="no-transition flex min-h-full flex-1 flex-col items-center justify-center sm:aspect-[4/3] md:aspect-[2/1]"
+      className="no-transition flex min-h-full flex-1 flex-col items-center justify-center"
       {...rest}
     >
       <div
-        className={`no-transition mx-auto w-full max-w-md rounded-4xl shadow-xl ${stepCircleContainerClassName}`}
+        className={`no-transition mx-auto w-full rounded-4xl shadow-xl ${stepCircleContainerClassName}`}
         style={{ border: "1px solid #222" }}
       >
         <div
@@ -155,13 +150,16 @@ export default function Stepper({
                   {backButtonText}
                 </button>
               )}
-              <button
-                onClick={isLastStep ? handleComplete : handleNext}
-                className="duration-350 flex items-center justify-center rounded-full bg-red py-1.5 px-3.5 tracking-tight text-white transition"
-                {...nextButtonProps}
-              >
-                {isLastStep ? "Complete" : nextButtonText}
-              </button>
+
+              {!isLastStep && (
+                <button
+                  onClick={handleNext}
+                  className="duration-350 flex items-center justify-center rounded-full bg-red py-1.5 px-3.5 tracking-tight text-white transition"
+                  {...nextButtonProps}
+                >
+                  {nextButtonText}
+                </button>
+              )}
             </div>
           </div>
         )}

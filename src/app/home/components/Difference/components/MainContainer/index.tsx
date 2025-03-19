@@ -70,21 +70,31 @@ export const MainContainer = () => {
 
   useEffect(() => {
     setCurrentElement(() => {
-      if (
-        (shiftPercentage < 50 && shiftPercentage >= 35) ||
-        (shiftPercentage >= 50 && shiftPercentage < 65)
-      ) {
-        return 0;
-      } else if (
-        (shiftPercentage >= 15 && shiftPercentage < 35) ||
-        (shiftPercentage >= 65 && shiftPercentage < 85)
-      ) {
-        return 1;
-      } else {
-        if (!isMobile) {
-          return 2;
-        } else {
+      if (isMobile) {
+        if (
+          (shiftPercentage < 50 && shiftPercentage >= 25) ||
+          (shiftPercentage >= 50 && shiftPercentage < 75)
+        ) {
+          return 0;
+        } else if (
+          (shiftPercentage >= 0 && shiftPercentage < 25) ||
+          (shiftPercentage >= 75 && shiftPercentage <= 100)
+        ) {
           return 1;
+        }
+      } else {
+        if (
+          (shiftPercentage < 50 && shiftPercentage >= 35) ||
+          (shiftPercentage >= 50 && shiftPercentage < 65)
+        ) {
+          return 0;
+        } else if (
+          (shiftPercentage >= 15 && shiftPercentage < 35) ||
+          (shiftPercentage >= 65 && shiftPercentage < 85)
+        ) {
+          return 1;
+        } else {
+          return 2;
         }
       }
     });

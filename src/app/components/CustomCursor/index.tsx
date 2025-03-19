@@ -10,6 +10,7 @@ export const CustomCursor = () => {
 
   const [text, setText] = useState<string>("");
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isLink, setIsLink] = useState<boolean>(true);
   const [isRightPosition, setIsRightPosition] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,6 +24,11 @@ export const CustomCursor = () => {
 
       if (target && target.hasAttribute("data-cursor-text")) {
         setIsVisible(true);
+        if (target.getAttribute("data-type-block") === "noLink") {
+          setIsLink(false);
+        } else {
+          setIsLink(true);
+        }
         setText(target.getAttribute("data-cursor-text") || "");
       } else {
         setIsVisible(false);
@@ -64,13 +70,15 @@ export const CustomCursor = () => {
               className={"text-white font-fancy text-base !leading-none"}
             />
 
-            <Image
-              width={16}
-              height={16}
-              src={"/images/arrow.svg"}
-              alt={"Arrow"}
-              loading={"lazy"}
-            />
+            {isLink && (
+              <Image
+                width={16}
+                height={16}
+                src={"/images/arrow.svg"}
+                alt={"Arrow"}
+                loading={"lazy"}
+              />
+            )}
           </div>
         </div>
       </div>

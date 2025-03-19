@@ -15,7 +15,7 @@ const ContactPage = () => {
           <div className={"pt-20 pb-20 w-full h-full lg:pt-[60px]"}>
             <div
               className={
-                "flex flex-col-reverse gap-20 w-full h-full lg:grid lg:grid-cols-2 lg:gap-0"
+                "flex flex-col gap-20 w-full h-full lg:grid lg:grid-cols-2 lg:gap-0"
               }
             >
               <div className={"w-full"}>
@@ -26,15 +26,13 @@ const ContactPage = () => {
                 >
                   <h1
                     className={
-                      "text-[32px] text-white text-center !leading-[normal] xl:text-4xl"
+                      "hidden text-[32px] text-white text-center !leading-[normal] lg:block xl:text-4xl"
                     }
                   >
                     How it works?
                   </h1>
 
-                  <div className={"w-full"}>
-                    <HowItsWorkContact />
-                  </div>
+                  <HowItsWorkContact />
                 </div>
               </div>
 

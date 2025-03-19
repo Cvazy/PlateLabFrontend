@@ -174,17 +174,20 @@ export const PhotosDifference = ({
       onTouchMove={handleTouchMove}
       onMouseEnter={handleMouseEnter}
       data-cursor-text={hasHovered ? "Move the slider to compare" : undefined}
+      data-type-block={"noLink"}
     >
       <div
         ref={sliderRef}
         className="max-w-[517px] aspect-square w-full"
         data-cursor-text={hasHovered ? "Move the slider to compare" : undefined}
+        data-type-block={"noLink"}
       >
         <div
           className={`z-0 relative w-full h-full`}
           data-cursor-text={
             hasHovered ? "Move the slider to compare" : undefined
           }
+          data-type-block={"noLink"}
         >
           <div
             ref={beforeRef}
@@ -192,6 +195,7 @@ export const PhotosDifference = ({
             data-cursor-text={
               hasHovered ? "Move the slider to compare" : undefined
             }
+            data-type-block={"noLink"}
           >
             {DefaultPhotoPath.length > 0 && (
               <CustomImage
@@ -207,6 +211,7 @@ export const PhotosDifference = ({
                 data-cursor-text={
                   hasHovered ? "Move the slider to compare" : undefined
                 }
+                data-type-block={"noLink"}
               />
             )}
           </div>
@@ -221,12 +226,14 @@ export const PhotosDifference = ({
             data-cursor-text={
               hasHovered ? "Move the slider to compare" : undefined
             }
+            data-type-block={"noLink"}
             className={`flex absolute justify-center top-0 z-30 w-[2px] h-full left-1/2 no-transition ${styles.ChangeDriver} ${addShadow ? "after:shadow-[0_0_8px_#F63737] before:shadow-[0_0_8px_#F63737]" : ""} ${lineAnimate ? "before:!scale-y-125 before:lg:!scale-y-100 before:xl:!scale-y-125 after:!scale-y-125 after:lg:!scale-y-100 after:xl:!scale-y-125" : "before:!scale-y-0 after:!scale-y-0"}`}
           >
             <div
               data-cursor-text={
                 hasHovered ? "Move the slider to compare" : undefined
               }
+              data-type-block={"noLink"}
               className="flex justify-center items-center absolute top-[43.5%] ml-[0.03rem] cursor-pointer w-[115px] h-[58px] no-transition md:w-[124px] md:h-[68px]"
             >
               <Image
@@ -239,6 +246,7 @@ export const PhotosDifference = ({
                 data-cursor-text={
                   hasHovered ? "Move the slider to compare" : undefined
                 }
+                data-type-block={"noLink"}
               />
             </div>
           </div>
@@ -248,6 +256,7 @@ export const PhotosDifference = ({
             data-cursor-text={
               hasHovered ? "Move the slider to compare" : undefined
             }
+            data-type-block={"noLink"}
           >
             {AIPhotoPath.length > 0 && (
               <CustomImage
@@ -263,6 +272,7 @@ export const PhotosDifference = ({
                 data-cursor-text={
                   hasHovered ? "Move the slider to compare" : undefined
                 }
+                data-type-block={"noLink"}
               />
             )}
           </div>

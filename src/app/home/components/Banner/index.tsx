@@ -48,13 +48,13 @@ export const Banner = () => {
                   }
                 >
                   professional, and{" "}
-                  <DelayedLink
-                    href={"/pricing"}
-                    className={"text-red"}
+                  <span
+                    className={"text-red cursor-pointer"}
                     data-cursor-text={"Sales increase up to 126%"}
+                    data-type-block={"noLink"}
                   >
                     sell more.
-                  </DelayedLink>
+                  </span>
                 </p>
               </div>
 

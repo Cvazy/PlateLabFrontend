@@ -86,7 +86,7 @@ export const HowItsWorkContact = () => {
           ))}
       </div>
 
-      <div className={`p-4 w-full sm:p-6 md:p-9 lg:hidden`}>
+      <div className={`w-full lg:hidden`}>
         <Stepper
           initialStep={1}
           onStepChange={(step) => {
