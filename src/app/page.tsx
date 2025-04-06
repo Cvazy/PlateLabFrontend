@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Before,
   Benefits,
@@ -8,7 +6,12 @@ import {
   MainSwiper,
   ParallaxBeforeFooter,
 } from "@/app/home";
-import { ParallaxProvider } from "react-scroll-parallax";
+import { SITE_NAME } from "@/constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | " + SITE_NAME,
+};
 
 export default function Home() {
   return (
@@ -23,9 +26,7 @@ export default function Home() {
 
       <Benefits />
 
-      <ParallaxProvider>
-        <ParallaxBeforeFooter />
-      </ParallaxProvider>
+      <ParallaxBeforeFooter />
     </div>
   );
 }

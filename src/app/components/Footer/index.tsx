@@ -24,6 +24,7 @@ export const Footer = () => {
 
   return (
     <footer
+      // className={`overflow-hidden min-h-96 w-full h-screen ${styles.footer}`}
       className={`overflow-hidden min-h-96 w-full h-screen ${isMainPage ? "absolute bottom-0 bg-white" : `${styles.footer}`}`}
     >
       <div

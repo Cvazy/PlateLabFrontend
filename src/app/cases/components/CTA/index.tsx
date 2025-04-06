@@ -1,3 +1,5 @@
+"use client";
+
 import { BlurText } from "@/app/ReactBitsComponents";
 import { StartProjectButton } from "@/app/components";
 import React, { useState } from "react";

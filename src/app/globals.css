@@ -164,3 +164,8 @@ img {
     animation-play-state: paused !important;
   }
 }
+
+.parallax-container > div:first-child,
+.parallax-container > div:last-child {
+  height: 100% !important;
+}

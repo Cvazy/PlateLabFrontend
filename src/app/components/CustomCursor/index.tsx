@@ -48,7 +48,7 @@ export const CustomCursor = () => {
 
   return (
     <div
-      className={`fixed ${isVisible ? "opacity-100" : "opacity-0"} no-transition !duration-500 transition-opacity top-8 ${isRightPosition ? "-left-40" : "left-8"} w-fit h-fit hidden z-50 sm:block`}
+      className={`fixed ${isVisible ? "opacity-100" : "opacity-0"} no-transition !duration-500 transition-opacity top-8 ${isRightPosition ? "-left-40" : "left-8"} w-fit h-10 hidden z-50 sm:block`}
       style={{
         transform: `translateX(${pxCoord}px) translateY(${pyCoord}px)`,
       }}

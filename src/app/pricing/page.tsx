@@ -1,8 +1,11 @@
-"use client";
-
 import { Contact, InformationBlock } from "@/app/components";
 
 import { PricingList } from "@/app/pricing/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+};
 
 const PricingPage = () => {
   return (

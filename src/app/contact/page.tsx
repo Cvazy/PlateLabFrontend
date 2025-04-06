@@ -1,7 +1,10 @@
-"use client";
-
 import { FormToConnection } from "./components";
 import { HowItsWorkContact } from "@/app/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+};
 
 const ContactPage = () => {
   return (

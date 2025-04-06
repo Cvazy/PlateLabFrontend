@@ -4,18 +4,20 @@ import Image, { ImageProps } from "next/image";
 
 interface CustomImageProps extends ImageProps {
   className?: string;
+  containerClassName?: string;
 }
 
 const CustomImage: React.FC<CustomImageProps> = ({
   src,
   alt,
   className,
+  containerClassName,
   ...props
 }) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className} ${containerClassName}`}>
       {isLoading && (
         <div className="absolute inset-0 bg-gray animate-pulse rounded-lg"></div>
       )}

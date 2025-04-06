@@ -1,17 +1,12 @@
-"use client";
+import { CTA } from "./components";
+import { Metadata } from "next";
+import { ClientCasesPage } from "@/app/cases/clientPage";
 
-import { useState } from "react";
-import { BigGallery, CTA, RestaurantList } from "./components";
-
-import { ICaseItem, useFetchAllCasesQuery } from "@/app/cases";
+export const metadata: Metadata = {
+  title: "Cases",
+};
 
 const CasesPage = () => {
-  const [activeCase, setActiveCase] = useState<number>(1);
-
-  const { data, isError } = useFetchAllCasesQuery();
-
-  const cases: ICaseItem[] = data || [];
-
   return (
     <div className={"flex justify-center pt-20 w-full overflow-x-hidden"}>
       <div
@@ -28,30 +23,7 @@ const CasesPage = () => {
                 Cases<span className={"text-gray"}>.</span>
               </h1>
 
-              {isError && (
-                <p
-                  className={
-                    "text-center font-fancy text-red text-lg w-full sm:text-xl md:text-2xl lg:text-3xl"
-                  }
-                >
-                  An error occurred during the request. Try to reload the page
-                  or come back later.
-                </p>
-              )}
-
-              <div
-                className={
-                  "flex flex-col-reverse items-start w-full lg:flex-col"
-                }
-              >
-                <BigGallery activeCase={activeCase} cases={cases} />
-
-                <RestaurantList
-                  cases={cases}
-                  activeCase={activeCase}
-                  setActiveCase={setActiveCase}
-                />
-              </div>
+              <ClientCasesPage />
             </div>
           </div>
 

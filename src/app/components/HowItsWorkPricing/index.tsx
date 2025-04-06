@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { IHowItsWork, useFetchAllHowItsWorkElementsQuery } from "@/app/contact";
 import { CallToAction, HowItsWorkElement } from "./components";

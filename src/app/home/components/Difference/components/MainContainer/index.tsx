@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ComparisonBlock,
   DesktopElement,
@@ -97,8 +99,10 @@ export const MainContainer = () => {
           return 2;
         }
       }
+
+      return 0;
     });
-  }, [shiftPercentage]);
+  }, [shiftPercentage, isMobile]);
 
   useEffect(() => {
     if (isAnimating) return;
